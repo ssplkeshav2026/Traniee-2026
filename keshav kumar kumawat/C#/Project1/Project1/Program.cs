@@ -1,6 +1,4 @@
-﻿
-
-namespace Project1
+﻿namespace Project1
 {
     public class Program
     {

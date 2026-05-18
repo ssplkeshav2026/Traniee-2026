@@ -1,0 +1,164 @@
+﻿@model DatabaseFirstApproach.Models.ViewModel.DashboardVM
+
+<div class="row mt-4">
+
+    <!-- Upcoming Exams -->
+    <div class="col-md-6">
+
+        <div class="card mb-4">
+
+            <div class="card-header bg-primary text-white">
+                Upcoming Exams
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>Exam Name</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.UpcomingExams != null && Model.UpcomingExams.Any())
+                        {
+                            foreach (var item in Model.UpcomingExams)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+
+                                    <td>
+                                        @item.StartDate
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    No Upcoming Exams Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Exams -->
+    <div class="col-md-6">
+
+        <div class="card mb-4">
+
+            <div class="card-header bg-success text-white">
+                Recent Exams
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>Exam Name</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.RecentExams != null && Model.RecentExams.Any())
+                        {
+                            foreach (var item in Model.RecentExams)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+
+                                    <td>
+                                        @item.StartDate
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    No Recent Exams Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Class Wise Exam Performance -->
+
+<div class="card mt-4">
+
+    <div class="card-header bg-dark text-white">
+        Class Wise Exam Performance
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th>Grade / Class</th>
+                    <th>Average Marks</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.Performance != null && Model.Performance.Any())
+                {
+                    foreach (var item in Model.Performance)
+                    {
+                        <tr>
+                            <td>@item.GradeName</td>
+
+                            <td>
+                                @item.AverageMarks
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            No Performance Data Found
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

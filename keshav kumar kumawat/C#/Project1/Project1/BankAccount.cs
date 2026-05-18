@@ -12,7 +12,7 @@ namespace Project1
         public Guid AccountNumber= Guid.NewGuid();
         public string AccountHolder { get; set; }
         public double Balance { get; set; }
-
+            
         public BankAccount()
         {
 
@@ -109,16 +109,16 @@ namespace Project1
                         Console.Write("Enter Account Number: ");
                         string input = Console.ReadLine();
 
-                        var accDetails = accounts.FirstOrDefault(a => a.AccountNumber.ToString() == input);
+                        foreach (var acc1 in accounts)
+                        {
+                            if (acc1.AccountNumber.ToString() == input)
+                            {
+                                acc1.DisplayAccountDetails();
+                                return;
+                            }
+                        }
 
-                        if (accDetails != null)
-                        {
-                            accDetails.DisplayAccountDetails();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Account not found!");
-                        }
+                        Console.WriteLine("Account not found!");
                         break;
 
                     case 6:
