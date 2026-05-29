@@ -1,0 +1,79 @@
+﻿@model SchoolManagement.Models.ViewModels.ExamOverviewVM
+
+<div class="card shadow p-3 mb-4">
+
+    <div class="card-header bg-primary text-white">
+        <h4>Exam Overview</h4>
+    </div>
+
+    <div class="card-body">
+
+        <!-- Upcoming Exams -->
+        <h5 class="mb-3">Upcoming Exams</h5>
+
+        <table class="table table-bordered table-striped mb-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Exam Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.UpcomingExams != null && Model.UpcomingExams.Any())
+                {
+                    @foreach (var exam in Model.UpcomingExams)
+                    {
+                        <tr>
+                            <td>@exam.Name</td>
+                            <td>@exam.StartDate</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">
+                            No upcoming exams found.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Recent Exams -->
+        <h5 class="mb-3">Recently Conducted Exams</h5>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Exam Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.RecentExams != null && Model.RecentExams.Any())
+                {
+                    @foreach (var exam in Model.RecentExams)
+                    {
+                        <tr>
+                            <td>@exam.Name</td>
+                            <td>@exam.StartDate</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">
+                            No recent exams found.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

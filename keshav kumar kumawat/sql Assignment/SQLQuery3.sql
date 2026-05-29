@@ -235,7 +235,7 @@ end catch;
 --36--
 select * from Products;
 select ProductName, UnitPrice from Products where UnitPrice > (select avg(UnitPrice) from Products);
-
+    
 --37--
 select * from Customers;
 select * from Orders;

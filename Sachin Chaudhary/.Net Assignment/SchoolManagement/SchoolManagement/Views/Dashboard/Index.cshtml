@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">School ERP Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+            @await Component.InvokeAsync("StudentStatistics")
+        </div>
+
+          <div class="col-md-6 mb-4"> 
+            @await Component.InvokeAsync("AttendanceOverviewGet")
+        </div>
+
+        <div class="col-md-6 mb-4">
+            @await Component.InvokeAsync("ExamOverviewGet")
+        </div>
+
+        <div class="col-md-6 mb-4">
+            @await Component.InvokeAsync("QuickMetrics")
+        </div>  
+
+    </div>
+
+</div>

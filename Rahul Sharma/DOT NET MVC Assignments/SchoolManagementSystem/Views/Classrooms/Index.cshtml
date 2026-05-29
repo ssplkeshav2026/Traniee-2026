@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SchoolManagementSystem.Models.Classroom>
+
+@{
+    ViewData["Title"] = "ClassRoom";
+}
+
+<h1>
+    ClassRoom
+</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yearr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Selection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yearr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Selection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.GradeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.TeacherId)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClassroomId" class="btn btn-warning">Edit</a>
+                     <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.ClassroomId">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ClassroomId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

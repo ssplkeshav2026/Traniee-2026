@@ -1,0 +1,118 @@
+﻿@model SchoolManagement.Models.ViewModels.AttendanceOverviewVM
+
+<div class="card shadow p-3 mb-4">
+
+    <div class="card-header bg-primary text-white">
+        <h4>Attendance Overview</h4>
+    </div>
+
+    <div class="card-body">
+
+        <!-- Present / Absent -->
+        <div class="row text-center mb-4">
+
+            <div class="col-md-6">
+                <div class="border rounded p-3 bg-success text-white">
+                    <h5>Present Today</h5>
+                    <h2>@(Model?.PresentToday ?? 0)</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="border rounded p-3 bg-danger text-white">
+                    <h5>Absent Today</h5>
+                    <h2>@(Model?.AbsentToday ?? 0)</h2>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Recent Attendance -->
+        <h5 class="mb-3">Recent Attendance Records</h5>
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model?.RecentAttendanceRecords != null &&
+               Model.RecentAttendanceRecords.Any())
+                {
+                    @foreach (var item in Model.RecentAttendanceRecords)
+                    {
+                        <tr>
+                            <td>@item.Date</td>
+
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <span class="badge bg-success">Present</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Absent</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">
+                            No attendance records found.
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+        <!-- Attendance Percentage -->
+        <h5 class="mt-4 mb-3">Attendance Percentage By Classroom</h5>
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-primary">
+                <tr>
+                    <th>Classroom</th>
+                    <th>Attendance %</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model?.AttendancePercentageByClassroom != null &&
+               Model.AttendancePercentageByClassroom.Any())
+                {
+                    @foreach (var item in Model.AttendancePercentageByClassroom)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+                            <td>@item.Value%</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">
+                            No attendance percentage data found.
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

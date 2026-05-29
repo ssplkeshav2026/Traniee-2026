@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SchoolManagementSystem.Models.ExamResult>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Exam Result</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cource.CourceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.ExamId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.StudentId)
+            </td>
+                <td class="btnn">
+
+                    @Html.ActionLink("Edit", "Edit",
+                            new { id = item.StudentId },
+                            new { @class = "btn btn-primary btn-sm me-2" })
+
+                    @Html.ActionLink("Details", "Details",
+                            new { id = item.StudentId },
+                            new { @class = "btn btn-info btn-sm me-2" })
+
+                    @Html.ActionLink("Delete", "Delete",
+                            new { id = item.StudentId },
+                            new { @class = "btn btn-danger btn-sm" })
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

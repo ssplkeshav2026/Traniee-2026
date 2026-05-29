@@ -1,0 +1,44 @@
+﻿
+@model First.netAssigmnet.ViewModel.Exam_Overview
+
+<h2>Exam Overview</h2>
+
+<div>
+    <h4>Upcoming Exams</h4>
+
+    @if (Model.UpcomingExams != null && Model.UpcomingExams.Any())
+    {
+        <ul>
+            @foreach (var item in Model.UpcomingExams)
+            {
+                <li>
+                   @item.Name - @(item.StartDate.HasValue ? item.StartDate.Value.ToString("dd-MM-yyyy") : "")
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No upcoming exams found.</p>
+    }
+</div>
+
+<div style="margin-top:20px;">
+    <h4>Recently Conducted Exams</h4>
+
+    @if (Model.RecentExams != null && Model.RecentExams.Any())
+    {
+        <ul>
+            @foreach (var item in Model.RecentExams)
+            {
+                <li>
+                   @item.Name - @(item.StartDate.HasValue ? item.StartDate.Value.ToString("dd-MM-yyyy")  : "")
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No recent exams found.</p>
+    }
+</div>

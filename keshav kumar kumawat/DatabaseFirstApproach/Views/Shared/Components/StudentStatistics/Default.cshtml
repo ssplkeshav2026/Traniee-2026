@@ -1,0 +1,57 @@
+﻿@model DatabaseFirstApproach.Models.ViewModel.DashboardVM
+
+<div class="col-md-4">
+    <div class="card bg-primary text-white mb-3">
+        <div class="card-body">
+            <h5>Total Students</h5>
+            <h2>@Model.TotalStudents</h2>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card bg-success text-white mb-3">
+        <div class="card-body">
+            <h5>Active Students</h5>
+            <h2>@Model.ActiveStudents</h2>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card bg-danger text-white mb-3">
+        <div class="card-body">
+            <h5>Inactive Students</h5>
+            <h2>@Model.InactiveStudents</h2>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 mt-3">
+    <div class="card">
+        <div class="card-header">
+            Students Per Classroom / Grade
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Grade / Section</th>
+                        <th>Total Students</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.GradeStudent)
+                    {
+                        <tr>
+                            <td>@item.GradeName</td>
+                            <td>@item.TotalStudentCount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

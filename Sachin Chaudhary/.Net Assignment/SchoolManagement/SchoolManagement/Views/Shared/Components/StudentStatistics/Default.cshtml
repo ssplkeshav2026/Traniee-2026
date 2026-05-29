@@ -1,0 +1,85 @@
+﻿@model SchoolManagement.Models.ViewModels.StudentStatisticsVM
+
+<div class="container-fluid">
+
+    <div class="row mt-4">
+
+        <!-- Total Students -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-0 bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5>Total Students</h5>
+                    <h2>@(Model?.TotalStudents ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Students -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-0 bg-success text-white">
+                <div class="card-body text-center">
+                    <h5>Active Students</h5>
+                    <h2>@(Model?.ActiveStudents ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inactive Students -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow border-0 bg-danger text-white">
+                <div class="card-body text-center">
+                    <h5>Inactive Students</h5>
+                    <h2>@(Model?.InactiveStudents ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Students Per Grade -->
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Students Per Grade</h5>
+        </div>
+
+        <div class="card-body">
+
+            @if (Model?.StudentsPerClassroom != null &&
+           Model.StudentsPerClassroom.Any())
+            {
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Grade Name</th>
+                            <th>Total Classrooms</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in Model.StudentsPerClassroom)
+                        {
+                            <tr>
+                                <td>@item.Key</td>
+                                <td>@item.Value</td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning text-center mb-0">
+                    No classroom data available
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

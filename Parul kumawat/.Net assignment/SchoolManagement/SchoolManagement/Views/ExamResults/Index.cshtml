@@ -1,0 +1,68 @@
+@model IEnumerable<SchoolManagement.Models.ExamResult>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New Exam Result</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Fname)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new
+                    {
+                        examId = item.ExamId,
+                        studentId = item.StudentId,
+                        courseId = item.CourseId
+                    })
+                    @Html.ActionLink("Details", "Details", new
+                    {
+                        examId = item.ExamId,
+                        studentId = item.StudentId,
+                        courseId = item.CourseId
+                    })  
+                    @Html.ActionLink("Delete", "Delete", new
+                    {
+                        examId = item.ExamId,
+                        studentId = item.StudentId,
+                        courseId = item.CourseId
+                    })
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

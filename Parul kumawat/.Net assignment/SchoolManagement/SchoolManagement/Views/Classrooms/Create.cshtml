@@ -1,0 +1,76 @@
+@model SchoolManagement.Models.ViewModel.ClassroomEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@(Model != null && Model.ClassroomId > 0 ? "Update" : "Create")</h1>
+
+<h4>Classroom</h4>
+<hr />
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@TempData["Message"]');
+    </script>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (Model.ClassroomId > 0)
+            {
+                <input type="hidden" asp-for="ClassroomId" />
+            }
+            <div class="form-group">
+                <label asp-for="ClassroomYear" class="control-label"></label>
+                <input asp-for="ClassroomYear" class="form-control" />
+                <span asp-validation-for="ClassroomYear" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Section" class="control-label"></label>
+                <input asp-for="Section" class="form-control" />
+                <span asp-validation-for="Section" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-check-input" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GradeId" class="control-label"></label>
+                <select asp-for="GradeId" class="form-control" asp-items="ViewBag.GradeId" >
+                    <option value="">Select Grade</option>
+                </select>
+                <span asp-validation-for="GradeId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TeacherId" class="control-label"></label>
+                <select asp-for="TeacherId" class="form-control" asp-items="ViewBag.TeacherId">
+                    <option value="">Select Grade</option>
+                </select>
+                <span asp-validation-for="TeacherId" class="text-danger"></span>
+            </div>
+
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Classrooms" asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,143 @@
+﻿@model DatabaseFirstApproach.Models.ViewModel.DashboardVM
+
+<div class="row mt-4">
+
+    <!-- Present Students -->
+    <div class="col-md-4">
+        <div class="card bg-success text-white mb-3">
+            <div class="card-body">
+                <h5>Present Students</h5>
+                <h2>@Model.PresentStudents</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Absent Students -->
+    <div class="col-md-4">
+        <div class="card bg-danger text-white mb-3">
+            <div class="card-body">
+                <h5>Absent Students</h5>
+                <h2>@Model.AbsentStudents</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance Percentage -->
+    <div class="col-md-4">
+        <div class="card bg-primary text-white mb-3">
+            <div class="card-body">
+                <h5>Attendance Percentage</h5>
+                <h2>@Model.AttendencePercentage %</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Attendance Percentage By Classroom -->
+<div class="card mt-3">
+    <div class="card-header">
+        Attendance Percentage By Classroom
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Classroom Id</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.AttendenceClassroom != null && Model.AttendenceClassroom.Any())
+                {
+                    foreach (var item in Model.AttendenceClassroom)
+                    {
+                        <tr>
+                            <td>@item.ClassroomId</td>
+                            <td>@item.Percentage %</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            No Attendance Data Found
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- Recent Attendance Records -->
+<div class="card mt-4">
+
+    <div class="card-header">
+        Recent Attendance Records
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-striped table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (Model.AttendenceRecords != null && Model.AttendenceRecords.Any())
+                {
+                    foreach (var item in Model.AttendenceRecords)
+                    {
+                        <tr>
+                            <td>
+                                @item.Student?.Fname @item.Student?.Lname
+                            </td>
+
+                            <td>
+                                @item.Date
+                            </td>
+
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <span class="badge bg-success">
+                                        Present
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Absent
+                                    </span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            No Attendance Records Found
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
