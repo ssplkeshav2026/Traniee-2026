@@ -1,0 +1,70 @@
+﻿@model SchoolManagement.Models.ViewModel.DashboardViewModel
+
+<h3>Attendence Statistics</h3>
+
+<h6>Total Present students : @Model.PresentStudents</h6>
+
+<h6>Total Absent Students : @Model.AbsentStudents</h6>
+
+<h6> Attendance percentage by classroom : </h6>
+
+
+<div> Attendance Percentage : </div>
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ClassroomId</th>
+
+                <th>Percentage</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var data in Model.ClassroomAttendance)
+            {
+                <tr>
+                    <td>@data.ClassroomId</td>
+                    <td>@data.Percentage</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+
+
+
+<h6>Recent attendance records : </h6>
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>StudentId</th>
+
+                <th>Status</th>
+
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var data in Model.AttendenceRecords)
+            {
+                <tr>
+                    <td>@data.StudentId</td>
+                    <td>@data.Status</td>
+                    <td>@data.Date</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>

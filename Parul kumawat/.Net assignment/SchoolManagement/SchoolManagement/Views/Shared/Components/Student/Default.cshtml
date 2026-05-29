@@ -1,0 +1,37 @@
+﻿@model SchoolManagement.Models.ViewModel.DashboardViewModel
+
+<h3>Student Statistics</h3>
+
+<h6>Total Students : @Model.TotalStudents</h6>
+
+<h6>Active Students : @Model.ActiveStudents</h6>
+
+<h6>Inactive Students : @Model.InactiveStudents</h6>
+
+<h6> Student Per ClassRoom :  </h6>
+
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ClassroomId</th>
+
+                <th>Total Student :</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var data in Model.GradeStudentCount)
+            {
+                <tr>
+                    <td>@data.ClassroomId</td>
+                    <td>@data.TotalStudentCount</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>
+
