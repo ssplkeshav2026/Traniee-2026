@@ -1,0 +1,76 @@
+﻿
+@{
+
+    ViewData["Title"] = "DashBoard";
+
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">School ERP Dashboard</h2>
+
+    <div class="row">  
+        <div class="row">
+            <!-- Attendence Container -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Attendence Overview</h5>
+                    </div>
+                    <div class="col-md-6 mb-4 card-body">
+                        <!-- Invoke the View Component -->
+                        @await Component.InvokeAsync("AttendanceOverview")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Student Container -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Student Statistics</h5>
+                    </div>
+                    <div class="col-md-6 mb-4 card-body">
+                        <!-- Invoke the View Component -->
+                        @await Component.InvokeAsync("StudentStatistics")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <!-- Exam Container -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Exam Overview</h5>
+                    </div>
+                    <div class="col-md-6 mb-4 card-body">
+                        <!-- Invoke the View Component -->
+                        @await Component.InvokeAsync("ExamOverview")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- QuickMetrics Container -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Quick Metrics</h5>
+                    </div>
+                    <div class="col-md-6 mb-4 card-body">
+                        <!-- Invoke the View Component -->
+                        @await Component.InvokeAsync("QuickMetrics")
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
