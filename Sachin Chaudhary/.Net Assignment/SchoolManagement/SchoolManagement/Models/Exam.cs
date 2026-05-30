@@ -16,5 +16,4 @@ public partial class Exam
     public virtual ICollection<ExamResult> ExamResults { get; set; } = new List<ExamResult>();
 
     public virtual ExamType? ExamType { get; set; }
-
 }

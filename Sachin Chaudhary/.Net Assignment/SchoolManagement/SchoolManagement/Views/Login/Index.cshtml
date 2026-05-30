@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    
    
 }
 
@@ -112,8 +113,8 @@
 
                                 </div>
 
-                                <form asp-controller="Account"
-                                      asp-action="Login"
+                                <form asp-controller="Login"
+                                      asp-action="Index"
                                       method="post">
 
                                     <p class="text-muted mb-4">
@@ -173,7 +174,7 @@
                                             Don't have an account?
                                         </p>
 
-                                        <a asp-controller="Account"
+                                        <a asp-controller="Login"
                                                asp-action="Register"
                                                class="btn btn-outline-danger create-btn">
                                             Create New

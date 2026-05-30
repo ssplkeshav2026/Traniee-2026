@@ -22,5 +22,4 @@ public partial class Classroom
     public virtual Grade? Grade { get; set; }
 
     public virtual Teacher? Teacher { get; set; }
-    //public int StudentId { get; internal set; }
 }

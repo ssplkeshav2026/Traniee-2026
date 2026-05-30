@@ -38,17 +38,13 @@ public partial class SchooErpContext : DbContext
     public virtual DbSet<Teacher> Teachers { get; set; }
 
     public virtual DbSet<UserDatum> UserData { get; set; }
-    public object AttendanceRecords { get; internal set; }
-    public object ClassroomStudent { get; internal set; }
-    public object ExamResult { get; internal set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=DESKTOP-CJ5J9FS\\SQLEXPRESS;Database=schoo_erp;Trusted_Connection=True;Encrypt=False;");
 
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Attendance>(entity =>
@@ -286,6 +282,9 @@ public partial class SchooErpContext : DbContext
                 .HasMaxLength(45)
                 .IsUnicode(false)
                 .HasColumnName("fname");
+            entity.Property(e => e.Image)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.LastLoginDate).HasColumnName("last_login_date");
             entity.Property(e => e.LastLoginIp)
                 .HasMaxLength(45)

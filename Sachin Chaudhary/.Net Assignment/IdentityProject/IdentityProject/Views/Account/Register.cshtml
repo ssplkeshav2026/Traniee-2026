@@ -1,0 +1,118 @@
+﻿@model IdentityProject.Models.RegisterViewModel
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+    <div class="card shadow p-4 rounded-4" style="width: 450px;">
+
+        <h2 class="text-center mb-4 text-success">
+            Register
+        </h2>
+
+        <form asp-action="Register" method="post">
+
+            <!-- First Name -->
+            <div class="mb-3">
+
+                <label asp-for="FirstName" class="form-label fw-bold">
+                    First Name
+                </label>
+
+                <input asp-for="FirstName"
+                       class="form-control"
+                       placeholder="Enter first name" />
+
+                <span asp-validation-for="FirstName"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+            <!-- Last Name -->
+            <div class="mb-3">
+
+                <label asp-for="LastName" class="form-label fw-bold">
+                    Last Name
+                </label>
+
+                <input asp-for="LastName"
+                       class="form-control"
+                       placeholder="Enter last name" />
+
+                <span asp-validation-for="LastName"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+
+                <label asp-for="Email" class="form-label fw-bold">
+                    Email
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control"
+                       placeholder="Enter your email" 
+                       autocomplete="off" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+
+                <label asp-for="Password" class="form-label fw-bold">
+                    Password
+                </label>
+
+                <input asp-for="Password"
+                       type="password"
+                       class="form-control"
+                       placeholder="Enter password" 
+                       autocomplete="new-password" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4">
+
+                <label asp-for="ConfirmPassword" class="form-label fw-bold">
+                    Confirm Password
+                </label>
+
+                <input asp-for="ConfirmPassword"
+                       type="password"
+                       class="form-control"
+                       placeholder="Confirm password" />
+
+                <span asp-validation-for="ConfirmPassword"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+            <!-- Register Button -->
+            <button type="submit"
+                    class="btn btn-success w-100 rounded-3">
+                Register
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
