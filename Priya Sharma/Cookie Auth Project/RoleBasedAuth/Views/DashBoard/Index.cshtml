@@ -9,9 +9,7 @@
 
     <h2>Manage Users</h2>
 
-    <form asp-action="UpdateRoles"
-          asp-controller="DashBoard"
-          method="post">
+    <form asp-action="UpdateRoles" asp-controller="DashBoard" method="post">
 
         @Html.AntiForgeryToken()
 
@@ -56,9 +54,7 @@
 
                         <td>
 
-                            <a asp-action="ToggleStatus"
-                               asp-controller="DashBoard"
-                               asp-route-userId="@Model[i].UserId"
+                            <a asp-action="ToggleStatus" asp-controller="DashBoard"  asp-route-userId="@Model[i].UserId"
                                class="btn @(Model[i].Status ? "btn-success" : "btn-danger") btn-sm">
 
                                 @(Model[i].Status ? "Active" : "Inactive")
@@ -69,6 +65,7 @@
                         <input type="hidden"
                                name="[@i].UserId"
                                value="@Model[i].UserId" />
+                        
                         <!-- Admin Role -->
                         <td>
 

@@ -8,5 +8,7 @@ namespace RoleBasedAuth.Models.Domain
         [Required]
         public string? Name { get; set; }
         public bool Status { get; set; }
+
+        public string ProfilePicture { get; set; }
     }
 }

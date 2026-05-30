@@ -1,0 +1,51 @@
+﻿@model RoleBasedAuth.Models.DTO.EditProfile
+
+<h2>Edit Details</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+        <form asp-action="EditDetails" method="post" enctype="multipart/form-data">
+            <hr />
+            <div class="mb-3">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                    <label>Current Profile Picture</label>
+                    <br />
+
+                    @if (!string.IsNullOrEmpty(Model.ExistingProfilePicture))
+                    {
+                        <img src="@Model.ExistingProfilePicture"
+                             width="120"
+                             height="120"
+                        />
+                    }
+                    else
+                    {
+                        <em>No profile picture found</em>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label>Choose New Profile Picture</label>
+
+                    <input asp-for="ProfileImage"
+                           type="file"
+                           class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Save Changes
+            </button>
+
+        </form>
+        </section>
+    </div>
+</div>
