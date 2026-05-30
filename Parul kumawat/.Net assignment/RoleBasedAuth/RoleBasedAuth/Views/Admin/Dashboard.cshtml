@@ -1,0 +1,82 @@
+﻿@model List<RoleBasedAuth.Models.ViewModel.UserViewModel>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>Welcome to Admin Dashboard</h2>
+
+<style>
+    th, td {
+        padding:15px; 
+    }
+    th{
+        text-align: center;
+    }
+</style>
+
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Status</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <form asp-action="Update" method="post">
+                    <td>@data.Name <input type="hidden" name="Id" value="@data.Id" /></td>
+                    <td>@data.Email</td>
+                    <td>@data.Age</td>
+                    <td>
+                        <select name="Status">
+                            @if (data.Status)
+                                {
+                                    <option value="true" selected>Active</option>
+                                    <option value="false">InActive</option>
+                                }
+                                else
+                                {
+                                <option value="true" >Active</option>
+                                <option value="false" selected>InActive</option>
+
+                                }
+                            </select>
+                    </td>
+
+
+                    <td>
+                        @foreach (var role in data.Roles)
+                        {
+                            if (data.SelectedUsersRoles.Contains(role))
+                            {
+                                <input type="checkbox" name="SelectedUsersRoles"value="@role"checked />
+
+                                @role
+                            }
+                            else
+                            {
+                                <input type="checkbox"name="SelectedUsersRoles"value="@role" />
+
+                                @role
+                            }
+
+                         
+                        }
+
+                    </td>
+                    <td><button type="submit" asp-controller="Admin" asp-action="Update">Update</button></td>
+                </form>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
