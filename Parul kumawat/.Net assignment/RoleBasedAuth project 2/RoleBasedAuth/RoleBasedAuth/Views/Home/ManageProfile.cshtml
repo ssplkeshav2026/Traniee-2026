@@ -1,0 +1,14 @@
+﻿@model RoleBasedAuth.Models.ViewModel.ProfileViewModel
+
+<h2 style="text-align:center; margin-top:40px;">User Profile</h2>
+
+<div class="card p-3" style="width: 300px; margin:auto; margin-top:30px;">
+
+    <img src="~/images/@Model.ImagePath" width="150" height="150" style="border-radius:50%; margin-left:50px;" />
+
+    <p><b>Name:</b> @Model.Name</p>
+    <p><b>Email:</b> @Model.Email</p>
+    <p><b>Age:</b> @Model.Age</p>
+
+    <a class="btn btn-primary" asp-controller="Home" asp-action="EditUserProfile">Edit Profile</a>
+</div>
