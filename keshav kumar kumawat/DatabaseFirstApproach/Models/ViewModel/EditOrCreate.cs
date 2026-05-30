@@ -28,6 +28,8 @@
         public bool? Status { get; set; }
 
         public DateOnly? LastLoginDate { get; set; }
+        public string? Image { get; set; }
+
 
         public string? LastLoginIp { get; set; }
     }

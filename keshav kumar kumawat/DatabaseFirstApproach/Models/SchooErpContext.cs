@@ -38,12 +38,8 @@ public partial class SchooErpContext : DbContext
     public virtual DbSet<Teacher> Teachers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (optionsBuilder.IsConfigured)
-        {
-
-        }
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-GB4TJ8R\\SQLEXPRESS;Database=schoo_erp;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -162,13 +158,9 @@ public partial class SchooErpContext : DbContext
 
         modelBuilder.Entity<ExamResult>(entity =>
         {
-            entity.ToTable("exam_result");
-            entity.HasKey(e => new
-                {
-                    e.StudentId,
-                    e.CourseId,
-                    e.ExamId
-                });
+            entity
+                .HasNoKey()
+                .ToTable("exam_result");
 
             entity.Property(e => e.CourseId).HasColumnName("course_id");
             entity.Property(e => e.ExamId).HasColumnName("exam_id");
@@ -275,6 +267,7 @@ public partial class SchooErpContext : DbContext
             entity.ToTable("student");
 
             entity.Property(e => e.StudentId)
+                .ValueGeneratedNever()
                 .HasColumnName("student_id");
             entity.Property(e => e.DateOfJoin).HasColumnName("date_of_join");
             entity.Property(e => e.Dob).HasColumnName("dob");
@@ -286,6 +279,9 @@ public partial class SchooErpContext : DbContext
                 .HasMaxLength(45)
                 .IsUnicode(false)
                 .HasColumnName("fname");
+            entity.Property(e => e.Image)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.LastLoginDate).HasColumnName("last_login_date");
             entity.Property(e => e.LastLoginIp)
                 .HasMaxLength(45)

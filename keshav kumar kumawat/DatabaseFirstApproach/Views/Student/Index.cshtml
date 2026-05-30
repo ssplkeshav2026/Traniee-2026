@@ -48,6 +48,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Parent)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -90,6 +93,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Parent.ParentId)
             </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" width="80" height="80" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
             <td>
                 <a asp-action="Create" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |

@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace DatabaseFirstApproach.Models;
 
 public partial class Student
 {
-    
     public int StudentId { get; set; }
 
-    
     public string? Email { get; set; }
 
- 
     public string? Password { get; set; }
 
     public string? Fname { get; set; }
 
     public string? Lname { get; set; }
 
-  
     public DateOnly? Dob { get; set; }
 
     public string? Phone { get; set; }
@@ -35,6 +30,8 @@ public partial class Student
     public DateOnly? LastLoginDate { get; set; }
 
     public string? LastLoginIp { get; set; }
+
+    public string? Image { get; set; }
 
     public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 
