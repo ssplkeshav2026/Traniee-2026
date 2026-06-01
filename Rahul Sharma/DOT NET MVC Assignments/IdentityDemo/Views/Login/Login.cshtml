@@ -1,0 +1,90 @@
+﻿
+@model IdentityDemo.ViewModel.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login User";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <div class="col-sm-12 col-md-8 col-lg-6 p-4 bg-body-secondary rounded">
+
+            <h1 class="mb-4 text-center  ">
+                Login
+            </h1>
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            <form method="post">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-bold"></label>
+
+                    <input asp-for="Email" class="form-control" />
+
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label fw-bold"></label>
+
+                    <input asp-for="Password" class="form-control" />
+
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="float-end mb-3">
+                    <a asp-controller="Login"
+                       asp-action="VerifyEmail"
+                       class="text-decoration-none">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <div class="form-check mb-3">
+
+                    <input asp-for="RememberMe"
+                           class="form-check-input" />
+
+                    <label asp-for="RememberMe"
+                           class="form-check-label">
+                    </label>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <input type="submit"
+                           class="btn btn-success w-100"
+                           value="Login" />
+
+                </div>
+
+                <p class="text-center mb-3">
+                    Don't have an Account?
+                    <a asp-controller="Login"
+                       asp-action="Register">
+                        Register
+                    </a>
+                </p>
+
+                <p class="text-center">
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Back
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>

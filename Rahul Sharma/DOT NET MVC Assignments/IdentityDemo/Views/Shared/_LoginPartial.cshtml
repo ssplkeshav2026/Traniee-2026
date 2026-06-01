@@ -1,0 +1,130 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@using IdentityDemo.Models
+
+@inject SignInManager<Users> signInManager
+@inject UserManager<Users> userManager
+
+@{
+    var currentUser = await userManager.GetUserAsync(User);
+
+    string userInitial = "U";
+
+    if (!string.IsNullOrEmpty(currentUser?.Name))
+    {
+        userInitial = currentUser.Name.Substring(0, 1).ToUpper();
+    }
+    else if (!string.IsNullOrEmpty(currentUser?.Email))
+    {
+        userInitial = currentUser.Email.Substring(0, 1).ToUpper();
+    }
+}
+
+<ul class="navbar-nav ms-auto">
+
+    @if (signInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+               href="#"
+               id="profileDropdown"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                @if (!string.IsNullOrEmpty(currentUser?.ProfilePicture))
+                {
+                    <img src="@currentUser.ProfilePicture"
+                         class="rounded-circle border"
+                         style="width:42px;height:42px;object-fit:cover;" />
+                }
+                else
+                {
+                    <div class="rounded-circle bg-dark text-white d-flex justify-content-center align-items-center"
+                         style="width:42px;height:42px;font-weight:bold;">
+                        @userInitial
+                    </div>
+                }
+
+                <div class="d-none d-md-block text-start">
+                    <div class="fw-bold text-dark">@currentUser?.Name</div>
+                    <small class="text-muted">@currentUser?.Email</small>
+                </div>
+
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown">
+
+                <li class="px-3 py-2 text-center">
+
+                    @if (!string.IsNullOrEmpty(currentUser?.ProfilePicture))
+                    {
+                        <img src="@currentUser.ProfilePicture"
+                             class="rounded-circle border mb-2"
+                             style="width:80px;height:80px;object-fit:cover;" />
+                    }
+                    else
+                    {
+                        <div class="rounded-circle bg-dark text-white d-flex justify-content-center align-items-center mx-auto mb-2"
+                             style="width:80px;height:80px;font-size:28px;font-weight:bold;">
+                            @userInitial
+                        </div>
+                    }
+
+                    <div class="fw-bold">@currentUser?.Name</div>
+                    <small class="text-muted">@currentUser?.Email</small>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                    <a class="dropdown-item"
+                       asp-controller="Home"
+                       asp-action="MyProfile">
+                        👤 My Profile
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       asp-controller="Login"
+                       asp-action="ChangePassword">
+                        🔒 Change Password
+                    </a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                    <a class="dropdown-item text-danger"
+                       asp-controller="Login"
+                       asp-action="Logout">
+                        🚪 Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark"
+               asp-controller="Login"
+               asp-action="Register">
+                Register
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark"
+               asp-controller="Login"
+               asp-action="Login">
+                Login
+            </a>
+        </li>
+    }
+
+</ul>

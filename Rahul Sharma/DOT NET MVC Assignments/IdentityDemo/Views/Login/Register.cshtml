@@ -1,0 +1,52 @@
+﻿@model IdentityDemo.ViewModel.RegisterViewModel
+@{
+    ViewData["title"] = "Register User";
+}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-sm-12 col-md-12 col-lg-6 p-3 regform bg-body-secondary">
+            <h1 class="mg-4 bg-body-secondary p-3 text-center">
+                Register
+            </h1>
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold"> </label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-bold"> </label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label fw-bold"> </label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label fw-bold"> </label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3" >
+                    <input type="submit" class="btn btn-primary" value="Register" />
+                </div>
+
+                <p class="text-center mb-3">
+                    Already have Account ? <a asp-controller="Login" asp-action="Login" class="text-center">Login</a>
+                </p> 
+                <p class="text-center mb-3">
+                <a asp-controller="Home" asp-action="Index" class="text-center">Back</a>
+                </p> 
+            </form>
+
+
+        </div>
+
+    </div>
+</div>

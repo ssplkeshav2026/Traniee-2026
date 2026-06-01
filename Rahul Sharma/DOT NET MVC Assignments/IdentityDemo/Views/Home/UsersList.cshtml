@@ -1,0 +1,255 @@
+﻿@* @model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Manage Users</h2>
+
+    <form asp-action="UpdateUsers" method="post">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Admin</th>
+                    <th>User</th>
+                    <th>Manager</th>
+                    <th>Employee</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+
+                        <td>
+                            @Model[i].Name
+                            <input type="hidden" asp-for="@Model[i].UserId" />
+                        </td>
+
+                        <td>
+                            @Model[i].Email
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Status"
+                                   class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Admin"
+                                   class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].User"
+                                   class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Manager"
+                                   class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Employee"
+                                   class="form-check-input" />
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+        <button type="submit"
+                class="btn btn-success">
+            Save Changes
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+@model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Manage Users</h2>
+
+    <form asp-action="UpdateUsers" method="post">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Admin</th>
+                    <th>User</th>
+                    <th>Manager</th>
+                    <th>Employee</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model[i].Name
+                            <input type="hidden" asp-for="@Model[i].UserId" />
+                        </td>
+
+                        <td>@Model[i].Email</td>
+
+                        <td>
+                            <input asp-for="@Model[i].Status" class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Admin" class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].User" class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Manager" class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <input asp-for="@Model[i].Employee" class="form-check-input" />
+                        </td>
+
+                        <td>
+                            <form asp-controller="Home"
+                                  asp-action="DeleteUser"
+                                  asp-route-id="@Model[i].UserId"
+                                  method="post"
+                                  onsubmit="return confirm('Are you sure you want to delete this user?')">
+
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+        <button type="submit" class="btn btn-success">
+            Save Changes
+        </button>
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="history.back()">
+            ← Back
+        </button>
+    </form>
+
+</div> *@
+
+
+
+@model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Manage Users</h2>
+
+    <form asp-action="UpdateUsers" method="post">
+
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Admin</th>
+                    <th>User</th>
+                    <th>Manager</th>
+                    <th>Employee</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model[i].Name
+                            <input type="hidden" asp-for="@Model[i].UserId" />
+                        </td>
+
+                        <td>@Model[i].Email</td>
+
+                        <td><input asp-for="@Model[i].Status" class="form-check-input" /></td>
+                        <td><input asp-for="@Model[i].Admin" class="form-check-input" /></td>
+                        <td><input asp-for="@Model[i].User" class="form-check-input" /></td>
+                        <td><input asp-for="@Model[i].Manager" class="form-check-input" /></td>
+                        <td><input asp-for="@Model[i].Employee" class="form-check-input" /></td>
+
+                        <td>
+                            <a asp-controller="Home"
+                               asp-action="EditUser"
+                               asp-route-id="@Model[i].UserId"
+                               class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+
+                            <button type="submit"
+                                    formaction="@Url.Action("DeleteUser", "Home", new { id = Model[i].UserId })"
+                                    formmethod="post"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete this user?')">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+        <button type="submit" class="btn btn-success">
+            Save Changes
+        </button>
+
+        <a asp-controller="Home"
+           asp-action="Index"
+           class="btn btn-secondary">
+            Back to Home
+        </a>
+
+    </form>
+
+</div>
