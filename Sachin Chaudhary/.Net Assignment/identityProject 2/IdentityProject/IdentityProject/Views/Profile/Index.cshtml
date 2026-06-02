@@ -1,0 +1,125 @@
+﻿@model IdentityProject.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header bg-dark text-white p-4">
+
+                    <h2 class="mb-0">
+                        My Profile
+                    </h2>
+
+                </div>
+
+                <div class="card-body p-5">
+
+                    <!-- Profile Image -->
+                    <div class="text-center mb-5">
+
+                        @if (!string.IsNullOrEmpty(Model.ExistingProfilePicture))
+                        {
+                            <img src="~/images/@Model.ExistingProfilePicture"
+                                 width="170"
+                                 height="170"
+                                 class="shadow"
+                                 style="object-fit:cover;
+                            border-radius:50%;
+                            border:5px solid #f1f1f1;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/default.png"
+                                 width="170"
+                                 height="170"
+                                 class="shadow"
+                                 style="object-fit:cover;
+                            border-radius:50%;
+                            border:5px solid #f1f1f1;" />
+                        }
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-4">
+
+                            <label class="fw-bold text-muted">
+                                User Name
+                            </label>
+
+                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                                @Model.UserName
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+
+                            <label class="fw-bold text-muted">
+                                Email
+                            </label>
+
+                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                                @Model.Email
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+
+                            <label class="fw-bold text-muted">
+                                First Name
+                            </label>
+
+                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                                @Model.FirstName
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+
+                            <label class="fw-bold text-muted">
+                                Last Name
+                            </label>
+
+                            <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                                @Model.LastName
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+
+                        <a asp-action="EditProfile"
+                               class="btn btn-primary btn-lg">
+                            Edit Profile
+                        </a>
+
+                        <a asp-action="ChangePassword"
+                               class="btn btn-success btn-lg">
+                            Change Password
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
