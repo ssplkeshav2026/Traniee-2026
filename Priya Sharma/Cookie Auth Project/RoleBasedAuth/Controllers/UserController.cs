@@ -37,7 +37,19 @@ namespace RoleBasedAuth.Controllers
                         UserName = model.Email,
                         Status = true
                     };
+                    if (model.ProfileImage != null)
+                    {
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.ProfileImage.FileName);
 
+                        string path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/images",fileName);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await model.ProfileImage.CopyToAsync(stream);
+                        }
+
+                        user.ProfilePicture = "/images/" + fileName;
+                    }
                     var result = await _userManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)
@@ -54,7 +66,7 @@ namespace RoleBasedAuth.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Something went wrong. Please try again.");
+                    ModelState.AddModelError("", "Please Register Properly.");
 
                 }
             }
@@ -85,12 +97,11 @@ namespace RoleBasedAuth.Controllers
 
                     if (user.Status == false)
                     {
-                        ModelState.AddModelError("", "Oops! You are inactive....");
+                        ModelState.AddModelError("", "Your account is no longer active....");
                         return View(model);
                     }
 
-                    var result =
-                        await _signInManager.PasswordSignInAsync(
+                    var result = await _signInManager.PasswordSignInAsync(
                             user.UserName,
                             model.Password,
                             model.RememberMe,
@@ -106,13 +117,139 @@ namespace RoleBasedAuth.Controllers
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError("", "Something went wrong. Please try again.");
+                    ModelState.AddModelError("", "Login Process is Wrong.");
 
                 }
             }
             return View(model);
         }
         
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+       
+        public async Task<IActionResult> ChangePassword(ChangePassword model)
+        {
+            if (ModelState.IsValid)
+            {
+                try {
+                    var user = await _userManager.GetUserAsync(User);
+
+                    if (user == null)
+                    {
+                        return RedirectToAction("Login");
+                    }
+
+                    var result = await _userManager.ChangePasswordAsync(
+                            user,
+                            model.CurrentPassword,
+                            model.NewPassword);
+
+                    if (result.Succeeded)
+                    {
+                        TempData["Success"] = "Password Changed Successfully";
+
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Change Your Password Properly.");
+
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            var user = await _userManager .GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            return View(user);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditDetails()
+        {
+            var user = await _userManager
+                .GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var model =
+                new EditProfile
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    ExistingProfilePicture = user.ProfilePicture
+
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditDetails(EditProfile model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction( "Login");
+            }
+
+            user.Name = model.Name;
+            user.Email = model.Email;
+            user.UserName = model.Email;
+
+            if (model.ProfileImage != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension( model.ProfileImage.FileName);
+
+                string path = Path.Combine( Directory.GetCurrentDirectory(),
+                        "wwwroot/images",
+                        fileName);
+
+                using (var stream =
+                       new FileStream(
+                           path,
+                           FileMode.Create))
+                {
+                    await model.ProfileImage.CopyToAsync(stream);
+                }
+
+                user.ProfilePicture = "/images/" + fileName;
+            }
+
+            var result = await _userManager .UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("EditProfile");
+            }
+
+            return View(model);
+        }
+
 
         public async Task<IActionResult> Logout()
         {

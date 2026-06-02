@@ -5,7 +5,7 @@ namespace RoleBasedAuth.Models.DTO
     public class Register
     {
 
-        [Required]
+        [Required(ErrorMessage ="Name field is blank")]
         public string Name { get; set; }
 
         [Required]
@@ -20,5 +20,8 @@ namespace RoleBasedAuth.Models.DTO
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public IFormFile? ProfileImage { get; set; }
     }
 }

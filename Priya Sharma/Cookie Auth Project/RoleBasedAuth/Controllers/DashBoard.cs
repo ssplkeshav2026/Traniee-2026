@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using RoleBasedAuth.Models.DTO;
 using Microsoft.AspNetCore.Authorization;
 using System.Reflection.Metadata.Ecma335;
+using RoleBasedAuth.Authorization;
 
 namespace RoleBasedAuth.Controllers
 {
-    [Authorize(Roles="Admin")]
+    //[Authorize(Roles="Admin")]
+    [CustomEmail]
     public class DashBoard : Controller
     {
         public UserManager<ApplicationUser> _userManager { get; }
@@ -25,8 +27,7 @@ namespace RoleBasedAuth.Controllers
             
             var users = await _userManager.Users.ToListAsync();
 
-/*            var allRoles = await RoleManager.Roles .Select(r => r.Name) .ToListAsync();
-*/
+
 
             var model = new List<ManageUser>();
 
@@ -41,43 +42,42 @@ namespace RoleBasedAuth.Controllers
                     Email = item.Email,
                     Status = item.Status,
                     UserRoles = roles.ToList(),
-
-                    //AllRoles = allRoles
-
                 });
             }
             return View(model);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateRoles(List<ManageUser> model)
         {
-            foreach (var item in model)
-            {
-                var user = await _userManager.FindByIdAsync(item.UserId);
-
-                if (user == null)
-                    continue;
-
-                // Update Status
-                user.Status = item.Status;
-
-                await _userManager.UpdateAsync(user);
-
-                // Update Roles
-                var existingRoles = await _userManager.GetRolesAsync(user);
-
-                await _userManager.RemoveFromRolesAsync(user, existingRoles);
-
-                if (item.UserRoles != null)
+            try {
+                foreach (var item in model)
                 {
-                    await _userManager.AddToRolesAsync(user, item.UserRoles);
-                }
-            }
+                    var user = await _userManager.FindByIdAsync(item.UserId);
 
-            return RedirectToAction("Index","Home");
+                    if (user == null)
+                        continue;
+
+                    var existingRoles = await _userManager.GetRolesAsync(user);
+
+                    await _userManager.RemoveFromRolesAsync(user, existingRoles);
+
+                    if (item.UserRoles != null)
+                    {
+                        await _userManager.AddToRolesAsync(user, item.UserRoles);
+                    }
+                }
+                TempData["SuccessMessage"] ="Roles updated successfully.";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Updation Fails..." + ex.Message;
+
+                return RedirectToAction("DashBoard");
+            }
         }
 
         [HttpGet]
