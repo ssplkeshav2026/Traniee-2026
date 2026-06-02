@@ -10,12 +10,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditStudent">
+        <form asp-action="EditStudent" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (Model.StudentId > 0)
-                {
-                    <input type="hidden" asp-for="StudentId" />
-                }
+            {
+                <input type="hidden" asp-for="StudentId" />
+            }
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ParentId" class="control-label"></label>
-                <select asp-for="ParentId" class ="form-control" asp-items="ViewBag.ParentId"></select>
+                <select asp-for="ParentId" class="form-control" asp-items="ViewBag.ParentId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DateOfJoin" class="control-label"></label>
@@ -76,6 +76,14 @@
                 <span asp-validation-for="LastLoginIp" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label>Select an image to upload:</label>
+                <input type="file" name="file" accept="image/*" class="form-control" />
+            </div>
+                @if(Model.Image != null)
+                {
+                <img src="@Model.Image" width="80" height="80" />
+                }
+                <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -87,5 +95,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

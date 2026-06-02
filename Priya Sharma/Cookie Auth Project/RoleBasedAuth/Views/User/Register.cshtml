@@ -1,0 +1,51 @@
+﻿@model RoleBasedAuth.Models.DTO.Register
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-action="Register" method="post" enctype="multipart/form-data">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class=" mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control"  />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="from-label"></label>
+                <input asp-for="Password" class="form-control"  />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class=" mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+                <div class="mb-3">
+                    <label>Profile Picture</label>
+                    <input asp-for="ProfileImage" type="file" class="form-control" />
+                </div>
+            <button type="submit" class="btn btn-primary"> Register </button>
+        </form>
+        </section>
+    </div>
+</div>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

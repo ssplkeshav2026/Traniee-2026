@@ -5,8 +5,6 @@ namespace SchoolManagement.Models;
 
 public partial class Student
 {
-    internal object Classroom;
-
     public int StudentId { get; set; }
 
     public string? Email { get; set; }
@@ -33,8 +31,10 @@ public partial class Student
 
     public string? LastLoginIp { get; set; }
 
+    public int? ClassroomId { get; set; }
+    public string? Image { get; set; }
+
     public virtual ICollection<ExamResult> ExamResults { get; set; } = new List<ExamResult>();
 
     public virtual Parent? Parent { get; set; }
-
 }

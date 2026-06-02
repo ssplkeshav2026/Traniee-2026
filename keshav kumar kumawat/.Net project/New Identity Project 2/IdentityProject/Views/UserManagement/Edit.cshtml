@@ -1,0 +1,35 @@
+﻿@model IdentityProject.Models.ViewModel.EditUserViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-4">Edit User</h2>
+
+        <form asp-action="Edit" method="post">
+
+            <input asp-for="Id" type="hidden" />
+
+            <div class="mb-3">
+                <label class="form-label">User Name</label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label class="form-check-label">Is Active</label>
+            </div>
+
+            <button type="submit" class="btn btn-success">Update</button>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+        </form>
+    </div>
+</div>

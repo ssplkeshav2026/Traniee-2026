@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Models;
 using SchoolManagement.Models.ViewModels;
-
 using System.Diagnostics;
 
 namespace SchoolManagement.Controllers
@@ -27,16 +26,24 @@ namespace SchoolManagement.Controllers
         // CREATE GET
         public async Task<IActionResult> Create(int? id)
         {
-            if (id == null || id == 0) {
+            ViewBag.ParentId = new SelectList(context.Parents, "ParentId", "ParentId");
+
+            if (id == null || id == 0)
+            {
                 return View(new CreateStudentViewModel());
             }
-            var studentData=await context.Students.FirstOrDefaultAsync(x=>x.StudentId == id);
-            if (studentData == null) {
-                return NotFound();
 
+            var studentData = await context.Students
+                .FirstOrDefaultAsync(x => x.StudentId == id);
+
+            if (studentData == null)
+            {
+                return NotFound();
             }
+
             CreateStudentViewModel std = new CreateStudentViewModel()
             {
+                StudentId = studentData.StudentId,
                 Email = studentData.Email,
                 Password = studentData.Password,
                 Fname = studentData.Fname,
@@ -48,19 +55,51 @@ namespace SchoolManagement.Controllers
                 DateOfJoin = studentData.DateOfJoin,
                 Status = studentData.Status,
                 LastLoginDate = studentData.LastLoginDate,
-                LastLoginIp = studentData.LastLoginIp
+                LastLoginIp = studentData.LastLoginIp,
+                Image = studentData.Image
             };
+
             return View(std);
         }
 
+        // CREATE & EDIT POST
         [HttpPost]
         public async Task<IActionResult> EditStudent(CreateStudentViewModel e)
         {
             if (ModelState.IsValid)
             {
+                string? fileName = null;
+
+                // IMAGE UPLOAD
+                if (e.ImageFile != null)
+                {
+                    string uploadFolder = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/uploads");
+
+                    // Create folder if not exists
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    // Unique image name
+                    fileName = Guid.NewGuid().ToString()
+                               + Path.GetExtension(e.ImageFile.FileName);
+
+                    string filePath = Path.Combine(uploadFolder, fileName);
+
+                    // Save image in folder
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await e.ImageFile.CopyToAsync(stream);
+                    }
+                }
+
                 var exist = await context.Students
                     .FirstOrDefaultAsync(x => x.StudentId == e.StudentId);
 
+                // UPDATE
                 if (exist != null)
                 {
                     exist.Email = e.Email;
@@ -76,15 +115,38 @@ namespace SchoolManagement.Controllers
                     exist.LastLoginDate = e.LastLoginDate;
                     exist.LastLoginIp = e.LastLoginIp;
 
-                    TempData["Message"] = "Student Update successfully";
+                    // Update image
+                    if (fileName != null)
+                    {
+                        // delete old image
+                        if (!string.IsNullOrEmpty(exist.Image))
+                        {
+                            string oldImagePath = Path.Combine(
+                                Directory.GetCurrentDirectory(),
+                                "wwwroot/uploads",
+                                exist.Image);
+
+                            if (System.IO.File.Exists(oldImagePath))
+                            {
+                                System.IO.File.Delete(oldImagePath);
+                            }
+                        }
+
+                        exist.Image = fileName;
+                    }
+
+                    TempData["Message"] = "Student Updated Successfully";
                 }
+
+                // INSERT
                 else
                 {
                     int newStudentId = 1;
 
                     if (await context.Students.AnyAsync())
                     {
-                        newStudentId = await context.Students.MaxAsync(x => x.StudentId) + 1;
+                        newStudentId = await context.Students
+                            .MaxAsync(x => x.StudentId) + 1;
                     }
 
                     Student s = new Student()
@@ -101,56 +163,32 @@ namespace SchoolManagement.Controllers
                         DateOfJoin = e.DateOfJoin,
                         Status = e.Status,
                         LastLoginDate = e.LastLoginDate,
-                        LastLoginIp = e.LastLoginIp
+                        LastLoginIp = e.LastLoginIp,
+
+                        // save image name in db
+                        Image = fileName
                     };
 
                     await context.Students.AddAsync(s);
-                    TempData["Message"] = "Student Add successfully";
+
+                    TempData["Message"] = "Student Added Successfully";
                 }
 
                 await context.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ParentId = new SelectList(context.Parents, "ParentId", "ParentId", e.ParentId);
+            ViewBag.ParentId = new SelectList(
+                context.Parents,
+                "ParentId",
+                "ParentId",
+                e.ParentId);
+
             return View("Create", e);
         }
 
-        // CREATE POST
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(CreateStudentViewModel vn)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        Student std = new Student()
-        //        {
-        //            Email = vn.Email,
-        //            Password = vn.Password,
-        //            Fname = vn.Fname,
-        //            Lname = vn.Lname,
-        //            Dob = vn.Dob,
-        //            Phone = vn.Phone,
-        //            Mobile = vn.Mobile,
-        //            ParentId = vn.ParentId,
-        //            DateOfJoin = vn.DateOfJoin,
-        //            Status = vn.Status,
-        //            LastLoginDate = vn.LastLoginDate,
-        //            LastLoginIp = vn.LastLoginIp
-        //        };
-
-        //        // Yaha AddAsync use hoga
-        //        await context.Students.AddAsync(std);
-
-        //        await context.SaveChangesAsync();
-
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(vn);
-        //}
-
-        // DETAILS GET
+        // DETAILS
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -158,7 +196,8 @@ namespace SchoolManagement.Controllers
                 return NotFound();
             }
 
-            var stdData = context.Students.FirstOrDefault(x => x.StudentId == id);
+            var stdData = context.Students
+                .FirstOrDefault(x => x.StudentId == id);
 
             if (stdData == null)
             {
@@ -167,76 +206,6 @@ namespace SchoolManagement.Controllers
 
             return View(stdData);
         }
-
-        // EDIT GET
-        //public IActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var student = context.Students.Find(id);
-
-        //    if (student == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    EditStudentViewModel vm = new EditStudentViewModel()
-        //    {
-        //        StudentId = student.StudentId,
-        //        Email = student.Email,
-        //        Password = student.Password,
-        //        Fname = student.Fname,
-        //        Lname = student.Lname,
-        //        Dob = student.Dob,
-        //        Phone = student.Phone,
-        //        Mobile = student.Mobile,
-        //        ParentId = student.ParentId,
-        //        DateOfJoin = student.DateOfJoin,
-        //        Status = student.Status,
-        //        LastLoginDate = student.LastLoginDate,
-        //        LastLoginIp = student.LastLoginIp
-        //    };
-
-        //    return View(vm);
-        //}
-
-        //// EDIT POST
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(EditStudentViewModel vm)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var student = context.Students.Find(vm.StudentId);
-
-        //        if (student == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        student.Email = vm.Email;
-        //        student.Password = vm.Password;
-        //        student.Fname = vm.Fname;
-        //        student.Lname = vm.Lname;
-        //        student.Dob = vm.Dob;
-        //        student.Phone = vm.Phone;
-        //        student.Mobile = vm.Mobile;
-        //        student.ParentId = vm.ParentId;
-        //        student.DateOfJoin = vm.DateOfJoin;
-        //        student.Status = vm.Status;
-        //        student.LastLoginDate = vm.LastLoginDate;
-        //        student.LastLoginIp = vm.LastLoginIp;
-
-        //        context.SaveChanges();
-
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(vm);
-        //}
 
         // DELETE GET
         public IActionResult Delete(int? id)
@@ -265,7 +234,22 @@ namespace SchoolManagement.Controllers
 
             if (student != null)
             {
+                // delete image from folder
+                if (!string.IsNullOrEmpty(student.Image))
+                {
+                    string imagePath = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/uploads",
+                        student.Image);
+
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+
                 context.Students.Remove(student);
+
                 await context.SaveChangesAsync();
             }
 
@@ -277,12 +261,16 @@ namespace SchoolManagement.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0,
+            Location = ResponseCacheLocation.None,
+            NoStore = true)]
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel
             {
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id
+                            ?? HttpContext.TraceIdentifier
             });
         }
     }

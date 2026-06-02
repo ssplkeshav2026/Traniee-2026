@@ -1,0 +1,80 @@
+﻿@model IdentityProject.Models.ViewModel.ProfileViewModel
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h2>My Profile</h2>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+
+        <form asp-action="Profile" method="post" enctype="multipart/form-data">
+
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="ProfilePicture" type="hidden" />
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Profile Picture</label>
+
+                <div>
+                    @if (!string.IsNullOrEmpty(Model.ProfilePicture))
+                    {
+                        <img src="~/images/profile/@Model.ProfilePicture" width="120" height="120" style="object-fit:cover; border:2px solid #ddd;" />
+                    }
+                    else
+                    {
+                        <div style="width:120px;height:120px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;">No Image</div>
+                    }
+                </div>
+            </div>
+            
+            <div class="mb-3"> 
+                <label>User Name</label>
+                <input asp-for="UserName" id="username" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" id="email" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label>First Name</label>
+                <input asp-for="FirstName" id="firstname" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label>Last Name</label>
+                <input asp-for="LastName" id="lastname" class="form-control" readonly />
+            </div>
+
+            <div>
+                <input asp-for="ProfileImage" id="profileImage" type="file" class="form-control mt-3" disabled />
+            </div><br />
+           
+            <button type="button" id="editBtn" class="btn btn-primary" onclick="enableEdit()">Edit</button>
+            <button type="submit" id="saveBtn" class="btn btn-success" style="display:none;">Save</button>
+
+            <li class="btn btn-primary">
+                <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
+            </li>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    function enableEdit() {
+        document.getElementById("username").removeAttribute("readonly");
+        document.getElementById("email").removeAttribute("readonly");
+        document.getElementById("firstname").removeAttribute("readonly");
+        document.getElementById("lastname").removeAttribute("readonly");
+
+        document.getElementById("profileImage").removeAttribute("disabled");
+
+        document.getElementById("saveBtn").style.display = "inline-block";
+        document.getElementById("editBtn").style.display = "none";
+    }
+</script>

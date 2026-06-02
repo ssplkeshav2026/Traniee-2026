@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolManagement.Models.ViewModels
 {
@@ -39,5 +40,11 @@ namespace SchoolManagement.Models.ViewModels
         public string? LastLoginIp { get; set; }
 
         public virtual Parent? Parent { get; set; }
+       
+        public string? Image { get; set; }
+
+        // FILE UPLOAD
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
     }
 }

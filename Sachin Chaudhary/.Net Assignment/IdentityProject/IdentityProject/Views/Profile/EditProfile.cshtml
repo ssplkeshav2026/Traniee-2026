@@ -1,0 +1,198 @@
+﻿@model IdentityProject.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header bg-primary text-white p-4">
+
+                    <h2 class="mb-0 fw-bold">
+                        Edit Profile
+                    </h2>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5">
+
+                    <div asp-validation-summary="All"
+                         class="text-danger mb-4">
+                    </div>
+
+                    <!-- Profile Picture -->
+                    <div class="text-center mb-5">
+
+                        @if (!string.IsNullOrEmpty(Model.ExistingProfilePicture))
+                        {
+                            <img id="previewImage"
+                                 src="~/images/@Model.ExistingProfilePicture"
+                                 width="170"
+                                 height="170"
+                                 class="shadow-sm"
+                                 style="object-fit:cover;
+                            border-radius:50%;
+                            border:5px solid #e9ecef;" />
+                        }
+                        else
+                        {
+                            <img id="previewImage"
+                                 src="~/images/default.png"
+                                 width="170"
+                                 height="170"
+                                 class="shadow-sm"
+                                 style="object-fit:cover;
+                            border-radius:50%;
+                            border:5px solid #e9ecef;" />
+                        }
+
+                    </div>
+
+                    <!-- Form -->
+                    <form asp-action="EditProfile"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <div class="row">
+
+                            <!-- Username -->
+                            <div class="col-md-6 mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    User Name
+                                </label>
+
+                                <input asp-for="UserName"
+                                       class="form-control form-control-lg"
+                                       readonly />
+
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-md-6 mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    Email
+                                </label>
+
+                                <input asp-for="Email"
+                                       class="form-control form-control-lg" />
+
+                                <span asp-validation-for="Email"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- First Name -->
+                            <div class="col-md-6 mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    First Name
+                                </label>
+
+                                <input asp-for="FirstName"
+                                       class="form-control form-control-lg" />
+
+                                <span asp-validation-for="FirstName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6 mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    Last Name
+                                </label>
+
+                                <input asp-for="LastName"
+                                       class="form-control form-control-lg" />
+
+                                <span asp-validation-for="LastName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Profile Picture -->
+                            <div class="col-12 mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    Change Profile Picture
+                                </label>
+
+                                <input asp-for="ProfilePicture"
+                                       type="file"
+                                       class="form-control form-control-lg"
+                                       accept="image/*"
+                                       onchange="previewFile(event)" />
+
+                            </div>
+
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-3">
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg px-4">
+                                Save Changes
+                            </button>
+
+                            <a asp-action="Index"
+                                   class="btn btn-secondary btn-lg px-4">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        function previewFile(event)
+        {
+            var reader = new FileReader();
+
+            reader.onload = function ()
+            {
+                var output =
+                    document.getElementById('previewImage');
+
+                output.src = reader.result;
+            };
+
+            if (event.target.files.length > 0)
+            {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+    </script>
+}
