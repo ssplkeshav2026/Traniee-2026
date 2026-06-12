@@ -1,0 +1,7 @@
+.CardContainer{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
