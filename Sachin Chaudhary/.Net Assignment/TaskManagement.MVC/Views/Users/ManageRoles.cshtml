@@ -1,0 +1,85 @@
+﻿@model TaskManagement.MVC.ViewModels.ManageUserRolesViewModel
+
+@{
+    ViewData["Title"] = "Manage User Roles";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-shield-lock"></i> Assign Multiple Roles</h2>
+    <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Users</a>
+</div>
+
+<div class="card shadow-sm border-0 p-4" style="border-radius: 12px; background: #fff;">
+    <div class="mb-4">
+        <h5 class="text-muted">User Email:</h5>
+        <h4 class="fw-bold text-dark">@Model.Email</h4>
+    </div>
+
+    <form id="manageRolesForm">
+        <input type="hidden" id="targetUserId" value="@Model.UserId" />
+
+        <div class="mb-4">
+            <label class="form-label fw-bold text-secondary mb-3">Select Account Privileges:</label>
+            
+            <div class="row g-3">
+                @foreach (var role in Model.AvailableRoles)
+                {
+                    // Check kijiye ki kya user ke paas yeh role pehle se assign hai
+                    bool isAssigned = Model.CurrentRoles.Contains(role);
+                    
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded d-flex align-items-center bg-light" style="border-radius: 8px;">
+                            <input class="form-check-input role-checkbox me-3"
+                                   type="checkbox"
+                                   value="@role"
+                                   id="role_@role"
+                            @(isAssigned ? "checked" : "") style="transform: scale(1.3);" />
+                            <label class="form-check-label fw-semibold m-0 text-capitalize" for="role_@role">
+                                @role
+                            </label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success px-5 py-2 fw-bold" style="border-radius: 8px;">
+            <i class="bi bi-save2"></i> Sync & Save Active Roles
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#manageRolesForm").on("submit", function (e) {
+                e.preventDefault();
+
+                // Saare checked checkboxes ki values ko array mein collect karein
+                var selectedRoles = [];
+                $(".role-checkbox:checked").each(function () {
+                    selectedRoles.push($(this).val());
+                });
+
+                var payload = {
+                    UserId: $("#targetUserId").val(),
+                    Roles: selectedRoles // List of selected strings e.g. ["Admin", "Employee"]
+                };
+
+                $.ajax({
+                    url: '/Users/AssignRolesAjax',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(payload),
+                    success: function (response) {
+                        alert(response.message || "User credentials updated successfully!");
+                        window.location.href = '/Users/Index';
+                    },
+                    error: function (xhr) {
+                        alert("Error: " + (xhr.responseJSON?.message || "Failed to submit role configuration matrix."));
+                    }
+                });
+            });
+        });
+    </script>
+}

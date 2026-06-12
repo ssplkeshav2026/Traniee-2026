@@ -1,0 +1,38 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
+
+namespace TaskManagement.MVC.Filters
+{
+    public class ValidationFilter : IActionFilter
+    {
+        public void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!context.ModelState.IsValid)
+            {
+                // Saare validation errors ko ek clean collection list mein map karein
+                var errors = context.ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                // Standardized validation error structure return karein
+                var errorResponse = new
+                {
+                    Success = false,
+                    Message = "Validation failed. Please verify your inputs.",
+                    Errors = errors
+                };
+
+                context.Result = new BadRequestObjectResult(errorResponse);
+            }
+        }
+
+        public void OnActionExecuted(ActionExecutedContext context)
+        {
+            // Request execute hone ke baad kuch karne ki zaroori nahi hai yahan
+        }
+    }
+}
