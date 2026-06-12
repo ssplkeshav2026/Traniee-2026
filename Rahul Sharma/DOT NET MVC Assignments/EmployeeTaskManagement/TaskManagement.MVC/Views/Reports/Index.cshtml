@@ -1,0 +1,172 @@
+﻿
+
+
+@model TaskManagement.MVC.ViewModels.Dashboard.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<style>
+    body {
+        background: #f4f7fb;
+    }
+
+    .report-header {
+        background: linear-gradient(135deg, #1f2937, #2563eb);
+        color: white;
+        border-radius: 18px;
+        padding: 28px;
+        margin-bottom: 28px;
+    }
+
+    .report-card {
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        transition: .3s;
+        background: white;
+    }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: white;
+    }
+
+    .bg-blue {
+        background: #2563eb;
+    }
+
+    .bg-purple {
+        background: #7c3aed;
+    }
+
+    .bg-green {
+        background: #16a34a;
+    }
+
+    .bg-orange {
+        background: #f97316;
+    }
+
+    .bg-teal {
+        background: #0d9488;
+    }
+
+    .bg-red {
+        background: #dc2626;
+    }
+
+    .metric-title {
+        color: #6b7280;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .metric-value {
+        font-size: 34px;
+        font-weight: 800;
+        color: #111827;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="report-header d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="fw-bold mb-1">Reports & Analytics</h2>
+            <p class="mb-0 opacity-75">
+                Overview of users, roles, and task performance
+            </p>
+        </div>
+
+        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-light fw-semibold">
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Total Users</div>
+                        <div class="metric-value">@Model.TotalUsers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Total Managers</div>
+                        <div class="metric-value">@Model.TotalManagers</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Total Employees</div>
+                        <div class="metric-value">@Model.TotalEmployees</div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Completion Rate</div>
+                        <div class="metric-value">@Model.TaskCompletionRate%</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Completed Today</div>
+                        <div class="metric-value">@Model.TasksCompletedToday</div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card report-card p-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="metric-title">Pending Today</div>
+                        <div class="metric-value">@Model.TasksPendingToday</div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model TaskManagement.MVC.ViewModels.Tasks.TaskResponseViewModel
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Task Details</h4>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Title</dt>
+                <dd class="col-sm-9">@Model.Title</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Assigned To</dt>
+                <dd class="col-sm-9">@Model.AssignedToUserName</dd>
+
+                <dt class="col-sm-3">Assigned By</dt>
+                <dd class="col-sm-9">@Model.AssignedByUserName</dd>
+
+                <dt class="col-sm-3">Status</dt>
+                <dd class="col-sm-9">
+                    @if (Model.Status == 1)
+                    {
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    }
+                    else if (Model.Status == 2)
+                    {
+                        <span class="badge bg-info text-dark">In Progress</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                </dd>
+
+                <dt class="col-sm-3">Due Date</dt>
+                <dd class="col-sm-9">@Model.DueDate.ToString("dd-MM-yyyy")</dd>
+
+                <dt class="col-sm-3">Created Date</dt>
+                <dd class="col-sm-9">@Model.CreatedDate.ToString("dd-MM-yyyy HH:mm")</dd>
+
+                <dt class="col-sm-3">Updated Date</dt>
+                <dd class="col-sm-9">
+                    @(Model.UpdatedDate?.ToString("dd-MM-yyyy HH:mm") ?? "Not updated")
+                </dd>
+            </dl>
+
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary">
+                Back
+            </a>
+        </div>
+    </div>
+</div>
