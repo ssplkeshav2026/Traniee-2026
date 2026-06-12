@@ -1,0 +1,32 @@
+﻿@model EmployeeTaskManagementSystemMVC.ViewModels.UserVM
+
+<h2>Edit User Role</h2>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <p><b>Name:</b> @Model.FullName</p>
+    <p><b>Email:</b> @Model.Email</p>
+
+    <label>Role</label>
+    <select name="role" class="form-control">
+        <option value="Admin" selected="@(Model.Role == "Admin")">Admin</option>
+        <option value="Manager" selected="@(Model.Role == "Manager")">Manager</option>
+        <option value="Employee" selected="@(Model.Role == "Employee")">Employee</option>
+    </select>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Update Role
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Back
+    </a>
+</form>
