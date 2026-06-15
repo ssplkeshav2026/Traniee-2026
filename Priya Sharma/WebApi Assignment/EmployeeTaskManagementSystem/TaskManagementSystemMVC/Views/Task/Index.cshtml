@@ -1,0 +1,99 @@
+﻿@model List<TaskManagementSystemMVC.ViewModel.TaskViewModel>
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Tasks</h2>
+    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+    {
+        <a asp-action="Create" class="btn btn-outline-primary">+Task</a>
+    }
+</div>
+
+<table class="table table-bordered table-hover" id="tasksTable">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Other</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr id="row-@task.Id">
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.AssignedToName</td>
+                <td>
+                    <span class="badge
+                        @(task.Status == "Pending" ? "bg-warning" :
+                            task.Status == "InProgress" ? "bg-info" : "bg-success")">
+                        @task.Status
+                    </span>
+                </td>
+                <td>@task.DueDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@task.Id"
+                       class="btn btn-outline-secondary btn-sm">Details</a>
+
+                    <a asp-action="Edit" asp-route-id="@task.Id"
+                       class="btn btn-outline-secondary btn-sm">Edit</a>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <button class="btn btn-outline-secondary btn-sm"
+                                onclick="deleteTask(@task.Id)">
+                            Delete
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function getToken() {
+            var name = "access_token=";
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var c = cookies[i].trim();
+                if (c.indexOf(name) === 0)
+                    return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+
+        function deleteTask(id) {
+            if (!confirm("Are you sure you want to delete this task?"))
+                return;
+
+            $.ajax({
+                url:     '/Task/Delete/' + id,
+                type:    'POST',
+                headers: { 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    if (result.success) {
+                        $('#row-' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('Failed to delete task');
+                    }
+                },
+                error: function () {
+                    alert('Error deleting task');
+                }
+            });
+        }
+    </script>
+}
+
+
+@* btn btn-sm btn-info *@

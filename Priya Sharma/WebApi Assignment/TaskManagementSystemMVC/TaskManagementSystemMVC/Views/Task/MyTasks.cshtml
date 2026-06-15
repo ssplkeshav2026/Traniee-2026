@@ -1,0 +1,70 @@
+﻿@model List<TaskManagementSystemMVC.ViewModel.TaskViewModel>
+
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<h2>My Tasks</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No tasks assigned to you yet.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>@task.Description</td>
+
+                    <td>
+                        <form asp-action="UpdateStatus" method="post" class="d-flex gap-2">
+                            <input type="hidden" name="id" value="@task.Id" />
+
+                            <select name="status" class="form-select form-select-sm">
+                                <option value="Pending" selected="@(task.Status == "Pending")">
+                                    Pending
+                                </option>
+                                <option value="InProgress" selected="@(task.Status == "InProgress")">
+                                    In Progress
+                                </option>
+                                <option value="Completed" selected="@(task.Status == "Completed")">
+                                    Completed
+                                </option>
+                            </select>
+
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Update
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>@task.DueDate.ToString("yyyy-MM-dd")</td>
+
+                    <td>
+                        <a asp-action="Details"
+                           asp-route-id="@task.Id"
+                           class="btn btn-sm btn-info">
+                            Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

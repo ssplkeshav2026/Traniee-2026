@@ -1,0 +1,100 @@
+﻿@model List<TaskManagementSystemMVC.ViewModel.UserViewModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>Users</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+
+                <td>@user.Email</td>
+
+                <td>
+                    <form asp-action="UpdateRoles" method="post">
+
+                        <input type="hidden"
+                               name="userId"
+                               value="@user.Id" />
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   name="selectedRoles"
+                                   value="Admin"
+                                   checked="@user.Roles.Contains("Admin")" />
+
+                            <label class="form-check-label">
+                                Admin
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   name="selectedRoles"
+                                   value="Manager"
+                                   checked="@user.Roles.Contains("Manager")" />
+
+                            <label class="form-check-label">
+                                Manager
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   name="selectedRoles"
+                                   value="Employee"
+                                   checked="@user.Roles.Contains("Employee")" />
+
+                            <label class="form-check-label">
+                                Employee
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-success btn-sm mt-2">
+                            Update
+                        </button>
+
+                    </form>
+
+                    <div class="mt-2">
+                        <strong>Current Roles:</strong>
+
+                        @if (user.Roles.Any())
+                        {
+                            @foreach (var role in user.Roles)
+                            {
+                                <span class="badge bg-primary me-1">
+                                    @role
+                                </span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">
+                                No Role
+                            </span>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
