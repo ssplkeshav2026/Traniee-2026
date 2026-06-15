@@ -1,0 +1,23 @@
+﻿@model EmployeeTaskManagementSystemMVC.ViewModels.LoginVM
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input asp-for="Email" class="form-control" placeholder="Email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <br />
+
+    <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+
+<br />
+
+<a asp-action="Register">Register</a>

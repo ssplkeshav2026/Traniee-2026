@@ -1,0 +1,12 @@
+﻿@model EmployeeTaskManagementSystemMVC.ViewModels.TaskVM
+
+<h2>Task Details</h2>
+
+<p><b>Title:</b> @Model.Title</p>
+<p><b>Description:</b> @Model.Description</p>
+<p><b>Status:</b> @Model.Status</p>
+<p><b>Assigned To User Id:</b> @Model.AssignedToUserId</p>
+<p><b>Assigned By User Id:</b> @Model.AssignedByUserId</p>
+<p><b>Due Date:</b> @Model.DueDate.ToShortDateString()</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

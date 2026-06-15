@@ -1,0 +1,29 @@
+﻿@model EmployeeTaskManagementSystemMVC.ViewModels.RegisterVM
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input asp-for="Firstname" class="form-control" placeholder="First Name" />
+    <span asp-validation-for="Firstname" class="text-danger"></span>
+    <br />
+
+    <input asp-for="Lastname" class="form-control" placeholder="Last Name" />
+    <span asp-validation-for="Lastname" class="text-danger"></span>
+    <br />
+
+    <input asp-for="Email" class="form-control" placeholder="Email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <br />
+
+    <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+
+    <button type="submit" class="btn btn-success">
+        Register
+    </button>
+
+</form>

@@ -106,7 +106,7 @@ namespace IdentityProject.Controllers
                 //throw new Exception("Testing exception");
 
                 if (ModelState.IsValid)
-            {
+                {
                 var user = await _userManager.FindByEmailAsync(model.Email);
 
                 if (user != null)

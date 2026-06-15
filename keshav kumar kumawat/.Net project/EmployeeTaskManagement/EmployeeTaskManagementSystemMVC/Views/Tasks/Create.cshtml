@@ -1,0 +1,71 @@
+﻿@model EmployeeTaskManagementSystemMVC.ViewModels.TaskCreateVM
+
+<h2>Create Task</h2>
+
+<form asp-action="Create" method="post" id="createTaskForm">
+    <input asp-for="Title" class="form-control" placeholder="Title" />
+    <br />
+
+    <input asp-for="Description" class="form-control" placeholder="Description" />
+    <br />
+
+    <select asp-for="AssignedToUserId" class="form-control">
+        <option value="">Select Employee</option>
+
+        @if (ViewBag.Users != null)
+        {
+            foreach (var user in ViewBag.Users)
+            {
+                <option value="@user.Id">@user.FullName - @user.Role</option>
+            }
+        }
+    </select>
+    <br />
+
+    <input asp-for="DueDate" type="date" class="form-control" />
+    <br />
+
+    <button type="submit" class="btn btn-success">Create</button>
+    @* <div id="msg"></div> *@
+</form>
+
+
+@* @section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#createTaskForm").submit(function (e) {
+
+                e.preventDefault();
+
+                var taskData = {
+                    Title: $("#Title").val(),
+                    Description: $("#Description").val(),
+                    AssignedToUserId: $("#AssignedToUserId").val(),
+                    DueDate: $("#DueDate").val()
+                };
+
+                $.ajax({
+                    url: '/Tasks/Create',
+                    type: 'POST',
+                    data: taskData,
+
+                    success: function () {
+                        console.log("Hello World");
+                        window.location.href = "/Tasks/Index";
+                    },
+
+                    error: function () {
+
+                        $("#msg").html(
+                            "<span style='color:red'>Task Create Failed</span>"
+                        );
+                    }
+                });
+
+            });
+
+        });
+    </script>
+} *@
