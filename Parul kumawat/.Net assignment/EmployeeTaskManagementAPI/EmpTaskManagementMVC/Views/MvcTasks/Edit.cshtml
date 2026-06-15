@@ -1,0 +1,35 @@
+﻿@model EmpTaskManagementMVC.ViewModel.Tasks.UpdateTaskViewModel
+
+@{
+    ViewData["Title"] = "Update Task";
+}
+
+<h2>Update Task</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" style="color:red;"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    
+
+    <div class="form-group">
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+</form>

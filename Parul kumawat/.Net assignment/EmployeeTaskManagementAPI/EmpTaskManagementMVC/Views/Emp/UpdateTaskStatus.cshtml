@@ -1,0 +1,26 @@
+﻿@model EmpTaskManagementMVC.ViewModel.Tasks.UpdateTaskStatusViewModel
+
+@{
+    ViewData["Title"] = "Update Task Status";
+}
+
+<h2>Update Task Status</h2>
+
+<form asp-action="UpdateTaskStatus" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Pending">Pending</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Update Status</button>
+
+</form>

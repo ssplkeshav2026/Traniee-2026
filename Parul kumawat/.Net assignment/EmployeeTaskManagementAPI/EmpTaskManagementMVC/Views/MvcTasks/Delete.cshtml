@@ -1,0 +1,26 @@
+﻿@model EmpTaskManagementMVC.ViewModel.Tasks.TaskViewModel
+
+@{
+    ViewData["Title"] = "Delete Task";
+}
+
+<h2>Delete Task</h2>
+
+<h4>Are you sure you want to delete this task?</h4>
+
+<div>
+    <strong>Title:</strong> @Model.Title <br />
+    <strong>Description:</strong> @Model.Description <br />
+    <strong>Status:</strong> @Model.Status
+</div>
+
+<br />
+
+<form asp-action="Delete" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>

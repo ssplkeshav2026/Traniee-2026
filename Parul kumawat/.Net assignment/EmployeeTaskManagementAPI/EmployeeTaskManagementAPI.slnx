@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EmployeeTaskManagementAPI/EmployeeTaskManagementAPI.csproj" />
+  <Project Path="EmpTaskManagementMVC/EmpTaskManagementMVC.csproj" Id="9a0a5319-5aa1-4305-8825-db5ec4025b12" />
+</Solution>
