@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+
+    <h2>Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Total Tasks</h4>
+                    <h2 id="totalTasks">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Completed</h4>
+                    <h2 id="completedTasks">0</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    fetch('/Tasks/GetStats')
+    .then(res => res.json())
+    .then(data => {
+
+        document.getElementById('totalTasks').innerText =
+            data.totalTasks;
+
+        document.getElementById('completedTasks').innerText =
+            data.completedTasks;
+    });
+
+</script>

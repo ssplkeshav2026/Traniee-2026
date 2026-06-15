@@ -1,0 +1,49 @@
+﻿@model TaskManagement.MVC.ViewModels.TaskViewModel
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">📋 Task Parameters Details</h3>
+            <a asp-action="Index" class="btn btn-light btn-sm">Back to List</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width: 20%;">Task ID</th>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td><strong>@Model.Title</strong></td>
+                </tr>
+                <tr>
+                    <th>Detailed Description</th>
+                    <td>@Model.Description</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        <span class="badge @(Model.Status == "Completed" ? "bg-success" : "bg-warning text-dark")">
+                            @Model.Status
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Deadline Target Date</th>
+                    <td>@Model.DueDate.ToString("MM/dd/yyyy")</td>
+                </tr>
+                <tr>
+                    <th>Assigned Employee User ID</th>
+                    <td><code class="text-muted">@Model.AssignedToUserId</code></td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-footer d-flex justify-content-end gap-2">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark shadow-sm">Edit Parameters</a>
+        </div>
+    </div>
+</div>

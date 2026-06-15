@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TaskManagement.MVC.ViewModels.TaskViewModel>
+
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>👤 My Assigned Tasks</h2>
+    </div>
+
+    <div class="card shadow-sm p-3">
+        <table class="table table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var task in Model)
+                    {
+                        <tr>
+                            <td>@task.Id</td>
+                            <td><strong>@task.Title</strong></td>
+                            <td>
+                                <span class="badge @(task.Status == "Completed" ? "bg-success" : "bg-warning text-dark")">
+                                    @task.Status
+                                </span>
+                            </td>
+                            <td>@task.DueDate.ToString("MM/dd/yyyy")</td>
+                            <td class="text-center">
+                                <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-info btn-sm text-white me-1">View Details</a>
+                                <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-warning btn-sm text-dark me-1">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            <p class="mb-0">No specific tasks allocated to your user account profile.</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

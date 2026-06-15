@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Create Task";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-plus-square"></i> Provision New Task</h2>
+    <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to List</a>
+</div>
+
+<div class="card-box">
+    <form id="createTaskForm">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Task Title</label>
+            <input id="Title" class="form-control" placeholder="Enter objective summary title" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Detailed Description</label>
+            <textarea id="Description" class="form-control" rows="4" placeholder="Describe workflow requirements..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Task Status</label>
+            <select id="Status" class="form-select" style="border-radius: 8px;">
+                <option value="Pending" selected>Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Deadline Target Date</label>
+            <input id="DueDate" type="date" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary px-4">
+            <i class="bi bi-cloud-arrow-up"></i> Save Parameters
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#createTaskForm").on("submit", function (e) {
+                e.preventDefault();
+
+            
+                    var taskData = {
+            Title: $("#Title").val(),
+            Description: $("#Description").val(),
+            Status: $("#Status").val(),
+    
+           
+            DueDate: $("#DueDate").val(),
+            Deadline: $("#DueDate").val() 
+        };
+
+                $.ajax({
+                    url: '/Tasks/CreateAjax',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(taskData),
+                    success: function (response) {
+                        alert(response.message || "Task provisioned successfully!");
+                        window.location.href = '/Tasks/Index';
+                    },
+                    error: function (xhr) {
+                        alert("Error: " + (xhr.responseJSON?.message || "Failed to parse API payload."));
+                    }
+                });
+            });
+        });
+    </script>
+}
