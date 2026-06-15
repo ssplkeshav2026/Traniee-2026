@@ -1,0 +1,105 @@
+<div class="container mt-4">
+
+  @if(task()) {
+
+  <div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+
+      <h3>
+
+        Task Details
+
+      </h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <div class="mb-3">
+
+        <strong>
+          Title:
+        </strong>
+
+        {{ task()?.title }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Description:
+        </strong>
+
+        {{ task()?.description }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Status:
+        </strong>
+
+        {{ task()?.status }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Assigned To User:
+        </strong>
+
+        {{ task()?.assignedToUserId }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Assigned By User:
+        </strong>
+
+        {{ task()?.assignedByUserId }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Due Date:
+        </strong>
+
+        {{ task()?.dueDate | date:'dd MMM yyyy' }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Created:
+        </strong>
+
+        {{ task()?.createdAt | date:'dd MMM yyyy HH:mm' }}
+
+      </div>
+
+      <div class="mb-3">
+
+        <strong>
+          Updated:
+        </strong>
+
+        {{ task()?.updatedAt | date:'dd MMM yyyy HH:mm' }}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  }
+
+</div>

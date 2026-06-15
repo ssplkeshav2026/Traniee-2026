@@ -1,0 +1,117 @@
+<div class="container-fluid min-vh-100 login-bg">
+
+  <div class="row min-vh-100 justify-content-center align-items-center">
+
+    <div class="col-11 col-sm-10 col-md-8 col-lg-5">
+
+      <div class="card border-0 shadow-lg rounded-4 login-card">
+
+        <div class="card-body p-5">
+
+          <div class="text-center mb-4">
+
+            <h2 class="fw-bold text-white">
+              Create Account
+            </h2>
+
+            <p class="text-secondary">
+              Register to get started
+            </p>
+
+          </div>
+
+          <form
+            [formGroup]="registerForm"
+            (ngSubmit)="register()">
+
+            <div class="mb-3">
+
+              <label class="form-label text-light fw-semibold">
+                Username
+              </label>
+
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                formControlName="username"
+                placeholder="Enter Username">
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label text-light fw-semibold">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                formControlName="email"
+                placeholder="Enter your email">
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label text-light fw-semibold">
+                Password
+              </label>
+
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                placeholder="Enter password">
+
+            </div>
+
+            <div class="mb-4">
+
+              <label class="form-label text-light fw-semibold">
+                Confirm Password
+              </label>
+
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="confirmPassword"
+                placeholder="Confirm password">
+
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg w-100">
+
+              Register
+
+            </button>
+
+            <div class="text-center mt-4">
+
+              <span class="text-secondary">
+                Already have an account?
+              </span>
+
+              <a
+                routerLink="/login"
+                class="text-decoration-none ms-2">
+
+                Login
+
+              </a>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

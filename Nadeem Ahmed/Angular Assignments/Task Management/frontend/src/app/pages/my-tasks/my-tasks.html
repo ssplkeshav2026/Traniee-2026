@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2>My Tasks</h2>
+
+  <p>Total Tasks: {{ tasks().length }}</p>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+
+        <th>Description</th>
+
+        <th>Status</th>
+
+        <th>Due Date</th>
+
+        <th>Edit Status</th>
+      </tr>
+    </thead>
+
+   <tbody>
+
+  @for (
+    task of tasks();
+    track task.id
+  ) {
+
+    <tr>
+
+      <td>{{ task.title }}</td>
+
+      <td>{{ task.description }}</td>
+
+      <td>{{ task.status }}</td>
+
+      <td>
+        {{ task.dueDate | date:'dd MMM yyyy' }}
+      </td>
+
+        <td>
+          <select
+            class="form-select"
+            [value]="task.status"
+            (change)="onStatusChange($event, task.id)"
+          >
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </td>
+
+    </tr>
+
+  }
+
+</tbody>
+  </table>
+</div>

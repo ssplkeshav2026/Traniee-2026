@@ -1,0 +1,96 @@
+<div class="container mt-4">
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h3>
+        Edit Task
+      </h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <form
+        [formGroup]="taskForm"
+        (ngSubmit)="updateTask()">
+
+        <div class="mb-3">
+
+          <label>
+            Title
+          </label>
+
+          <input
+            class="form-control"
+            formControlName="title">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Description
+          </label>
+
+          <textarea
+            class="form-control"
+            formControlName="description">
+          </textarea>
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Status
+          </label>
+
+          <select
+            class="form-select"
+            formControlName="status">
+
+            <option value="Pending">
+              Pending
+            </option>
+
+            <option value="In Progress">
+              In Progress
+            </option>
+
+            <option value="Completed">
+              Completed
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Due Date
+          </label>
+
+          <input
+            type="date"
+            class="form-control"
+            formControlName="dueDate">
+
+        </div>
+
+        <button
+          class="btn btn-primary">
+
+          Update Task
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

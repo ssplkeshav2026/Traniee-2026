@@ -1,0 +1,102 @@
+body {
+  background: #f4f7fc;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 260px;
+  background: #111827;
+  color: white;
+  padding: 30px 20px;
+}
+
+.logo {
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.menu li:hover,
+.menu li.active {
+  background: #2563eb;
+}
+
+/* Main Content */
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.topbar {
+  margin-bottom: 30px;
+}
+
+/* Stats Cards */
+
+.stats-card {
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  transition: .3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.stats-card:hover {
+  transform: translateY(-8px);
+}
+
+.primary {
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+}
+
+.warning {
+  background: linear-gradient(
+    135deg,
+    #f59e0b,
+    #fbbf24
+  );
+}
+
+.info {
+  background: linear-gradient(
+    135deg,
+    #0ea5e9,
+    #38bdf8
+  );
+}
+
+.success {
+  background: linear-gradient(
+    135deg,
+    #10b981,
+    #34d399
+  );
+}
+
+.stats-card h1 {
+  font-size: 42px;
+  margin-top: 10px;
+}

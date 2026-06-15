@@ -1,0 +1,100 @@
+<div class="container mt-4">
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h3>Create Task</h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <form
+        [formGroup]="taskForm"
+        (ngSubmit)="createTask()">
+
+        <div class="mb-3">
+
+          <label>
+            Title
+          </label>
+
+          <input
+            class="form-control"
+            formControlName="title">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Description
+          </label>
+
+          <textarea
+            class="form-control"
+            formControlName="description">
+          </textarea>
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Employee
+          </label>
+
+          <select
+            class="form-select"
+            formControlName="assignedToUserId">
+
+            <option value="">
+              Select Employee
+            </option>
+
+            @for(
+              employee of employees();
+              track employee.id
+            ){
+
+              <option
+                [value]="employee.id">
+
+                {{ employee.username }}
+
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+        <div class="mb-3">
+
+          <label>
+            Due Date
+          </label>
+
+          <input
+            type="date"
+            class="form-control"
+            formControlName="dueDate">
+
+        </div>
+
+        <button
+          class="btn btn-primary">
+
+          Create Task
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

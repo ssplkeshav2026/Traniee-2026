@@ -1,0 +1,31 @@
+@if(userRole === 'Admin'){
+
+  <li routerLink="/users">
+    Users
+  </li>
+
+  <li routerLink="/tasks">
+    Tasks
+  </li>
+
+}
+
+@if(userRole === 'Manager'){
+
+  <li routerLink="/create-task">
+    Create Task
+  </li>
+
+  <li routerLink="/tasks">
+    Tasks
+  </li>
+
+}
+
+@if(userRole === 'Employee  '){
+
+  <li routerLink="/my-tasks">
+    My Tasks
+  </li>
+
+}
