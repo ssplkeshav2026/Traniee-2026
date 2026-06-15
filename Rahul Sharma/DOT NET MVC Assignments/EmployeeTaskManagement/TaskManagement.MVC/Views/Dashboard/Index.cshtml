@@ -1,0 +1,313 @@
+﻿
+
+
+@model TaskManagement.MVC.ViewModels.Dashboard.DashboardViewModel
+
+@{
+ViewData["Title"] = "Dashboard";
+
+
+var role = Model.User?.Role ?? "Unknown";
+var email = Model.User?.Email ?? "";
+
+
+var roleBadge = role == "Admin" ? "danger"
+    : role == "Manager" ? "primary"
+    : role == "Employee" ? "success"
+    : "secondary";
+
+
+}
+
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        @TempData["Error"]
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+    </div>
+}
+
+<style>
+    body {
+        background: #f3f6fb;
+    }
+
+    .dashboard-shell {
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    .hero-panel {
+        background: linear-gradient(135deg, #0f172b, #1d4ed8);
+        border-radius: 24px;
+        color: #fff;
+        border: none;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .hero-panel::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: rgba(255,255,255,.08);
+            border-radius: 50%;
+            right: -80px;
+            top: -90px;
+        }
+
+    .app-card {
+        border: 0;
+        border-radius: 20px;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .08);
+    }
+
+    .metric-card {
+        border: 0;
+        border-radius: 20px;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .08);
+        transition: .25s ease;
+    }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+        }
+
+    .metric-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+    .quick-action {
+        border-radius: 14px;
+        padding: 13px 16px;
+        font-weight: 600;
+    }
+
+    .access-box {
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 18px;
+        height: 100%;
+        background: #fff;
+    }
+
+    .table thead th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: #64748b;
+        font-weight: 700;
+    }
+
+    .task-title-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container-fluid py-4 dashboard-shell">
+
+
+    <div class="card hero-panel shadow-sm mb-4">
+        <div class="card-body p-4 p-lg-5 position-relative">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge bg-white text-primary px-3 py-2 mb-3">
+                        Task Management System
+                    </span>
+
+                    <h1 class="fw-bold mb-2">Welcome back</h1>
+
+                    <p class="text-white-50 mb-0 fs-6">
+                        Track work, monitor task progress, manage team productivity, and control access based on user roles.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 text-lg-end">
+                    <div class="bg-white bg-opacity-10 rounded-4 p-3 d-inline-block">
+                        <span class="badge bg-@roleBadge px-3 py-2 fs-6">@role</span>
+                        <div class="mt-2 text-white-50">@email</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="row g-4 mb-4">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted">Total Tasks</h6>
+                <h2 class="fw-bold">@Model.TotalTasks</h2>
+
+              
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted">Pending</h6>
+                <h2 class="fw-bold text-warning">@Model.PendingTasks</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted">In Progress</h6>
+                <h2 class="fw-bold text-info">@Model.InProgressTasks</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h6 class="text-muted">Completed</h6>
+                <h2 class="fw-bold text-success">@Model.CompletedTasks</h2>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+    <div class="row g-4 mb-4">
+
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">Quick Actions</h5>
+
+                    <div class="d-grid gap-3 mt-4">
+
+                        @if (role == "Admin")
+                        {
+                            <a asp-controller="Tasks" asp-action="Index" class="btn btn-primary">View All Tasks</a>
+                            <a asp-controller="Tasks" asp-action="Create" class="btn btn-success">Create Task</a>
+                            <a asp-controller="Users" asp-action="Index" class="btn btn-dark">Manage Users</a>
+                            <a asp-controller="Reports" asp-action="Index" class="btn btn-outline-primary">Reports</a>
+                        }
+                        else if (role == "Manager")
+                        {
+                            <a asp-controller="Tasks" asp-action="Index" class="btn btn-primary">Team Tasks</a>
+                            <a asp-controller="Tasks" asp-action="Create" class="btn btn-success">Assign Task</a>
+                            <a asp-controller="Reports" asp-action="Index" class="btn btn-outline-primary">Reports</a>
+                        }
+                        else if (role == "Employee")
+                        {
+                            <a asp-controller="Tasks" asp-action="MyTasks" class="btn btn-success">My Tasks</a>
+                            <a asp-controller="Tasks" asp-action="Index" class="btn btn-outline-primary">Task History</a>
+                        
+                        } 
+
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-outline-danger w-100">
+                                Logout
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Recent Tasks</span>
+                        <a asp-controller="Tasks" asp-action="Index" class="btn btn-sm btn-outline-primary">
+                            View All
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card-body p-0">
+
+                    @if (Model.RecentTasks != null && Model.RecentTasks.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Assigned To</th>
+                                        <th>Status</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var task in Model.RecentTasks)
+                                    {
+                                        <tr>
+                                            <td>@task.Title</td>
+                                            <td>@task.AssignedToUserName</td>
+                                            <td>
+                                                @if (task.Status == "Pending")
+                                                {
+                                                    <span class="badge bg-warning text-dark">Pending</span>
+                                                }
+                                                else if (task.Status == "InProgress")
+                                                {
+                                                    <span class="badge bg-info">In Progress</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-success">Completed</span>
+                                                }
+                                            </td>
+                                            <td>@task.DueDate.ToString("dd-MMM-yyyy")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="p-4 text-center text-muted">
+                            No recent tasks found.
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
