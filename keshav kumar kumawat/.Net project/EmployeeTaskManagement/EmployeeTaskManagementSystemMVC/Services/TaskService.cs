@@ -9,7 +9,6 @@ namespace EmployeeTaskManagementSystemMVC.Services
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IAuthService _authService;
 
-
         public TaskService(IHttpClientFactory httpClientFactory,IAuthService authService)
         {
             _httpClientFactory = httpClientFactory;
@@ -42,7 +41,7 @@ namespace EmployeeTaskManagementSystemMVC.Services
 
         public async Task<List<TaskVM>> GetAllTasksAsync()
         {
-            var client = await CreateClientWithTokenAsync();
+            var client = await CreateClientWithTokenAsync();                 
 
             if (client == null)
                 return new List<TaskVM>();

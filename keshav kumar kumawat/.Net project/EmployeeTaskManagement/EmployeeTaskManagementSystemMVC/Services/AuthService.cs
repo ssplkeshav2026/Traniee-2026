@@ -17,7 +17,7 @@ namespace EmployeeTaskManagementSystemMVC.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<AuthResponseVM?> LoginAsync(LoginVM model)
+        public async Task<AuthResponseVM?> LoginAsync(LoginVM model) 
         {
             var client = _httpClientFactory.CreateClient("TaskApi");
             var response = await client.PostAsJsonAsync("api/auth/login", model);
@@ -32,9 +32,7 @@ namespace EmployeeTaskManagementSystemMVC.Services
         {
             var client = _httpClientFactory.CreateClient("TaskApi");
 
-            var response = await client.PostAsJsonAsync(
-                "api/auth/register",
-                model);
+            var response = await client.PostAsJsonAsync("api/auth/register",model);
 
             if (!response.IsSuccessStatusCode)
             {

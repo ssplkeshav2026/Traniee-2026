@@ -56,8 +56,7 @@ namespace EmployeeTaskManagementSystemAPI.Services
 
             var accessToken = await _tokenService.GenerateAccessTokenAsync(user);
 
-            var refreshToken =
-                await _refreshTokenService.CreateRefreshTokenAsync(user.Id);
+            var refreshToken =await _refreshTokenService.CreateRefreshTokenAsync(user.Id);
 
             return new AuthResponseDto
             {

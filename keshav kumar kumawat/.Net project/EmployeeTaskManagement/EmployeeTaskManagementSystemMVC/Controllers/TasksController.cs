@@ -11,7 +11,7 @@ namespace EmployeeTaskManagementSystemMVC.Controllers
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
 
-        public TasksController(ITaskService taskService,IUserService userService,IAuthService authService)
+        public TasksController(ITaskService taskService, IUserService userService, IAuthService authService)
         {
             _taskService = taskService;
             _userService = userService;
@@ -118,15 +118,22 @@ namespace EmployeeTaskManagementSystemMVC.Controllers
         {
             var role = _authService.GetRole();
 
-            if (role != "Admin" && role != "Manager")
+            if (role != "Admin" && role != "Manager" && role != "Employee")
+            {
                 return RedirectToAction("AccessDenied", "Auth");
+            }
+
 
             var task = await _taskService.GetTaskByIdAsync(id);
 
             if (task == null)
                 return NotFound();
 
-            ViewBag.Users = await _userService.GetUsersAsync();
+            if (role != "Employee")
+            {
+                ViewBag.Users = await _userService.GetUsersAsync();
+            }
+
 
             var model = new TaskUpdateVM
             {
@@ -156,9 +163,17 @@ namespace EmployeeTaskManagementSystemMVC.Controllers
                 {
                     ModelState.AddModelError("", "Task update failed");
 
-                    ViewBag.Users = await _userService.GetUsersAsync();
+                    if (role != "Employee")
+                    {
+                        ViewBag.Users = await _userService.GetUsersAsync();
+                    }
 
                     return View(model);
+                }
+
+                if (role == "Employee")
+                {
+                    return RedirectToAction("MyTasks");
                 }
 
                 return RedirectToAction("Index");

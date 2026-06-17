@@ -26,7 +26,7 @@ namespace EmployeeTaskManagementSystemAPI.Data
 
             var admin = await CreateUser(
                 userManager,
-                "admin@test.com",                                //Email
+                "admin12@test.com",                                //Email
                 "Admin@123",                                     //Password
                 "Admin",                                         //Role
                 "Admin",                                         //Firstname

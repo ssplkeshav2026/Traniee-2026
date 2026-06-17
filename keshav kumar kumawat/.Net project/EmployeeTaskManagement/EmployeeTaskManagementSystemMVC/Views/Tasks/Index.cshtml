@@ -1,6 +1,11 @@
-﻿@model List<EmployeeTaskManagementSystemMVC.ViewModels.TaskVM>
+﻿@inject EmployeeTaskManagementSystemMVC.IServices.IAuthService AuthService
+@model List<EmployeeTaskManagementSystemMVC.ViewModels.TaskVM>
 
 <h2>Task List</h2>
+
+@{
+    var role = AuthService.GetRole();
+}
 
 <a asp-action="Create" class="btn btn-success">Create Task</a>
 <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary">Back</a>
@@ -30,7 +35,12 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-info btn-sm">Details</a>
                     <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-warning btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm">Delete</a>
+
+                    @if (role == "Admin")
+                    {
+                        <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm">Delete</a>
+                    }
+                   
                 </td>
             </tr>
         }

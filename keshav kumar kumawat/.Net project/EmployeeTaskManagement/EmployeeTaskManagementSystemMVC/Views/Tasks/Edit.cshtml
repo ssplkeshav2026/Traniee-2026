@@ -1,37 +1,77 @@
 ﻿@model EmployeeTaskManagementSystemMVC.ViewModels.TaskUpdateVM
+@inject EmployeeTaskManagementSystemMVC.IServices.IAuthService AuthService
+
+@{
+    var role = AuthService.GetRole();
+}
 
 <h2>Edit Task</h2>
 
 @if (ViewBag.Error != null)
 {
-    <p style="color:red">@ViewBag.Error</p>
+    <p class="text-danger">@ViewBag.Error</p>
 }
 
 <form asp-action="Edit" method="post">
-    <input asp-for="Title" class="form-control" />
-    <br />
 
-    <input asp-for="Description" class="form-control" />
-    <br />
+    @if (role == "Employee")
+    {
+        <input type="hidden" asp-for="Title" />
+        <input type="hidden" asp-for="Description" />
+        <input type="hidden" asp-for="AssignedToUserId" />
+        <input type="hidden" asp-for="DueDate" />
 
-    <select asp-for="AssignedToUserId" class="form-control">
-        @foreach (var user in ViewBag.Users)
-        {
-            <option value="@user.Id">@user.FullName - @user.Role</option>
-        }
-    </select>
-    <br />
+        <label>Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
 
-    <select asp-for="Status" class="form-control">
-        <option>Pending</option>
-        <option>In Progress</option>
-        <option>Completed</option>
-    </select>
-    <br />
+        <br />
+    }
+    else
+    {
+        <input asp-for="Title" class="form-control" />
+        <br />
 
-    <input asp-for="DueDate" type="date" class="form-control" />
-    <br />
+        <input asp-for="Description" class="form-control" />
+        <br />
+
+        <select asp-for="AssignedToUserId" class="form-control">
+            @{
+                var users = ViewBag.Users as List<EmployeeTaskManagementSystemMVC.ViewModels.UserVM>;
+            }
+
+            @if (users != null)
+            {
+                @foreach (var user in users)
+                {
+                    <option value="@user.Id">@user.FullName - @user.Role</option>
+                }
+            }
+        </select>
+        <br />
+
+        <select asp-for="Status" class="form-control">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <br />
+
+        <input asp-for="DueDate" type="date" class="form-control" />
+        <br />
+    }
 
     <button type="submit" class="btn btn-primary">Update</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+    @if (role == "Employee")
+    {
+        <a asp-action="MyTasks" class="btn btn-secondary">Back</a>
+    }
+    else
+    {
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    }
 </form>
