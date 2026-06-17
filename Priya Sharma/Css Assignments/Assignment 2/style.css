@@ -1,0 +1,251 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family:Arial, sans-serif; */
+}
+
+body {
+    background-image: linear-gradient(to bottom, purple, pink);
+    padding-top: 70px;
+    height: 100%;
+}
+
+.icon {
+    color: whitesmoke;
+    font-size: xxx-large;
+}
+
+.flex {
+    float: right;
+    clip-path: circle(50%);
+    shape-outside: circle(45%);
+    border-radius: 4px;
+    width: 300px;
+    height: 300px;
+}
+
+.nav {
+    font-size:20px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: whitesmoke;
+    height: 75px;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+    position: sticky;
+
+}
+
+.button-link {
+    border: 2px solid black;
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin: 4px 2px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.button{
+    border: 2px solid black;
+    background-color: skyblue;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin: 4px 2px;
+    font-size: 20px;
+    border-radius: 8px;
+
+}
+.card{
+    border-radius: 50%;
+    border : 1px solid black;
+    padding :8px;
+    margin:0;
+    cursor : default;
+    height:100px;
+    width:137px;
+}
+.magna{
+    display : flex;
+    justify-content: space-evenly;
+}
+
+.first{
+    background-image: linear-gradient(to right,red,blue);
+    width:94px;
+    height:5px;
+    margin-left: 61px;
+    border-radius: 4px;
+}
+.second{
+    background-image: linear-gradient(to right,red,blue);
+    width:94px;
+    height:5px;
+    margin-left:595px;
+    border-radius: 4px;
+}
+.third{
+    background-image: linear-gradient(to right,red,blue);
+    width:94px;
+    height:5px;
+    margin-left: 597px;
+    border-radius: 4px;
+}
+.fourth{
+    background-image: linear-gradient(to right,red,blue);
+    width:94px;
+    height:5px;
+    margin-left: 612px;
+    border-radius: 4px;
+}
+.icon2{
+    display:flex;
+    justify-content: center;
+}
+.icon_1{
+    color : #fff;
+    background-color:#EFA8B0;
+    width:100%;
+    padding:1px;
+    vertical-align: baseline;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.icon_3{
+    background-color: #A89CC8;
+    color : #fff;
+    width:100%;
+    padding:8px;
+    margin:0;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.icon_4{
+    background-color: #9BB2E1;
+    color:#fff;
+    width:100%;
+    padding:8px;
+    margin:0;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.icon_2{
+    background-color: #C79CC8;
+    color:#fff;
+    width :  100%;
+    padding : 8px;
+    margin : 0;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.icon_5{
+    background-color: #8CC9F0;
+    color:#fff;
+    width:100%;
+    padding:8px;
+    margin:0;
+    
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.section {
+    /* background: linear-gradient(135deg, #d66d75, #a445b2); */
+    background-image: linear-gradient(to bottom, purple, pink);
+    color: #fff;
+    padding: 60px 80px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    gap :100px;
+    padding: 8px;
+  }
+
+  /* .left, .right {
+    width: 48%;
+  } */
+
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .para{
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .info p {
+    margin-bottom: 12px;
+  }
+
+  .info strong {
+    display: inline-block;
+    width: 80px;
+    color: #fff;
+  }
+
+  .info a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  
+  .social {
+    margin-top: 30px;
+  }
+
+  .social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .social a:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  @media(max-width: 768px) {
+    .left, .right {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }

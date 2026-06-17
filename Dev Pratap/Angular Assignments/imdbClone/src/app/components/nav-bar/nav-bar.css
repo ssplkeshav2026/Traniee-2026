@@ -1,0 +1,10 @@
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* removes jump */
+}
+
+/* Optional smooth effect */
+.dropdown-menu {
+  transition: all 0.3s ease;
+}

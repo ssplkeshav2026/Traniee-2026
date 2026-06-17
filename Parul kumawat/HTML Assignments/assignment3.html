@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <table border="1">
+        <tr>
+           <th rowspan="3">Day</th>
+            <th colspan="3">Seminar</th>
+       </tr>
+       <tr>
+        <th colspan="2">Schedule</th>
+        <th rowspan="2">Topic</th>
+       </tr>
+       <tr>
+        <th>Begin</th>
+        <th>End</th>
+       </tr>
+       <tr>
+        <td rowspan="2">Monday</td>
+        <td rowspan="2">8:00 am</td>
+        <td rowspan="2">5:00</td>
+        <td>Introduction to XML</td>
+       </tr>
+       <tr>
+        <td>Validity. DTD and Relax NG</td>
+       </tr>
+
+       <tr>
+        <td rowspan="3">Tuesday</td>
+        <td>8:00 am</td>
+        <td>11:00 am</td>
+        <td rowspan="3">
+            
+            <table border="1" width="100%" cellpadding="10px">
+                <tr>
+                    <td>XPath</td>
+                </tr>
+                <tr>
+               <td>XSL Transformation</td>
+                </tr>
+            </table>
+        
+
+        </td>
+
+        
+         </tr>
+
+       <tr>
+        <td>11:00 am</td>
+             <td>2:00 pm</td>
+       </tr>
+
+        <tr>
+                <td>2:00 pm</td>
+                <td>5:00 pm</td>
+                
+       </tr>
+
+       <tr>
+                <td>Wednesday</td>
+                <td>8:00 pm</td>
+                <td>12:00 pm</td>
+                <td>XSL Formatting Objects</td>
+       </tr>
+
+       
+    </table> 
+
+    <form align="center">
+        <h1 style="text-align: center;">Contact Details</h1>
+        <fieldset>
+            <p>Please enter your personal details</p>
+            <label for="fname">First name:*</label>
+            <input type="text" id="fname" placeholder="Enter your name "name="f" required><br><br>
+            <label for="last">Last name:*</label>
+            <input type="text" id="last" placeholder="Enter your last name" name="l" required><br><br>
+            <label for="SA">Street address:</label>
+                <input type="text" id="SA" placeholder="Station Road" name="a"><br><br>
+            <label for="city">Town/City</label>
+            <input for="text" id="city" placeholder="DorkWell"  name="c"><br><br>
+                <label for="postcode">Postcode/zip</label>
+            <input type="text" id="postcode" placeholder="DW1 56A" name="zip" pattern="[0-9]{6}" ><br><br>
+            <label for="telephone">Telephone:</label>
+                <input type="tel" id="telephone" placeholder="0123 456789" name="tp" pattern="[0-9]{4} [0-9]{6}"><br><br>
+        <label for="mob">Mobile:</label>
+            <input type="tel" id="mob" placeholder="0123 456789" name="m" pattern="[0-9]{4} [0-9]{6}" ><br><br>
+        <label for="email">Email address:*</label>
+            <input type="email" id="email" placeholder="fbloggs@coldmail.net" name="e" required>
+            <p style="text-align: center;">Fields marked* are required.</p>
+             <p style="text-align: center;"><input type="submit" value="Submit"></p>
+        
+        </fieldset>
+    </form>
+</body>
+</html>

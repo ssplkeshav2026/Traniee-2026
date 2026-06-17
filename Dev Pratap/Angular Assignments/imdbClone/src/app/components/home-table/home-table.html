@@ -1,0 +1,40 @@
+<div class="tableContainer">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Movie</th>
+                <th scope="col">Desription</th>
+                <th scope="col">rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(movie of movies();track movie.id){
+            <tr>
+                <th scope="row">{{movie.id}}</th>
+                <td>{{movie.original_title}}</td>
+                <td>{{movie.overview}}</td>
+                <td>{{movie.vote_average}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <nav aria-label="...">
+        <ul class="pagination">
+
+            <li class="page-item" [class.disabled]="page === 1">
+                <a class="page-link" (click)="getData('minus')">Previous</a>
+            </li>
+            <li class="page-item" [class.disabled]="page === 1">
+                <a class="page-link" (click)="getData('minus')">{{page-1}}</a>
+            </li>
+
+            <li class="page-item"><a class="page-link">{{page}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="getData('plus')">{{page+1}}</a></li>
+            <li class="page-item">
+                <a class="page-link" (click)="getData('plus')">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>

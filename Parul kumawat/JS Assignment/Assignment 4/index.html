@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-header">
+            <input type="text" placeholder="Untitled form" class="title">
+            <input type="text" placeholder="Form description" class="description">
+
+            <hr class="title-line">
+
+
+                <div class="header-icons">
+                <i class="fa-solid fa-bold boldText" title="Bold"></i>
+                <i class="fa-solid fa-italic italicText" title="italic"></i>
+                <i class="fa-solid fa-underline underlineText" title="Underline"></i>
+                <i class="fa-solid fa-text-slash formatText" title="Remove formatting"></i>
+            </div>
+
+
+
+        </div>
+        <div class="form-header-icons">
+            <i class="fa-solid fa-plus addQue" title="Add question"></i>
+            <i class="fa-solid fa-t addTitle" title="Add title and description"></i>
+        </div>
+
+
+
+        <div id="questions">
+
+            <div class="question-box">
+                <input type="text" placeholder="Question" class="question">
+                <i class="fa-regular fa-image img-icon imgIcon" title="Add Image"></i>
+                <input type="file" class="img" hidden>
+
+
+
+                
+                <select name="icons" class="drop-down-icons">
+                    <option class="short-ans">Short Answer</option>
+                    <option class="para">Paragraph</option>
+                    <option selected="selected" class="Multiple-choice">Multiple choice</option>
+                    <option class="check">Checkboxes</option>
+                    <option class="drop-down">Drop-down</option>
+                    <option class="date">Date</option>
+
+                </select>
+
+                <div class="textIcons">
+                    <i class="fa-solid fa-bold boldText" title="Bold"></i>
+                    <i class="fa-solid fa-italic italicText" title="italic"></i>
+                    <i class="fa-solid fa-underline underlineText" title="Underline"></i>
+                    <i class="fa-solid fa-text-slash formatText" title="Remove formatting"></i>
+                </div>
+
+                <div class="viewImg"></div>
+
+                <div class="que-options">
+                    <div class="options">
+
+                        <input type="radio" class="radioBtn" disabled>
+                        <input type="text" placeholder="Option 1" class="option">
+
+                        <i class="fa-regular fa-image img-icon optionImgIcon" title="Add Image"></i>
+                        <input type="file" class="option-img" hidden>
+                        <span class="cross" style="cursor:pointer; margin-left:10px;"><i
+                                class="fa-regular fa-circle-xmark" style="border-radius:50%; padding:5px;"
+                                title="Remove"></i></span>
+
+
+                        <div class="view-img"></div>
+
+
+                    </div>
+                    <hr class="option-line">
+
+                    <div class="add">
+                        <input type="radio" class="radioBtn" disabled>
+                        <input type="text" placeholder="Add option" class="add-option">
+
+                    </div>
+
+                </div>
+                <hr>
+
+                <div class="footer-options">
+                    <i class="fa-regular fa-copy copy" title="Duplicate question" style="cursor:pointer;"></i>
+                    <i class="fa-solid fa-trash deleteQue" title="Delete question" style="cursor:pointer;"></i>
+                    <hr class="vertical-line">
+                    <p>Required</p>
+                    <input type="checkbox">
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="title-box">
+            <div class="title-header">
+                <input type="text" placeholder="Untitled title" class="section-title">
+
+                <div class="titleIcons">
+                    <i class="fa-regular fa-copy copy" title="Duplicate question" style="cursor:pointer;"></i>
+                    <i class="fa-solid fa-trash deleteQue" title="Delete question" style="cursor:pointer;"></i>
+
+                </div>
+            </div>
+
+            <div class="textIcons2">
+                <i class="fa-solid fa-bold boldText" title="Bold"></i>
+                <i class="fa-solid fa-italic italicText" title="italic"></i>
+                <i class="fa-solid fa-underline underlineText" title="Underline"></i>
+                <i class="fa-solid fa-text-slash formatText" title="Remove formatting"></i>
+            </div>
+
+            <input type="text" placeholder="Description (optional)" class="sectionDesc">
+            <hr class="titleLine">
+        </div>
+
+    </div>
+
+    <button id="generateHtmlForm">Generate Html Form</button>
+    <div id="generatedForm"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

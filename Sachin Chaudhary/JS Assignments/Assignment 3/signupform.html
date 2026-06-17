@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="signupform.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="container">
+  <h2>Signup Form</h2>
+
+  
+  <div class="para">
+   
+  <div class="nev1 nev">Name</div>
+  <div class="nev1">Contact</div>
+  <div class="nev1">Birth</div>
+  <div class="nev1">Submit</div>
+  </div>
+
+ 
+  <div class="para1 nev">
+    <h3>Basic Info</h3>
+   First Name: <input type="text" placeholder="First Name" style="width: 80%;" id="firstName"  autocomplete="off" >
+   Last Name: <input type="text" placeholder="Last Name" style="width: 80%;" id="lastName">
+  </div>
+
+
+  <div class="para1">
+    <h3>Contact Info</h3>
+   Email: <input type="email" placeholder="Email" style="width: 80%;"  id="email">
+   phone: <input type="tel" placeholder="Phone" style="width: 80%;" id="phone">
+  </div>
+
+  <div class="para1">
+    <h3>Date of Birth</h3>
+   Date: <input type="date" style="width: 80%;" id="dob">
+   Gender: <select id="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+
+  <div class="para1">
+    <h3>Login Details</h3>
+   Username: <input type="text" placeholder="Username" style="width: 80%" id="username">
+   Password: <input type="password" placeholder="Password" style="width: 80%;"  id="password">
+  </div>
+
+  <div class="buttons">
+    <button id="prevBtn" >Previous</button>
+    <button id="nextBtn" >Next</button>
+  </div>
+</div>
+<script src="jquary.js"></script>
+<script >
+
+
+$(document).ready(function() {
+  let currentStep = 0; 
+  const steps = $(".para1");
+  const pstep = $(".para div"); 
+
+  function showStep(index){
+   steps.hide();
+  steps.eq(index).show();
+
+  pstep.removeClass("nev");
+    pstep.each(function(i) {
+      if (i <= index) {
+        $(this).addClass("nev");
+      }
+    });
+    if (index === 0) {
+      $("#prevBtn").hide();
+    } else {
+      $("#prevBtn").show();
+    }
+    if (index === steps.length - 1) {
+      $("#nextBtn").text("Submit");
+    } else {
+      $("#nextBtn").text("Next");
+    }
+  }
+$("#nextBtn").click(function() {
+  let inputs = steps.eq(currentStep).find("input, select");
+
+
+  let tempData = JSON.parse(sessionStorage.getItem("tempData")) || {};
+
+  inputs.each(function() {
+    let key = $(this).attr("id");
+    let value = $(this).val();
+
+    if (key) {
+      tempData[key] = value;
+    }
+  });
+
+  sessionStorage.setItem("tempData", JSON.stringify(tempData));
+
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  } else {
+    
+    let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    allUsers.push(tempData); 
+
+    localStorage.setItem("users", JSON.stringify(allUsers));
+
+    sessionStorage.removeItem("tempData"); 
+
+    alert("Form Submitted!");
+    console.log(allUsers);
+  }
+});
+
+  $("#prevBtn").click(function() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+ 
+  showStep(currentStep);
+
+  if (sessionStorage.getItem("reload")) {
+  sessionStorage.removeItem("reload");
+} else {
+  $("input, select").val("");
+}
+
+sessionStorage.setItem("reload", true);
+
+
+});
+
+  </script>
+</body>
+</html>

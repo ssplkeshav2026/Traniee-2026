@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SchoolManagement.Models.Exam>
+
+@{
+    ViewData["Title"] = "Exam List";
+}
+
+<div class="container-fluid mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2 class="text-primary">Exam Management</h2>
+
+        <a asp-action="Create" class="btn btn-success">
+            + Create New Exam
+        </a>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover table-striped align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Exam Name</th>
+                    <th>Start Date</th>
+                    <th>Exam Type</th>
+                    <th width="220">Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Name
+                        </td>
+
+                        <td>
+                            @item.StartDate
+                        </td>
+
+                        <td>
+                            @item.ExamType?.Name
+                        </td>
+
+                        <td>
+
+                            <a asp-action="create"
+                                   asp-route-id="@item.ExamId"
+                                   class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Details"
+                                   asp-route-id="@item.ExamId"
+                                   class="btn btn-info btn-sm text-white">
+                                Details
+                            </a>
+
+                            <a asp-action="Delete"
+                                   asp-route-id="@item.ExamId"
+                                   class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

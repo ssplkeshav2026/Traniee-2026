@@ -1,0 +1,13 @@
+<!-- <app-nav-bar></app-nav-bar> -->
+<form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="movieName"
+        name="movieName" />
+    <button class="btn btn-outline-success" type="submit" (click)="getData()">Search</button>
+</form>
+
+<h1 class="display-3 text-center ">Search results for </h1>
+<app-cards [movies]="content"></app-cards>
+<div class="container">
+    <button (click)="update('minus')">privious Page</button>
+    <button (click)="update('plus')">Next Page</button>
+</div>

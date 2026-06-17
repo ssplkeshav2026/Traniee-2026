@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<hr />
+
+<ul>
+    <li>
+        <a asp-controller="MvcTasks" asp-action="Index"> View All Tasks </a>
+    </li>
+
+    <li>
+        <a asp-controller="MvcTasks" asp-action="Create">Create Task</a>
+    </li>
+
+    <li>
+        <a asp-controller="Emp" asp-action="MyTasks">My Tasks</a>
+    </li>
+
+     <li>
+        <a asp-controller="MvcUsers" asp-action="Index">Manage Users</a>
+    </li>
+</ul>
+
+<form asp-controller="MvcAuth"asp-action="LogoutRefreshToken"method="post">
+
+    <button type="submit">Logout</button>
+
+</form>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <h1>TO-DO App</h1>
+    <div id="to-doApp">
+
+        <form>
+            <div class="create-task">
+                <label for="create">Create-task:</label>
+                <input type="text" id="create" placeholder="What do you need to do?" name="task" required><br>
+                <button type="button" onclick=addData() class="btn">Add</button>
+                <button type="button" onclick=DeleteAllData() class="btn1">Delete All Tasks</button>
+                    <button type="button" onclick="checkIdExist()" class="btn2">Search Task by Id</button>
+
+            </div>
+        </form>
+
+
+        <fieldset>
+
+            <div class="tasks">
+                <h2><u>Task Details</u></h2>
+                <ul id="task-container"></ul>
+            </div>
+
+
+
+    </div>
+    </fieldset>
+
+
+
+    <script src="myScript.js">
+
+    </script>
+</body>
+
+</html>

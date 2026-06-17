@@ -1,0 +1,70 @@
+.main {
+    width: 400px;
+    margin: 50px auto;
+    background: #cfe3c8;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+.top {
+    background: #0f3d1c;
+    color: #b5ff3c;
+    padding: 15px;
+}
+
+.top h1 {
+    margin: 0;
+}
+
+
+.input-box {
+    display: flex;
+    padding: 15px;
+    background: #8bc34a;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.input-box button {
+    background: #c6ff00;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+.task {
+    background: white;
+    margin: 10px 15px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.Completed span {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+.delete {
+    color: red;
+    cursor: pointer;
+}

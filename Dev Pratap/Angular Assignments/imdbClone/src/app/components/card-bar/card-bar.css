@@ -1,0 +1,36 @@
+.scroll-x {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+
+.scroll-x::-webkit-scrollbar {
+  height: 8px;
+}
+
+
+.scroll-x::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.scroll-x::-webkit-scrollbar-thumb {
+  background: #6c757d;
+  border-radius: 10px;
+}
+
+.scroll-x::-webkit-scrollbar-thumb:hover {
+  background: #343a40;
+}
+
+
+.scroll-card {
+  width: 250px;
+  min-width: 250px;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}

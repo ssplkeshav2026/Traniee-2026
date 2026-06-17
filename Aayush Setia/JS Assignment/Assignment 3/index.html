@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="main-container">
+    <center><h1>SIGNUP FORM</h1></center>
+
+ 
+  <div class="progressbar">
+    <div class="number active">
+      <p>Name</p>
+      <div class="circle">1</div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="number">
+      <p>Contact</p>
+      <div class="circle">2</div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="number">
+      <p>Birth</p>
+      <div class="circle">3</div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="number">
+      <p>Submit</p>
+      <div class="circle">4</div>
+    </div>
+  </div>
+
+ 
+  <div class="step active">
+    <h2>Basic Info</h2>
+
+    <label>First Name</label>
+    <input type="text" id="fname" placeholder="First Name">
+
+    <label>Last Name</label>
+    <input type="text" id="lname" placeholder="Last Name">
+
+    <div class="btn-group">
+      <button class="btn" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+ 
+  <div class="step">
+    
+    <h2>Contact Info</h2>
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Email Address">
+
+    <label>Phone</label>
+    <input type="number" id="number" placeholder="Phone Number">
+
+    <div class="btn-group">
+      <button class="btn" onclick="prevStep()">Previous</button>
+      <button class="btn" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+ 
+  <div class="step">
+    <h2>Date of Birth</h2>
+
+    <label>DOB</label>
+    <input type="date" id="date">
+
+    <label>Gender</label>
+    <select id="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <div class="btn-group">
+      <button class="btn" onclick="prevStep()">Previous</button>
+      <button class="btn" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>Login Details</h2>
+
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Username">
+
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Password">
+
+    <div class="btn-group">
+      <button class="btn" onclick="prevStep()">Previous</button>
+      <button class="btn" onclick="submitForm()">Submit</button>
+    </div>
+  </div>
+
+  
+  <div class="step" id="success">
+    <h2> Form Submitted Successfully!</h2>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

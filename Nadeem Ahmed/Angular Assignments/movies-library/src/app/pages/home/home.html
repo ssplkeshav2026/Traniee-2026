@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h3 class="mb-0">Trending</h3>
+
+    <div class="toggle-btn">
+      <button [class.active]="selected === 'day'" (click)="changeType('day')">Today</button>
+
+      <button [class.active]="selected === 'week'" (click)="changeType('week')">This Week</button>
+    </div>
+  </div>
+
+  <div class="scroll-container">
+    @for (movie of trendingMovies(); track movie.id) {
+      <div class="card-item">
+        <img [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path" />
+
+        <h6>{{ movie.title || movie.name }}</h6>
+        <p>{{ movie.release_date || movie.first_air_date }}</p>
+      </div>
+    }
+  </div>
+</div>

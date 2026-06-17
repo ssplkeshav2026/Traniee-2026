@@ -1,0 +1,50 @@
+﻿@model TaskManagementSystemMVC.ViewModel.TaskViewModel
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h2>Task Details</h2>
+<hr />
+
+<div class="card" style="max-width: 600px;">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Title</h4>
+
+        <table class="table table-borderless">
+            <tr>
+                <th>Description</th>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                    <span class="badge
+                        @(Model.Status == "Pending" ? "bg-warning" :
+                            Model.Status == "InProgress" ? "bg-info" : "bg-success")">
+                        @Model.Status
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th>Assigned To</th>
+                <td>@Model.AssignedToName</td>
+            </tr>
+            <tr>
+                <th>Assigned By</th>
+                <td>@Model.AssignedByName</td>
+            </tr>
+            <tr>
+                <th>Due Date</th>
+                <td>@Model.DueDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>@Model.CreatedDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+        </table>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id"
+           class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back</a>
+    </div>
+</div>

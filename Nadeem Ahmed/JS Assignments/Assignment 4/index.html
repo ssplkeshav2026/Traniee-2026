@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Form Builder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+</head>
+
+<body>
+  <div class="form-header">
+    <input type="text" placeholder="Untitled form" class="header" />
+    <div class="toolbar">
+      <span><i class="fa-solid fa-bold"></i></span>
+      <span><i class="fa-solid fa-italic"></i></span>
+      <span><i class="fa-solid fa-underline"></i></span>
+      <span><i class="fa-solid fa-text-slash"></i></span>
+    </div>
+    <input type="text" placeholder="Form description" class="description" />
+    <div class="toolbar">
+      <span><i class="fa-solid fa-bold"></i></span>
+      <span><i class="fa-solid fa-italic"></i></span>
+      <span><i class="fa-solid fa-underline"></i></span>
+      <span><i class="fa-solid fa-text-slash"></i></span>
+    </div>
+  </div>
+
+  <div id="title-bar" class="form-title" style="display: none">
+    <input type="text" placeholder="Untitled title" class="title" />
+    <div class="toolbar">
+      <span><i class="fa-solid fa-bold"></i></span>
+      <span><i class="fa-solid fa-italic"></i></span>
+      <span><i class="fa-solid fa-underline"></i></span>
+      <span><i class="fa-solid fa-text-slash"></i></span>
+    </div>
+    <input type="text" placeholder="Description (Optional)" class="description" />
+    <div class="toolbar">
+      <span><i class="fa-solid fa-bold"></i></span>
+      <span><i class="fa-solid fa-italic"></i></span>
+      <span><i class="fa-solid fa-underline"></i></span>
+      <span><i class="fa-solid fa-text-slash"></i></span>
+    </div>
+    <div class="actions">
+      <i class="fa-regular fa-copy copy-title"></i>
+      <i class="fa-duotone fa-solid fa-trash delete-title"></i>
+    </div>
+  </div>
+
+  <div id="question-template" class="question-editor" style="display: none">
+    <div class="question-header">
+      <input type="text" placeholder="Question" class="question-input" />
+      <select class="question-type">
+        <option value="short">Short Answer</option>
+        <option value="paragraph">Paragraph</option>
+        <option value="radio">Multiple Choice</option>
+        <option value="checkbox">Checkboxes</option>
+        <option value="dropdown">Dropdown</option>
+        <option value="date">Date</option>
+        <option value="time">Time</option>
+      </select>
+    </div>
+    <div class="toolbar">
+      <span><i class="fa-solid fa-bold"></i></span>
+      <span><i class="fa-solid fa-italic"></i></span>
+      <span><i class="fa-solid fa-underline"></i></span>
+      <span><i class="fa-solid fa-text-slash"></i></span>
+    </div>
+    <div class="options">
+      <input type="text" class="short-answer-input" placeholder="Short answer text" disabled />
+    </div>
+    <div class="actions">
+      <i class="fa-regular fa-copy copy-question"></i>
+      <i class="fa-duotone fa-solid fa-trash delete-question"></i>
+    </div>
+  </div>
+
+  <div id="questions-container">
+    <div class="question-editor">
+      <div class="question-header">
+        <input type="text" placeholder="Question" class="question-input" />
+        <select class="question-type">
+          <option value="short">Short Answer</option>
+          <option value="paragraph">Paragraph</option>
+          <option value="radio">Multiple Choice</option>
+          <option value="checkbox">Checkboxes</option>
+          <option value="dropdown">Dropdown</option>
+          <option value="date">Date</option>
+          <option value="time">Time</option>
+        </select>
+      </div>
+      <div class="toolbar">
+        <span><i class="fa-solid fa-bold"></i></span>
+        <span><i class="fa-solid fa-italic"></i></span>
+        <span><i class="fa-solid fa-underline"></i></span>
+        <span><i class="fa-solid fa-text-slash"></i></span>
+      </div>
+      <div class="options">
+        <input type="text" class="short-answer-input" placeholder="Short answer text" disabled />
+      </div>
+      <div class="actions">
+        <i class="fa-regular fa-copy copy-question"></i>
+        <i class="fa-duotone fa-solid fa-trash delete-question"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="side-toolbar">
+    <button type="button" title="Add Question">
+      <i class="fa-regular fa-plus"></i>
+    </button>
+    <button type="button" title="Add Title">Tt</button>
+    <button type="button" title="Generate Form" id="generate-btn">
+      <i class="fa-solid fa-eye"></i>
+    </button>
+  </div>
+  <div id="generated-form-section" style="display: none; margin-top: 200px">
+    <h2>
+      <center>Generated Form</center>
+    </h2>
+    <div id="generated-output"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

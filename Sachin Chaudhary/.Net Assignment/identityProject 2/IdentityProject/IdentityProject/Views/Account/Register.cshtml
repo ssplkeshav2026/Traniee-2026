@@ -1,0 +1,227 @@
+﻿@model IdentityProject.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5 col-md-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <!-- Heading -->
+                    <div class="text-center mb-4">
+
+                        <h2 class="fw-bold text-success">
+                            Create Account
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            Register your new account
+                        </p>
+
+                    </div>
+
+                    <!-- Validation Summary -->
+                    <div asp-validation-summary="All"
+                         class="text-danger mb-3">
+                    </div>
+
+                    <form asp-action="Register"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <!-- Profile Picture Preview -->
+                        <div class="text-center mb-4">
+
+                            <img id="previewImage"
+                                 src="~/images/default.png"
+                                 alt="Profile Preview"
+                                 width="130"
+                                 height="130"
+                                 class="shadow-sm"
+                                 style="object-fit: cover;
+                            border-radius: 50%;
+                            border: 4px solid #e9ecef;" />
+                        
+                        </div>
+
+                        <!-- Upload Image -->
+                        <div class="mb-4">
+
+                            <label asp-for="ProfilePicture"
+                                   class="form-label fw-semibold">
+                                Profile Picture
+                            </label>
+
+                            <input asp-for="ProfilePicture"
+                                   type="file"
+                                   class="form-control"
+                                   accept="image/*"
+                                   onchange="previewFile(event)" />
+
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="mb-3">
+
+                            <label asp-for="FirstName"
+                                   class="form-label fw-semibold">
+                                First Name
+                            </label>
+
+                            <input asp-for="FirstName"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter first name" />
+
+                            <span asp-validation-for="FirstName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3">
+
+                            <label asp-for="LastName"
+                                   class="form-label fw-semibold">
+                                Last Name
+                            </label>
+
+                            <input asp-for="LastName"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter last name" />
+
+                            <span asp-validation-for="LastName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+
+                            <label asp-for="Email"
+                                   class="form-label fw-semibold">
+                                Email Address
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your email"
+                                   autocomplete="off" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+
+                            <label asp-for="Password"
+                                   class="form-label fw-semibold">
+                                Password
+                            </label>
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter password"
+                                   autocomplete="new-password" />
+
+                            <span asp-validation-for="Password"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-4">
+
+                            <label asp-for="ConfirmPassword"
+                                   class="form-label fw-semibold">
+                                Confirm Password
+                            </label>
+
+                            <input asp-for="ConfirmPassword"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Confirm password" />
+
+                            <span asp-validation-for="ConfirmPassword"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Register Button -->
+                        <div class="d-grid">
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg rounded-3">
+                                Register
+                            </button>
+
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="text-center mt-4">
+
+                            <span class="text-muted">
+                                Already have an account?
+                            </span>
+
+                            <a asp-action="Login"
+                                   class="fw-bold text-decoration-none">
+                                Login
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        function previewFile(event)
+        {
+            var reader = new FileReader();
+
+            reader.onload = function ()
+            {
+                var output =
+                    document.getElementById('previewImage');
+
+                output.src = reader.result;
+            };
+
+            if (event.target.files.length > 0)
+            {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+    </script>
+}

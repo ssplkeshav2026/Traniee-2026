@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header">
+      <h3>Users</h3>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+
+            <th>Username</th>
+
+            <th>Email</th>
+
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr>
+              <td>
+                {{ user.id }}
+              </td>
+
+              <td>
+                {{ user.username }}
+              </td>
+
+              <td>
+                {{ user.email }}
+              </td>
+
+              <td>
+                <button class="btn btn-primary btn-sm me-2" [routerLink]="['/users/view', user.id]">
+                  View
+                </button>
+                <button class="btn btn-warning btn-sm me-2" [routerLink]="['/users/edit', user.id]">
+                  Edit
+                </button>
+
+                <button
+                  class="btn btn-danger btn-sm"
+                  [disabled]="user.id === currentUserId"
+                  (click)="deleteUser(user.id)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

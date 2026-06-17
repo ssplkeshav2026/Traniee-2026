@@ -1,0 +1,135 @@
+﻿@model SchoolManagement.Models.ViewModels.CreateStudentViewModel;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="EditStudent" method="post" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (Model.StudentId > 0)
+            {
+                <input type="hidden" asp-for="StudentId" />
+            }
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input asp-for="Dob" class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ParentId" class="control-label"></label>
+                <select asp-for="ParentId"
+                        class="form-control"
+                        asp-items="ViewBag.ParentId">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfJoin" class="control-label"></label>
+                <input asp-for="DateOfJoin" class="form-control" />
+                <span asp-validation-for="DateOfJoin" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastLoginDate" class="control-label"></label>
+                <input asp-for="LastLoginDate" class="form-control" />
+                <span asp-validation-for="LastLoginDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastLoginIp" class="control-label"></label>
+                <input asp-for="LastLoginIp" class="form-control" />
+                <span asp-validation-for="LastLoginIp" class="text-danger"></span>
+            </div>
+
+            <!-- IMAGE UPLOAD -->
+
+            <div class="form-group mt-3">
+                <label>Student Image</label>
+                <input type="file" asp-for="ImageFile" class="form-control" />
+            </div>
+
+            <!-- SHOW EXISTING IMAGE IN EDIT -->
+            @if (Model.Image != null)
+            {
+                <div class="mt-3">
+                    <img src="~/uploads/@Model.Image"
+                         width="120"
+                         height="120"
+                         class="rounded border" />
+                </div>
+            }
+
+            <div class="form-group mt-3">
+                <input type="submit"
+                       value="Create"
+                       class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

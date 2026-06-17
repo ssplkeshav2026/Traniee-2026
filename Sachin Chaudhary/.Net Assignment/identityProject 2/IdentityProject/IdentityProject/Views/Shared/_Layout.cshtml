@@ -1,0 +1,212 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using IdentityProject.Data
+
+@inject UserManager<AppUser> UserManager
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IdentityProject</title>
+
+    <script type="importmap"></script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/IdentityProject.styles.css" asp-append-version="true" />
+
+    <style>
+            .custom-btn {
+                padding: 8px 18px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                margin-left: 10px;
+                transition: 0.3s ease;
+            }
+
+            .login-btn {
+                background-color: #dc3545;
+                color: white;
+            }
+
+                .login-btn:hover {
+                    background-color: #bb2d3b;
+                    color: white;
+                }
+
+            .register-btn {
+                background-color: #20c997;
+                color: white;
+            }
+
+                .register-btn:hover {
+                    background-color: #159c78;
+                    color: white;
+                }
+
+            .logout-btn {
+                background-color: #343a40;
+                color: white;
+            }
+
+                .logout-btn:hover {
+                    background-color: #1f2327;
+                    color: white;
+                }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+
+            <div class="container-fluid">
+
+                <a class="navbar-brand fw-bold"
+                       asp-area=""
+                       asp-controller="Home"
+                       asp-action="Index">
+                    IdentityProject
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="Home"
+                                   asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                                   asp-area=""
+                                   asp-controller="Home"
+                                   asp-action="Privacy">
+                                Privacy
+                            </a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                       asp-area=""
+                                       asp-controller="UserManagement"
+                                       asp-action="Index">
+                                    User Management
+                                </a>
+                            </li>
+                        }
+                        <li style="align-content: center;color:red">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Profile"
+                                       asp-action="Index"
+                                       class="nav-link">
+                                    Profile
+                                </a>
+                            }
+                        </li>
+                    </ul>
+              
+                    <div class="d-flex align-items-center">
+                    
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            var currentUser = await UserManager.GetUserAsync(User);
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <span class="fw-bold text-primary">
+                                    Hey @currentUser.UserName
+                                    <a asp-controller="Profile" asp-action="Index">
+                                        <img src="~/images/@currentUser.ProfilePicture"
+                                             width="50"
+                                             height="50"
+                                             style="object-fit:cover; border-radius:50%;" />
+                                    </a>
+                                </span>
+
+                                <a asp-controller="Account"
+                                       asp-action="Logout"
+                                       class="custom-btn logout-btn">
+                                    Logout
+                                </a>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account"
+                                   asp-action="Login"
+                                   class="custom-btn login-btn">
+                                Login
+                            </a>
+
+                            <a asp-controller="Account"
+                                   asp-action="Register"
+                                   class="custom-btn register-btn">
+                                Register
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+        <div class="container">
+            &copy; 2026 - IdentityProject -
+            <a asp-area=""
+                   asp-controller="Home"
+                   asp-action="Privacy">
+                Privacy
+            </a>
+        </div>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

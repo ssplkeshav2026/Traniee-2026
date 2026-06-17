@@ -1,0 +1,41 @@
+body{
+    font-family: "Roboto", sans-serif;
+}
+h5{
+   cursor: pointer;
+    background-color: #F1F4F9;  
+    padding: 15px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 0;
+    display: block; 
+    
+    
+}
+.icons{
+    background-color: #EE7A29;
+    height: 30px;
+    width: 30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px; 
+    margin-right:15px;
+
+}
+.answer{
+    display:none;
+    margin-top: 10px;
+    padding-left: 45px;
+    background-color: #F9F9F9;
+    color: #444444;
+    line-height:1.6;
+    text-align: left;
+}
+.row{
+    display:flex;
+    align-items:center;
+}
+.rotate{
+        transform: rotate(90deg);
+}

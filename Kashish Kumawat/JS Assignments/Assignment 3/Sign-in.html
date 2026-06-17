@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="container">    
+
+        <div class="inner">
+            <h2>Signup Form</h2>
+        <div class="list">
+            <div class="name">Name</div>
+            <div class="contact">Contact</div>
+            <div class="birth">Birth</div>
+            <div class="submit">Submit</div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-line"></div>
+            <div class="progress-fill"></div>
+        
+            <div class="progress-steps">
+                <div class="step active">1</div>
+                <div class="step">2</div>
+                <div class="step">3</div>
+                <div class="step">4</div>
+            </div>
+        </div>
+
+        <form id="form">
+        
+        <div class="form-step">
+            <h3>Basic Info :</h3>
+            <p> First Name</p>
+            <input type="text" id="fname" placeholder="First Name">
+            <p>Last Name</p>
+            <input type="text" id="lname" placeholder="Last Name">
+            <div class="btn-group">
+                <span></span>
+                <button type="button" class="next">Next</button>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <h3>Contact Info :</h3>
+            <p> E-Mail Address</p>
+            <input type="email" id="email" placeholder="Email">
+            <p> Phone Number</p>
+            <input type="text" id="phone" placeholder="Phone Number">
+            <div class="btn-group">
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <h3>Birth Info :</h3>
+            <p> Date of Birth</p>
+            <input type="date" id="dob">
+           <p>Gender</p>
+            <select id="gender">
+                <option selected>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+            <div class="btn-group">
+                <button type="button" class="prev">Previous</button>
+                <button type="button" class="next">Next</button>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <h3>Login Details :</h3>
+           <p>Username</p>
+            <input type="text" id="username" placeholder="Username">
+            <p> Password</p>
+            <input type="password" id="password" placeholder="Password">
+            <div class="btn-group">
+                <button type="button" class="prev">Previous</button>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+        </form>     
+        <div id="successBox" class="hidden">
+            <div class="checkmark-circle">
+                <div class="checkmark"></div>
+            </div>
+            <h3 class="success-text">Signup Successful!</h3>
+        </div>
+    </div>
+    </div>
+    <script src="Script.js"></script>
+</body>
+</html>

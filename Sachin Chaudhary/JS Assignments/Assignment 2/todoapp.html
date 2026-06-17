@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="todoapp.css">
+    <script src="jquary.js"></script>
+    <script>
+  
+
+$(document).ready(function () {
+   
+    let taskList = JSON.parse(localStorage.getItem("myTasks")) || [];
+    
+    
+    renderTable();
+
+    
+    $('#btn').click(function () {
+        let userinput = $("#input1").val();
+        
+        if (userinput.trim() === "") {
+            alert("Please enter a task!");
+            return;
+        }
+
+       
+        let Object1 = {
+            id: Date.now(),
+            name: userinput,
+            isCompleted: false
+        };
+
+       
+        taskList.push(Object1);
+        
+       
+        saveAndRefresh();
+        $("#input1").val(""); 
+    });
+
+   
+    $(document).on('click', '.delete', function () {
+        let taskId = $(this).data('id');
+       
+        taskList = taskList.filter(item => item.id !== taskId);
+        
+        saveAndRefresh();
+    });
+
+  
+   
+    function saveAndRefresh() {
+        localStorage.setItem("myTasks", JSON.stringify(taskList));
+        renderTable();
+    }
+
+    
+    function renderTable() {
+        let tableHTML = "";
+        
+        taskList.forEach(task => {
+          
+            let textStyle = task.isCompleted ? "text-decoration: line-through; color: gray;" : "color: white;";
+            
+            tableHTML =tableHTML + `
+                <tr>
+                    <td>
+                        <input type="checkbox"  data-id="${task.id}" ${task.isCompleted ? 'checked' : ''}>
+                    </td>
+                    <td style="${textStyle}">${task.name}</td>
+                    <td>
+                        <button class="delete" data-id="${task.id}">Remove</button>
+                    </td>
+                </tr>`;
+        });
+        
+        $("#tableBody").html(tableHTML);
+    }
+});
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="frm">
+        <h1>To-Do-app</h1>
+        <input id="input1" type="text" placeholder="add a new task"></input>
+        <button id="btn" onclick="event.preventDefault()" type="button">add</button><br><br><br><br>
+      <center>
+        <table id="taskTable" border="1" style="background-color: rgb(188, 221, 82); ">
+        <thead>
+            <tr>
+                 <th style="color: aliceblue; gap: 20px; color: rgb(250, 53, 9);">Check BOX</th>
+
+                 <th style="color: aliceblue; gap: 20px; color: rgb(250, 53, 9);">Task Name</th>
+                <th style="color: aliceblue;  color:  rgb(250, 53, 9);">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            </tbody>
+    </table>
+</center>
+
+    </form>
+</body>
+
+</html>

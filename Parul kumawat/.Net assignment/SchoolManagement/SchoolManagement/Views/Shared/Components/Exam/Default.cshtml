@@ -1,0 +1,83 @@
+﻿@model SchoolManagement.Models.ViewModel.DashboardViewModel
+<h2>Exam Statistics</h2>
+<h5>Upcoming Exams : </h5>
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ExamName</th>
+
+                <th>UpcomingExam</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var data in Model.UpcomingExams)
+            {
+                <tr>
+                    <td>@data.Name</td>
+                    <td>@data.StartDate</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+
+<h5>Recent Conducted Exams : </h5>
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Exam Name</th>
+
+                <th>Recent Conducted Exam</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var data in Model.RecentExam)
+            {
+                <tr>
+                    <td>@data.Name</td>
+                    <td>@data.StartDate</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+<h5>Class-wise Exam Performance : </h5>
+<div class="Student-data">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ClassroomId</th>
+
+                <th>Performance</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var data in Model.Performance)
+            {
+                <tr>
+                    <td>@data.ClassroomId</td>
+                    <td>@data.AverageMarks</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+</div>
+

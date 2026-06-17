@@ -1,0 +1,43 @@
+﻿@model EmpTaskManagementMVC.ViewModel.LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div style="width:300px; margin:auto; margin-top:80px;">
+
+    <h2 style="text-align:center;">Login</h2>
+
+    <form asp-controller="MvcAuth" asp-action="Login" method="post">
+
+        <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+        <label>Email :</label><br />
+        <input asp-for="Email" required style="width:100%; padding:8px; margin-bottom:10px;" />
+        <span asp-validation-for="Email" style="color:red;"></span>
+
+        <br />
+
+        <label>Password :</label><br />
+        <input type="password" asp-for="Password" required style="width:100%; padding:8px; margin-bottom:10px;" />
+        <span asp-validation-for="Password" style="color:red;"></span>
+
+        <br />
+
+        <button type="submit" style="width:100%; padding:8px;"> Login</button>
+
+    </form>
+
+    <div style="margin-top:10px; text-align:center;">
+        <a asp-controller="MvcAuth" asp-action="Register"> New User ?</a>
+    </div>
+
+    
+
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

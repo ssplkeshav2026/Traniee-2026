@@ -1,0 +1,47 @@
+body{
+    background-color: gainsboro;
+}
+
+h1{
+    text-align: center;
+    padding-top: 30px;
+}
+#to-doApp{
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 20px;
+  
+}
+fieldset{
+   
+    width:80%;
+    height:400px;
+    margin-left: 120px;
+      margin-top: 30px;
+   background-color: white;
+   border: 1px solid black;
+}
+ul{
+    list-style-type: none;
+}
+.btn{
+    padding: 5px 20px;
+    background-color: rgb(223, 190, 190);
+    margin-left: 100px;
+    margin-top: 10px;
+}
+.btn1{
+    padding: 5px 20px;
+    background-color: rgb(223, 190, 190);
+}
+.btn2{
+    padding: 5px 20px;
+    background-color: rgb(223, 190, 190);
+}
+#create{
+     padding: 5px 20px;
+}
+.create-task{
+    font-size: 20px;
+}
+

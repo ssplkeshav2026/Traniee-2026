@@ -1,0 +1,52 @@
+﻿@model RoleBasedAuth.Models.Domain.ApplicationUser
+
+<h2>My Profile</h2>
+    <div class="row">
+    <div class="col-md-4">
+        <div class="mb-3">
+            <label>Name</label>
+            <input value="@Model.Name" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+
+            <input value="@Model.Email"
+                   class="form-control"
+                   readonly />
+        </div>
+
+        <div class="mb-3">
+            <label>Profile Picture</label>
+
+            <br />
+
+            @if (!string.IsNullOrEmpty(Model.ProfilePicture))
+            {
+                <img src="@Model.ProfilePicture"
+                     width="120"
+                     height="120" />
+            }
+            else
+            {
+                <em>No Profile Picture</em>
+            }
+        </div>
+    </div>
+</div>
+<br />
+
+<a asp-action="EditDetails"
+   asp-controller="User"
+   class="btn btn-primary">
+
+    Edit Details
+</a>
+
+<a asp-action="ChangePassword"
+   asp-controller="User"
+   class="btn btn-warning">
+
+    Edit Password
+</a>
+

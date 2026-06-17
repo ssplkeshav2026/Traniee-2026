@@ -1,0 +1,31 @@
+<div class="container py-4">
+
+  <h4 class="mb-3">{{heading}}</h4>
+
+  <div class="scroll-x d-flex gap-3">
+
+    @for (movie of movies(); track movie.id) {
+
+      <div class="card scroll-card shadow-sm flex-shrink-0">
+
+        <img 
+          [src]="movie.backdrop_path 
+            ? 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path 
+            : 'https://via.placeholder.com/500x300'"
+          class="card-img-top"
+          alt="Image"
+        >
+
+        <div class="card-body">
+          <h6 class="card-title">
+            {{ movie.original_title }}
+          </h6>
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

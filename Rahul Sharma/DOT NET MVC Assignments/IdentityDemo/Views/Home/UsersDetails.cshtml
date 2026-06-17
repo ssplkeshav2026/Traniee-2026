@@ -1,0 +1,376 @@
+﻿@* @model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Users Details";
+}
+
+<div class="container mt-5">
+    <div class="container mt-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-primary">
+                ← Dashboard
+            </a>
+
+            <h1 class="fw-bold">All Users Details</h1>
+
+            <a asp-controller="Home"
+               asp-action="UsersList"
+               class="btn btn-success">
+                Manage Users →
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">@item.Name</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <p><strong>Email:</strong> @item.Email</p>
+
+                        <p>
+                            <strong>Status:</strong>
+                            @if (item.Status)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                        </p>
+
+                        <p><strong>Roles:</strong></p>
+
+                        @if (item.Admin)
+                        {
+                            <span class="badge bg-primary me-1">Admin</span>
+                        }
+                        @if (item.User)
+                        {
+                            <span class="badge bg-secondary me-1">User</span>
+                        }
+                        @if (item.Manager)
+                        {
+                            <span class="badge bg-warning text-dark me-1">Manager</span>
+                        }
+                        @if (item.Employee)
+                        {
+                            <span class="badge bg-info text-dark me-1">Employee</span>
+                        }
+
+                        @if (!item.Admin && !item.User && !item.Manager && !item.Employee)
+                        {
+                            <span class="badge bg-light text-dark">No Role</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> *@
+@* 
+
+@model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Users Details";
+}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-controller="Home"
+           asp-action="Index"
+           class="btn btn-primary">
+            ← Dashboard
+        </a>
+
+        <h1 class="fw-bold">All Users Details</h1>
+
+        <a asp-controller="Home"
+           asp-action="UsersList"
+           class="btn btn-success">
+            Manage Users →
+        </a>
+    </div>
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+
+                <div class="card shadow border-0 h-100">
+
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">@item.Name</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            @if (!string.IsNullOrEmpty(item.ProfilePicture))
+                            {
+                                <!-- Details Section -->
+                                <div class="col-8">
+
+                                    <p>
+                                        <strong>Email:</strong>
+                                        @item.Email
+                                    </p>
+
+                                    <p>
+                                        <strong>Status:</strong>
+
+                                        @if (item.Status)
+                                        {
+                                            <span class="badge bg-success">
+                                                Active
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">
+                                                Inactive
+                                            </span>
+                                        }
+                                    </p>
+
+                                    <p>
+                                        <strong>Roles:</strong>
+                                    </p>
+
+                                    @if (item.Admin)
+                                    {
+                                        <span class="badge bg-primary me-1">Admin</span>
+                                    }
+
+                                    @if (item.User)
+                                    {
+                                        <span class="badge bg-secondary me-1">User</span>
+                                    }
+
+                                    @if (item.Manager)
+                                    {
+                                        <span class="badge bg-warning text-dark me-1">Manager</span>
+                                    }
+
+                                    @if (item.Employee)
+                                    {
+                                        <span class="badge bg-info text-dark me-1">Employee</span>
+                                    }
+
+                                    @if (!item.Admin &&
+                                         !item.User &&
+                                         !item.Manager &&
+                                         !item.Employee)
+                                    {
+                                        <span class="badge bg-light text-dark">
+                                            No Role
+                                        </span>
+                                    }
+
+                                </div>
+
+                                <!-- Profile Picture -->
+                                <div class="col-4 text-center">
+
+                                    <img src="@item.ProfilePicture"
+                                         class="rounded-circle shadow border"
+                                         style="width:120px;
+                                    height:120px;
+                                    object-fit:cover;" />
+
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- Full Width when image does not exist -->
+
+                                <div class="col-12">
+
+                                    <p>
+                                        <strong>Email:</strong>
+                                        @item.Email
+                                    </p>
+
+                                    <p>
+                                        <strong>Status:</strong>
+
+                                        @if (item.Status)
+                                        {
+                                            <span class="badge bg-success">
+                                                Active
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">
+                                                Inactive
+                                            </span>
+                                        }
+                                    </p>
+
+                                    <p>
+                                        <strong>Roles:</strong>
+                                    </p>
+
+                                    @if (item.Admin)
+                                    {
+                                        <span class="badge bg-primary me-1">Admin</span>
+                                    }
+
+                                    @if (item.User)
+                                    {
+                                        <span class="badge bg-secondary me-1">User</span>
+                                    }
+
+                                    @if (item.Manager)
+                                    {
+                                        <span class="badge bg-warning text-dark me-1">Manager</span>
+                                    }
+
+                                    @if (item.Employee)
+                                    {
+                                        <span class="badge bg-info text-dark me-1">Employee</span>
+                                    }
+
+                                    @if (!item.Admin &&
+                                         !item.User &&
+                                         !item.Manager &&
+                                         !item.Employee)
+                                    {
+                                        <span class="badge bg-light text-dark">
+                                            No Role
+                                        </span>
+                                    }
+
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div> *@
+
+
+
+
+@model List<IdentityDemo.ViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Users Details";
+}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+            ← Dashboard
+        </a>
+
+        <h1 class="fw-bold">All Users Details</h1>
+
+        <a asp-controller="Home" asp-action="UsersList" class="btn btn-success">
+            Manage Users →
+        </a>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            bool hasImage = !string.IsNullOrEmpty(item.ProfilePicture);
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow border-0 h-100">
+
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">@item.Name</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row align-items-center">
+
+                            <div class="@(hasImage ? "col-8" : "col-12")">
+                                <p>
+                                    <strong>Email:</strong> @item.Email
+                                </p>
+
+                                <p>
+                                    <strong>Status:</strong>
+                                    @if (item.Status)
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactive</span>
+                                    }
+                                </p>
+
+                                <p><strong>Roles:</strong></p>
+
+                                @if (item.Admin)
+                                {
+                                    <span class="badge bg-primary me-1 mb-1">Admin</span>
+                                }
+
+                                @if (item.User)
+                                {
+                                    <span class="badge bg-secondary me-1 mb-1">User</span>
+                                }
+
+                                @if (item.Manager)
+                                {
+                                    <span class="badge bg-warning text-dark me-1 mb-1">Manager</span>
+                                }
+
+                                @if (item.Employee)
+                                {
+                                    <span class="badge bg-info text-dark me-1 mb-1">Employee</span>
+                                }
+
+                                @if (!item.Admin && !item.User && !item.Manager && !item.Employee)
+                                {
+                                    <span class="badge bg-light text-dark">No Role</span>
+                                }
+                            </div>
+
+                            @if (hasImage)
+                            {
+                                <div class="col-4 text-center">
+                                    <img src="@item.ProfilePicture"
+                                         class="rounded-circle shadow border"
+                                         style="width:120px;height:120px;object-fit:cover;" />
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

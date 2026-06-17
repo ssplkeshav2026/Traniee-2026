@@ -1,0 +1,77 @@
+﻿@model TaskManagement.MVC.ViewModels.ManageUserRolesViewModel
+
+@{
+    ViewData["Title"] = "Manage Roles";
+}
+
+<h2>Manage Roles</h2>
+
+<input type="hidden" id="userId" value="@Model.UserId" />
+
+<div class="mb-3">
+    <strong>User:</strong> @Model.Email
+</div>
+
+@foreach (var role in Model.AvailableRoles)
+{
+    <div class="form-check">
+        <input class="form-check-input role-checkbox"
+               type="checkbox"
+               value="@role"
+        @(Model.CurrentRoles.Contains(role) ? "checked" : null) />
+
+        <label class="form-check-label">
+            @role
+        </label>
+    </div>
+}
+
+<br />
+
+<button id="btnSaveRoles" class="btn btn-primary">
+    Save Changes
+</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $("#btnSaveRoles").click(function () {
+
+    var userId = $("#userId").val();
+
+    var selectedRoles = [];
+
+    $(".role-checkbox:checked").each(function () {
+    selectedRoles.push($(this).val());
+    });
+
+    var payload = {
+    userId: userId,
+    roles: selectedRoles
+    };
+
+    $.ajax({
+    url: "/Users/UpdateRolesAjax",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(payload),
+
+    success: function (res) {
+
+    alert(res.message);
+
+    window.location.href = "/Users/Index";
+    },
+
+    error: function (err) {
+
+    if (err.responseJSON) {
+    alert(err.responseJSON.message);
+    }
+    else {
+    alert("Request Failed");
+    }
+    }
+    });
+    });
+</script>

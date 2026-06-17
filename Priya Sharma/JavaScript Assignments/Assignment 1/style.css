@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  
+}
+
+.item {
+  background: #e5e7eb;
+  background-color: silver;
+  margin: 10px;
+  border-radius: 3px;
+    padding:2px;
+  border:1px solid black;
+  
+}
+
+.que {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-top:20px;
+}
+
+.que:hover {
+  background: #d1d5db;
+}
+
+.icon{
+  background: orange;
+  color: white;
+  padding: 5px 8px;
+  margin-right: 10px;
+  
+}
+
+.item .answer{
+
+  padding: 10px;
+  background: silver;
+  display: none;;
+  padding:2px;
+  
+}
+
+
+
+.rotate{
+  transform: rotate(90deg);
+  
+}
+
+
+
+

@@ -1,0 +1,97 @@
+﻿
+
+@model SchoolManagementSystem.ViewModels.DashboardViewModel
+
+<style>
+    .attendance-section {
+        background-color: #f4f6f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .attendance-heading {
+        background-color: dimgrey;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .attendance-card {
+        background-color: #343a40;
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+    }
+
+        .attendance-card h5 {
+            color: #ffc107;
+        }
+
+    .attendance-table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .attendance-table th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+
+        .attendance-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+</style>
+
+<div class="attendance-section">
+
+    <h3 class="mt-4 attendance-heading">
+        Attendance Overview
+    </h3>
+
+    <div class="row mt-4">
+
+        <div class="col-md-6">
+            <div class="card p-3 attendance-card">
+                <h5>Today Present</h5>
+                <h2>@Model.TodayPresent</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-3 attendance-card">
+                <h5>Today Absent</h5>
+                <h2>@Model.TodayAbsent</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <h5 class="mt-4 mb-3">Recent Attendance Records</h5>
+
+    <table class="table table-bordered attendance-table">
+
+        <tr>
+            <th>Date</th>
+            <th>Student Id</th>
+            <th>Status</th>
+        </tr>
+
+        @foreach (var item in Model.RecentAttendance)
+        {
+            <tr>
+                <td>@item.Datee</td>
+                <td>@item.StudentId</td>
+                <td>@item.Status</td>
+            </tr>
+        }
+
+    </table>
+
+</div>

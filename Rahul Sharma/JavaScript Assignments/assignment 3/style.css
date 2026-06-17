@@ -1,0 +1,67 @@
+body {
+    font-family: Arial;
+    background: #dcdbdb;
+}
+
+.container {
+    width: 300px;
+    height: 450px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    margin: 90px 0px 0px 500px;
+    border-width: 10px;
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(to bottom, #ff4da6, #8a2be2, #1e90ff) border-box;
+}
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    background: rgb(181, 146, 164);
+    border: none;
+    color: rgb(16, 14, 14);
+    cursor: pointer;
+}
+
+.progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.progress span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(201, 241, 235);
+    text-align: center;
+    color: white;
+}
+
+.progress .active {
+    background: rgb(51, 144, 147);
+}
+
+
+
+#successMsg {
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}

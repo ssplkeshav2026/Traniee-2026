@@ -1,0 +1,43 @@
+﻿@model List<EmpTaskManagementMVC.ViewModel.Tasks.TaskViewModel>
+
+<h2>Tasks List</h2>
+
+<a asp-controller="MvcTasks" asp-action="Create">Create New Task</a>
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Assigned To</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.AssignedToUserId</td>
+                <td>@item.DueDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.Status</td>
+                <td>
+                    <a asp-controller="MvcTasks" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="MvcTasks" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="MvcTasks" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="6">No tasks found</td>
+        </tr>
+    }
+
+</table>

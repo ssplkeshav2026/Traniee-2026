@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../TaskManagementSystemMVC/TaskManagementSystemMVC/TaskManagementSystemMVC.csproj" />
+  <Project Path="EmployeeTaskManagementSystem/TaskManagementSystemApi.csproj" />
+</Solution>

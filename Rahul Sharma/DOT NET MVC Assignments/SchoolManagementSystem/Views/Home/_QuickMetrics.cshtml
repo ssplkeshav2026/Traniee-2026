@@ -1,0 +1,84 @@
+﻿@model SchoolManagementSystem.ViewModels.DashboardViewModel
+
+<style>
+    .metrics-section {
+        background-color: #f4f6f9;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .metrics-heading {
+        background-color: dimgrey;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .metric-card {
+        background: linear-gradient(135deg, #343a40, #495057);
+        color: white;
+        border-radius: 12px;
+        text-align: center;
+        transition: 0.3s ease;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-card h5 {
+            color: #ffc107;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .metric-card h2 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+</style>
+
+<div class="metrics-section">
+
+    <h3 class="mt-4 metrics-heading">
+        Quick Metrics
+    </h3>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card p-3 metric-card">
+                <h5>Teachers</h5>
+                <h2>@Model.TotalTeachers</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card p-3 metric-card">
+                <h5>Parents</h5>
+                <h2>@Model.TotalParents</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card p-3 metric-card">
+                <h5>Courses</h5>
+                <h2>@Model.TotalCourses</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card p-3 metric-card">
+                <h5>Grades</h5>
+                <h2>@Model.TotalGrades</h2>
+            </div>
+        </div>
+
+    </div>
+
+</div>

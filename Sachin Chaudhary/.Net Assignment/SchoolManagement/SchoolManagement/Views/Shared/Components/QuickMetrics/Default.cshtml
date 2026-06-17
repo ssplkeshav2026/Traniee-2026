@@ -1,0 +1,45 @@
+﻿@model SchoolManagement.Models.ViewModels.QuickMetricsVM
+
+<div class="card shadow p-3 mb-4">
+
+    <div class="card-header bg-success text-white">
+        <h4>Quick Metrics</h4>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row text-center">
+
+            <div class="col-md-6 mb-3">
+                <div class="border rounded p-3 bg-light">
+                    <h5>Total Teachers</h5>
+                    <h2 class="text-primary">@Model.TotalTeachers</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="border rounded p-3 bg-light">
+                    <h5>Total Parents</h5>
+                    <h2 class="text-success">@Model.TotalParents</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="border rounded p-3 bg-light">
+                    <h5>Total Courses</h5>
+                    <h2 class="text-warning">@Model.TotalCourses</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="border rounded p-3 bg-light">
+                    <h5>Total Sections</h5>
+                    <h2 class="text-danger">@Model.TotalSections</h2>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

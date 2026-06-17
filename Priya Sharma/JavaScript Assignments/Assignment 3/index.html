@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+    <form id="form">
+
+    <h2 style="text-align: center;">SignUp Form</h2>
+
+    <div class="nav">
+        <div>
+        <p>Name</p>
+        <div class="element">1</div>
+        </div>
+        <div><p>Contact</p>
+        <div class="element">2</div>
+        </div>
+        <div>
+            <p>Birth</p>
+        <div class="element">3</div>
+        </div>
+        <div>
+            <p>Submit</p>
+        <div class="element">4</div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>Basic Info</h2>
+        <label for="fname">FirstName</label>
+        <input type="text" id="fname">
+        <label for="lname">LastName</label>
+        <input type="text" id="lname">
+        <button type="button" class="next">NEXT</button>
+    </div>
+
+
+    <div class="block">
+        <h2>Contact Info</h2>
+        <label for="email">Email Address</label>
+        <input type="email" id="email">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone">
+        <button type="button" class="prev">PREVIOUS</button>
+        <button type="button" class="next">NEXT</button>
+    </div>
+
+    <div class="block">
+        <h2>Date of Birth</h2>
+        <label for="dob">Date</label>
+        <input type="date" id="dob">
+        <label for="gender">Gender</label>
+        <select id="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <button type="button" class="prev">PREVIOUS</button>
+        <button type="button" class="next">NEXT</button>
+    </div>
+
+    <div class="block">
+        <h2>Login Details</h2>
+        <label for="username">Username</label>
+        <input type="text" id="username">
+        <label for="password">Password</label>
+        <input type="password" id="password">
+        <button type="button" class="prev">PREVIOUS</button>
+        <button type="submit">SUBMIT</button>
+    </div>
+
+    <div id="submit">Submitted </div>
+</form>
+</div>
+    <script src="app.js"></script>
+</body>
+
+</html>

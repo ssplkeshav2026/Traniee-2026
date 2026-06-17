@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">MoviesFlex</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  >
+            Movies
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="popular">Popular</a></li>
+            <li><a class="dropdown-item" routerLink="now-playing">Now Playing</a></li>
+            <li><a class="dropdown-item" routerLink="up-coming">Upcoming</a></li>
+            <li><a class="dropdown-item" routerLink="top-rated">Top Rated</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle">
+            TV shows
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="popularTv">Popular</a></li>
+            <li><a class="dropdown-item" routerLink="airing-today">Airing Today</a></li>
+            <li><a class="dropdown-item" routerLink="on-tv">On TV</a></li>
+            <li><a class="dropdown-item" routerLink="topRatedTv">top Rated</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex" role="search"  >
+        <button class="btn btn-outline-success" type="submit" (click)="getmovie()">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

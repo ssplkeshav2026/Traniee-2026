@@ -1,0 +1,140 @@
+﻿@model List<TaskManagement.MVC.ViewModels.Tasks.TaskResponseViewModel>
+
+@{
+    ViewData["Title"] = "Task List";
+    var role = ViewBag.Role as string;
+}
+ 
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Task List</h3>
+     
+        @if (role == "Admin" || role == "Manager")
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                Create Task
+            </a>
+        }
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-info">
+                    No tasks found.
+                </div>
+            }
+            else
+            {
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Assigned To</th>
+                            <th>Assigned By</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var task in Model)
+                        {
+                            <tr>
+                                <td>@task.Title</td>
+                                <td>@task.AssignedToUserName</td>
+                                <td>@task.AssignedByUserName</td>
+                                <td>
+                                    @if (task.Status == 1)
+                                    {
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                    }
+                                    else if (task.Status == 2)
+                                    {
+                                        <span class="badge bg-info text-dark">In Progress</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Completed</span>
+                                    }
+                                </td>
+                                <td>@task.DueDate.ToString("dd-MM-yyyy")</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-sm btn-info">
+                                        Details
+                                    </a>
+
+                                    @if (role == "Admin" || role == "Manager")
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-sm btn-warning">
+                                            Edit
+                                        </a>
+                                    }
+
+                                    @if (role == "Admin")
+                                    {
+                                        <button type="button"
+                                                class="btn btn-sm btn-danger delete-task"
+                                                data-id="@task.Id">
+                                            Delete
+                                        </button>
+                                    }
+
+                                    @if (role == "Employee")
+                                    {
+                                        <a asp-action="MyTasks" class="btn btn-sm btn-success">
+                                            Update Status
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+                   <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary">
+            Back
+        </a>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $(".delete-task").click(function () {
+
+                var taskId = $(this).data("id");
+                var row = $(this).closest("tr");
+
+                if (!confirm("Are you sure you want to delete this task?")) {
+                    return;
+                }
+
+                $.ajax({
+                    url: '/Tasks/Delete',
+                    type: 'POST',
+                    data: { id: taskId },
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            row.remove();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert("Something went wrong while deleting task.");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+}

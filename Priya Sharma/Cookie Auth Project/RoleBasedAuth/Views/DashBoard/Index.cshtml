@@ -1,0 +1,122 @@
+﻿
+@model List<RoleBasedAuth.Models.DTO.ManageUser>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container mt-4">
+
+    <h2>Manage Users</h2>
+
+    <form asp-action="UpdateRoles" asp-controller="DashBoard" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <table class="table table-bordered table-hover text-center align-middle">
+
+            <thead>
+
+                <tr>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Email</th>
+                    <th rowspan="2">Status</th>
+                    <th colspan="4">Roles</th>
+                </tr>
+
+                <tr>
+                    <th>Admin</th>
+                    <th>User</th>
+                    <th>Manager</th>
+                    <th>Employee</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (Model[i].Email == "admin@gmail.com")
+                    {
+                        continue;
+                    }
+
+                    <tr>
+
+                        <td>
+                            @Model[i].Name
+                        </td>
+
+                        <td>
+                            @Model[i].Email
+                        </td>
+
+                        <td>
+
+                            <a asp-action="ToggleStatus" asp-controller="DashBoard"  asp-route-userId="@Model[i].UserId"
+                               class="btn @(Model[i].Status ? "btn-success" : "btn-danger") btn-sm">
+
+                                @(Model[i].Status ? "Active" : "Inactive")
+
+                            </a>
+
+                        </td>
+                        <input type="hidden"
+                               name="[@i].UserId"
+                               value="@Model[i].UserId" />
+                        
+                        <!-- Admin Role -->
+                        <td>
+
+                            <input type="checkbox"
+                                   name="[@i].UserRoles"
+                                   value="Admin"
+                            @(Model[i].UserRoles.Contains("Admin") ? "checked" : "") />
+
+                        </td>
+
+                        <!-- User Role -->
+                        <td>
+
+                            <input type="checkbox"
+                                   name="[@i].UserRoles"
+                                   value="User"
+                            @(Model[i].UserRoles.Contains("User") ? "checked" : "") />
+
+                        </td>
+
+                        <!-- Manager Role -->
+                        <td>
+
+                            <input type="checkbox"
+                                   name="[@i].UserRoles"
+                                   value="Manager"
+                            @(Model[i].UserRoles.Contains("Manager") ? "checked" : "") />
+
+                        </td>
+
+                        <!-- Employee Role -->
+                        <td>
+
+                            <input type="checkbox"
+                                   name="[@i].UserRoles"
+                                   value="Employee"
+                            @(Model[i].UserRoles.Contains("Employee") ? "checked" : "") />
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+        <button type="submit" class="btn btn-success">
+            Save
+        </button>
+
+    </form>
+
+</div>

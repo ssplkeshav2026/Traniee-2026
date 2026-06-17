@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- form title -->
+         <div class="title">
+        <div class="form-title">
+            <div class="color"></div>
+ 
+             <div class="title-input editable" contenteditable="true">Untitle Form</div>
+             <div class="icon-style">
+                    <span class="bold"><i class="fa-solid fa-bold"></i></span>
+                    <span class="italic"><i class="fa-solid fa-italic"></i></span>
+                    <span class="underline"><i class="fa-solid fa-underline"></i></span>
+                     <span class="Strikethrough"><i class="fa-solid fa-strikethrough"></i></span>
+                     <span class="remove-format"><i class="fas fa-remove-format"></i></i></span>
+                </div>
+            <div class="desc">
+                <div class="title-input editable" contenteditable="true">Form description</div>
+                
+                <div class="icon-style">
+                    <span class="bold"><i class="fa-solid fa-bold"></i></span>
+                    <span class="italic"><i class="fa-solid fa-italic"></i></span>
+                    <span class="underline"><i class="fa-solid fa-underline"></i></span>
+                     <span class="Strikethrough"><i class="fa-solid fa-strikethrough"></i></span>
+                     <span class="remove-format"><i class="fas fa-remove-format"></i></i></span>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+
+        <!-- quetions -->
+        <div class="que-main">
+            <div class="que">
+                <div class="form-title">
+                    <div class="drag-handle">
+                        <span class="grip"><i class="fa-solid fa-grip"></i></span>
+                    </div>
+                    
+                    <div class="title-input editable" id="que" contenteditable="true">Untitled Question</div>
+                    
+                    <span class="image"><i class="fa-regular fa-image"></i></span>
+                    <input type="file" class="image-input" accept="image/*" style="display:none;">
+                    
+                    <select class="question-type">
+                        <option value="multiple">Multiple choice</option>
+                        <option value="checkbox">Checkboxes</option>
+                        <option value="dropdown">Drop-down</option>
+                        <option value="date">Date</option>
+                        <option value="paragraph">Paragraph</option>
+                        <option value="short Answer">Short Answer</option>
+                    </select>
+
+                    <div class="icon-style">
+                        <span class="bold"><i class="fa-solid fa-bold"></i></span>
+                        <span class="italic"><i class="fa-solid fa-italic"></i></span>
+                        <span class="underline"><i class="fa-solid fa-underline"></i></span>
+                         <span class="Strikethrough"><i class="fa-solid fa-strikethrough"></i></span>
+                         <span class="remove-format"><i class="fas fa-remove-format"></i></i></span>
+                    </div>
+
+                    <div class="desc question-area"></div>
+
+                    <div class="icon-delete-copy-required">
+                        <span class="copy"><i class="fa-regular fa-copy"></i></span>
+                        <span class="delete"><i class="fa-solid fa-delete-left"></i></span>
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+
+    </div>
+    <span id="generateHTML" title="preview" style="margin-left: 450px; font-size: large; text-shadow: 2px; color:rgb(30, 29, 29);background-color:rgb(150, 128, 166)"><i class="fa-solid fa-eye"></i></span>
+   
+    <div class="side-toolbar">
+        <span class="add-question"><i class="fa-solid fa-plus"></i></span>
+
+        <span class="add-title"><i class="fa-solid fa-t"></i></span>
+       
+    </div>
+
+    <div class="preview">
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

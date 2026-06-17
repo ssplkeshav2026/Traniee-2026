@@ -1,0 +1,30 @@
+.cards{
+    
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+
+}
+div h1{
+    text-align: center;
+}
+div h3{
+    text-align: center;
+    padding-bottom: 50px;
+}
+.b{
+    font-weight: 550;
+    font-size: larger;
+}
+.card-img{
+    height:200px;
+    
+}
+.card-body{
+    box-shadow: 5px 5px 10px gray;
+    width:300px;
+}
+.card-content{
+    padding: 16px;
+}

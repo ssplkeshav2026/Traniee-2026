@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+label {
+    text-align: start;
+    width: 100%;
+    padding-left: 27px;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    border-image: linear-gradient(to top, #3a4ed5 0%, #D63E8F 100%) 1;
+    border-radius: 5px;
+    /* this doesn't work */
+    width: 25%;
+    margin: 52px auto;
+    border-width: 4px;
+    border-style: solid;
+    min-height: 60%;
+}
+input{
+    width: 85%;
+    height:30px;
+}
+
+.btn {
+    color: white;
+    background-color: rgb(214, 62, 143);
+    padding: 10px 20px;
+    border: none;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    margin: 50px auto;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.hidden-form {
+    display: none;
+}
+#btn1-next{
+    width: 100%;
+    padding: 10px 100px;
+}
+.btn-box{
+    display: flex;
+    gap: 5px;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#headings-level {
+    display: flex;
+    gap: 20px;
+}
+
+#headings-level-circle {
+    display: flex;
+    gap: 20px;
+}
+
+.circle {
+    border: 1px solid black;
+    border-radius: 100;
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+    font-size: 0.9rem;
+    padding: 2px 7px;
+}
+
+hr {
+    width: 5px;
+    background-color: black;
+    color: black;
+    rotate: 90deg;
+}
+
+.pink {
+    background-color: #D63E8F;
+    color: #D63E8F;
+    border: white 1px solid;
+}

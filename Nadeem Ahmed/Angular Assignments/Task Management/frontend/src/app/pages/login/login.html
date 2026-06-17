@@ -1,0 +1,53 @@
+<div class="container-fluid min-vh-100 login-bg">
+  <div class="row min-vh-100 justify-content-center align-items-center">
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
+      <div class="card border-0 shadow-lg rounded-4 login-card">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold text-white">Welcome Back</h2>
+
+            <p class="text-secondary">Sign in to your account</p>
+          </div>
+
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-4">
+              <label class="form-label text-light fw-semibold"> Email Address </label>
+
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label text-light fw-semibold"> Password </label>
+
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+            </div>
+
+            @if (errorMessage()) {
+              <div class="alert alert-danger">
+                {{ errorMessage() }}
+              </div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+
+            <div class="text-center mt-4">
+              <span class="text-secondary"> Don't have an account? </span>
+
+              <a routerLink="/register" class="text-decoration-none ms-2"> Register </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

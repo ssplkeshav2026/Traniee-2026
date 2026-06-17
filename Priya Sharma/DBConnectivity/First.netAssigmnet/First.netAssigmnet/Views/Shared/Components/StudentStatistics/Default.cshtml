@@ -1,0 +1,14 @@
+﻿@model First.netAssigmnet.ViewModel.Student_Statistics
+
+<h2>Student Statistics</h2>
+
+<p>Total Students: @Model.TotalStudents</p>
+<p>Active Students: @Model.ActiveStudents</p>
+<p>Inactive Students: @Model.InactiveStudents</p>
+
+<h4>Students Per Grade</h4>
+
+@foreach (var item in Model.StudentsPerClassroom)
+{
+    <p>Grade @item.Key : @item.Value</p>
+}

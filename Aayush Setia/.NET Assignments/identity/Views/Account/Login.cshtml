@@ -1,0 +1,25 @@
+﻿@model identity.ViewModel.LoginViewModel
+
+<h2>Login</h2>
+
+<form method="post">
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Password</label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">
+        Login
+    </button>
+
+</form>

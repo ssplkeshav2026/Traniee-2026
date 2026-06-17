@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="form-header">
+            <div class="form-title">
+                <input type="text" id="formTitle" placeholder="Form title" style="border: none;">
+                <!-- <div class="icons">
+                    <i class="fa-solid fa-bold" style="color: #000;"></i>
+                    <i class="fa-solid fa-underline" style="color: #000;"></i>
+                    <i class="fa-solid fa-italic" style="color: #000;"></i>
+                    <i class="fa-solid fa-text-slash" style="color: #000;"></i>
+                </div> -->
+            </div>
+
+            <div class="form-desc">
+                <input type="text" id="formDesc" placeholder="Form description" style="border:none;">
+                <!-- <div class="icons">
+                    <i class="fa-solid fa-bold" style="color: #000;"></i>
+                    <i class="fa-solid fa-underline" style="color: #000;"></i>
+                    <i class="fa-solid fa-italic" style="color: #000;"></i>
+                    <i class="fa-solid fa-text-slash" style="color: #000;"></i>
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="description">
+        <div class="Description" style="display:none;">
+            <div class="header">
+                <div class="desc-head">
+                    <input type="text" id="desc-head" placeholder="Untitled Title" style="border: none;">
+                </div>
+
+                <div class="desc-mid">
+                    <i class="fa-solid fa-copy duplicate"></i>
+                    <i class="fa-solid fa-trash delete"></i>
+                </div>
+            </div>
+            <div class="desc-foot">
+                <input type="text" id="desc-foot" placeholder="Description (optional)" style="border : none;">
+            </div>
+        </div>
+    </div>
+
+
+    <div id="questions">
+
+        <div class="question-box" style="display:none;">
+
+            <div class="ques-header">
+
+                <div>
+                    <input type="text"  placeholder="Question" class="question">
+                    <div class="image-preview"></div>
+                    <div class="options"></div>
+                </div>
+
+                <div>
+                    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+
+
+                        <i class="fa-regular fa-image upload-img"></i>
+                        <input type="file" class="img-input" hidden>
+
+
+
+                        <div class="Question-type">
+                            <select name="questionType"  class="questionType">
+                                <option value="short">Short Answer</option>
+                                <option value="paragraph">Paragraph</option>
+                                <option value="mcq">Multiple Choice</option>
+                                <option value="checkbox">Checkboxes</option>
+                                <option value="dropdown">Dropdown</option>
+                                <option value="file">File Upload</option>
+                                <option value="date">Date</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div>
+                        <div class="icons">
+                            <i class="fa-solid fa-bold" style="color: #000;"></i>
+                            <i class="fa-solid fa-underline" style="color: #000;"></i>
+                            <i class="fa-solid fa-italic" style="color: #000;"></i>
+                            <i class="fa-solid fa-text-slash" style="color: #000;"></i>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="answer">
+                <input type="text" id="ans" style="border:none;">
+            </div>
+
+            <div class="bottom">
+
+                <div class="right-icons">
+                    <i class="fa-solid fa-copy duplicate"></i>
+                    <i class="fa-solid fa-trash delete"></i>
+                </div>
+
+                <div class="right">
+                    <label>Required</label>
+                    <input type="checkbox" class="toggle">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="side">
+        <i class="fa-solid fa-plus" id="add"></i>
+        <i class="fa-solid fa-t" id="add"></i>
+    </div>
+
+
+
+    <div class="preview-button-container">
+        <button type="button" id="preview-button">Preview Form</button>
+    </div>
+
+
+    <div id="form-preview-container">
+
+    </div>
+    <div id="question-box-preview"></div>
+
+    <div id="title-preview-container"></div>
+
+
+    <script src="form.js"></script>
+</body>
+
+</html>

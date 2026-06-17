@@ -1,0 +1,40 @@
+﻿@model EmpTaskManagementMVC.ViewModel.Tasks.TaskViewModel
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h2>Task Details</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+
+    <tr>
+        <th>Assigned To</th>
+        <td>@Model.AssignedToUserId</td>
+    </tr>
+
+    <tr>
+        <th>Due Date</th>
+        <td>@Model.DueDate.ToString("yyyy-MM-dd")</td>
+    </tr>
+
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+
+</table>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-controller="Emp" asp-action="UpdateTaskStatus" asp-route-id="@Model.Id" class="btn btn-warning">Update Status</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>

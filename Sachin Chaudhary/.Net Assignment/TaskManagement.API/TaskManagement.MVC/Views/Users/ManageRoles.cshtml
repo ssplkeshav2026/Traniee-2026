@@ -1,0 +1,141 @@
+﻿@model TaskManagement.MVC.ViewModels.ManageUserRolesViewModel
+
+@{
+    ViewData["Title"] = "Manage User Roles";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>
+        <i class="bi bi-shield-lock"></i>
+        Assign Multiple Roles
+    </h2>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i>
+        Back to Users
+    </a>
+</div>
+
+<div class="card shadow-sm border-0 p-4">
+
+    <div class="mb-4">
+        <h5>User Email:</h5>
+        <h4>@Model.Email</h4>
+    </div>
+
+    <form id="manageRolesForm">
+
+        <input type="hidden"
+               id="targetUserId"
+               value="@Model.UserId" />
+
+        <div class="mb-4">
+
+            <label class="form-label fw-bold">
+                Select Roles
+            </label>
+
+            <div class="row">
+
+                @foreach (var role in Model.AvailableRoles)
+                {
+                    var isAssigned =
+                    Model.CurrentRoles.Contains(role);
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="border rounded p-3">
+
+                            <input type="checkbox"
+                                   class="form-check-input role-checkbox"
+                                   value="@role"
+                                   id="role_@role"
+                            @(isAssigned ? "checked" : null) />
+
+                            <label for="role_@role"
+                                   class="ms-2">
+                                @role
+                            </label>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-success">
+            Save Roles
+        </button>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script>
+
+        $(document).ready(function () {
+
+            $("#manageRolesForm").submit(function (e) {
+
+                e.preventDefault();
+
+                var selectedRoles = [];
+
+                $(".role-checkbox:checked").each(function () {
+
+                    selectedRoles.push($(this).val());
+
+                });
+
+                var payload = {
+
+                    userId: $("#targetUserId").val(),
+                    roles: selectedRoles
+
+                };
+
+                console.log(payload);
+
+                $.ajax({
+
+                    url: "/Users/AssignRolesAjax",
+
+                    type: "POST",
+
+                    contentType: "application/json",
+
+                    data: JSON.stringify(payload),
+
+                           success: function (response) {
+
+            alert(response.message);
+
+            window.location.href = '/Users/Index';
+
+        },
+
+                    error: function (xhr) {
+
+                        console.log(xhr);
+
+                        alert(
+                            xhr.responseJSON?.message ??
+                            "Error updating roles"
+                        );
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+}

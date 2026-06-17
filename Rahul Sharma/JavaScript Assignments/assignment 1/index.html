@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    
+    <div class="main">
+        <h1>FAQs</h1>
+        <div class="item">
+            <div class="que">
+                <h5>
+                    <i class="arrow fa-solid fa-arrow-right"></i>
+                    Q. What makes Sumedha Softech a leading Custom Website Development Company in India?
+                </h5>
+            </div>
+            <div class="ans">
+                <p>Sumedha Softech delivers high-quality, tailored website development solutions that meet unique business needs, using modern technologies for performance, scalability, and design excellence.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="que">
+                <h5>
+                    <i class="arrow fa-solid fa-arrow-right"></i>
+                   Q.Do you offer services as a Web Application Development Company in Jaipur?
+                </h5>
+            </div>
+            <div class="ans">
+                <p>Yes, Sumedha Softech creates secure, responsive, and feature-rich web applications in Jaipur that help businesses streamline operations and engage their customers effectively.</p>
+            </div>
+        </div>
+
+
+        <div class="item">
+            <div class="que">
+                <h5>
+                    <i class="arrow fa-solid fa-arrow-right"></i>
+                    Q. Q.How does Sumedha Softech excel as a Software Development Company in Jaipur?
+                </h5>
+            </div>
+            <div class="ans">
+                <p>Our expert team develops custom software tailored to your business workflows, offering seamless integration, scalability, and ongoing support for long-term success.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="item">
+            <div class="que">
+                <h5>
+                    <i class="arrow fa-solid fa-arrow-right"></i>
+                   Q.Can I hire Sumedha Softech as my Mobile App Development Company in India?
+            </div>
+            <div class="ans">
+                <p>Yes, you can hire dedicated web app developers in India from our skilled team for long-term or project-based engagements to deliver high-quality web applications.</p>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="item">
+            <div class="que">
+                <h5>
+                    <i class="arrow fa-solid fa-arrow-right"></i>
+                  Q.Does Sumedha Softech offer React Native or Fullstack developers?
+                </h5>
+            </div>
+            <div class="ans">
+                <p>
+                   Yes, we provide dedicated React Native developers and Fullstack developers in Jaipur to deliver seamless mobile applications and end-to-end web solutions.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="js/jquery-4.0.0.min.js"></script>
+  <script>$(document).ready(function () {
+
+    $(".que").click(function () {
+
+        if ($(this).next(".ans").is(":visible")) {
+            // already open → close it
+            $(this).next(".ans").slideUp();
+            $(this).find(".arrow").removeClass("rotate");
+        } else {
+     
+            $(".ans").slideUp();
+            $(".arrow").removeClass("rotate");
+
+           
+            $(this).next(".ans").slideDown();
+            $(this).find(".arrow").addClass("rotate");
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+.text2 h1{
+    font-weight: lighter;
+}
+.faq-body{
+    background-color: gainsboro;
+    margin: 10px 0;
+    padding: 12px;
+    overflow: hidden;   
+    
+    
+
+}
+.faq-icon{
+     float: left;
+    width: 40px;
+    padding-top: 20px;
+    transition: 0.3s;
+    
+}
+.faq-icon i{
+    display: inline-block;
+    padding: 6px;
+    
+    background-color: orangered;
+    
+    color: white;
+    
+    
+   
+}
+.faq-que{
+    padding-left: 55px;
+}
+
+.faq-que p{
+    
+    font-size: 20px;
+    
+}
+.faq-ans{
+    display: none;
+}
+.faq-ans p{
+    padding-left: 60px;
+}
+.rotate-icon{
+    transform: rotate(90deg);
+    
+}
+
+
+

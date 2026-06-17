@@ -1,0 +1,108 @@
+﻿@model IEnumerable<SchoolManagement.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">Student List</h2>
+
+        <a asp-action="Create" class="btn btn-success">
+            Create New
+        </a>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover table-striped align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>Phone</th>
+                    <th>Mobile</th>
+                    <th>Date Of Join</th>
+                    <th>Status</th>
+                    <th>Last Login</th>
+                    <th>IP</th>
+
+                    <th>Parent</th>
+                    <th width="220">Images</th>
+                 
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Email</td>
+
+                        <td>@item.Password</td>
+
+                        <td>@item.Fname</td>
+
+                        <td>@item.Lname</td>
+
+                        <td>@item.Dob</td>
+
+                        <td>@item.Phone</td>
+
+                        <td>@item.Mobile</td>
+
+                        <td>@item.DateOfJoin</td>
+
+                        <td>@item.Status</td>
+
+                        <td>@item.LastLoginDate</td>
+
+                        <td>@item.LastLoginIp</td>
+
+                        <td>@item.ParentId</td>
+                        <td>
+                            <img src="~/uploads/@item.Image"
+                                 width="100"
+                                 height="100"
+                                 class="rounded border" />
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Create"
+                                   asp-route-id="@item.StudentId"
+                                   class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Details"
+                                   asp-route-id="@item.StudentId"
+                                   class="btn btn-info btn-sm text-white">
+                                Details
+                            </a>
+
+                            <a asp-action="Delete"
+                                   asp-route-id="@item.StudentId"
+                                   class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-6">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" routerLink="/"> MovieApp </a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="nav">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="no-click nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            Movies
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="movies">Popular</a></li>
+            <li><a class="dropdown-item" routerLink="movies/now-playing">Now Playing</a></li>
+            <li><a class="dropdown-item" routerLink="movies/upcoming-movies">Upcoming</a></li>
+            <li><a class="dropdown-item" routerLink="movies/top-rated-movies">Top Rated</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> TV Shows </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/tv">Popular</a></li>
+            <li><a class="dropdown-item" routerLink="/tv/airing-today">Airing Today</a></li>
+            <li><a class="dropdown-item" routerLink="/tv/on-the-air">On The Air</a></li>
+            <li><a class="dropdown-item" routerLink="/tv/top-rated-shows">Top Rated</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">People</a>
+        </li>
+      </ul>
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search movies..." />
+        <button class="btn btn-outline-light">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,110 @@
+﻿@model dynamic
+
+<h2>User Management</h2>
+
+<table class="table table-bordered">
+
+	<thead>
+		<tr>
+			<th>User Name</th>
+			<th>Email</th>
+			<th>Role</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		@foreach (var user in Model)
+		{
+			<tr>
+
+				<td>@user.UserName</td>
+
+				<td>@user.Email</td>
+
+				<td>
+
+					<form asp-action="UpdateRole" method="post">
+
+						<input type="hidden"
+							   name="userId"
+							   value="@user.Id" />
+
+						@* Admin *@
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="roles" value="Admin"
+							@(user.Roles.Contains("Admin") ? "checked" : "") />
+							<label class="form-check-label">Admin</label>
+						</div>
+
+						@* Manager *@
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="roles" value="Manager"
+							@(user.Roles.Contains("Manager") ? "checked" : "") />
+							<label class="form-check-label">Manager</label>
+						</div>
+
+						@* Member *@
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="roles" value="Member"
+							@(user.Roles.Contains("Member") ? "checked" : "") />
+							<label class="form-check-label">Member</label>
+ 
+
+							<button type="submit"
+									class="btn btn-primary btn-sm">
+								Save
+							</button>
+
+						</form>
+
+					</td>
+
+					<td>
+
+						@if (user.IsActive)
+						{
+							<span>Active</span>
+						}
+						else
+						{
+							<span>Inactive</span>
+						}
+
+					</td>
+
+					<td>
+
+						<form asp-action="ToggleStatus" method="post">
+
+							<input type="hidden"
+								   name="userId"
+								   value="@user.Id" />
+
+							@if (user.IsActive)
+							{
+								<button type="submit"
+										class="btn btn-danger btn-sm">
+									Deactivate
+								</button>
+							}
+							else
+							{
+								<button type="submit"
+										class="btn btn-success btn-sm">
+									Activate
+								</button>
+							}
+
+						</form>
+
+					</td>
+
+				</tr>
+			}
+
+		</tbody>
+
+	</table>

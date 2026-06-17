@@ -1,0 +1,57 @@
+
+
+body{
+  background-color: #fa9f6e;
+}
+
+.para1{
+    margin-top: 30px;
+    padding-top: 30px;
+      padding-bottom: 30px;
+        padding-top: 30px;
+  padding-right: 30px;
+margin-left: 40px;
+margin-right: 60%;
+
+background-color: rgb(82, 139, 189);
+  
+  width: 80%;
+  
+}
+
+.q1{
+     font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  width: 100%;
+  border: none;
+   cursor: pointer;
+  background: none;
+ 
+ 
+}
+
+.arrow{
+height: fit-content;
+ font-size: 22px;
+  width: fit-content;
+   height: fit-content;
+ 
+align-items: center;
+
+background: #6efa75;
+}
+.answer{display: none;
+  color: #222;
+  padding-left: 30px;
+}
+
+
+.para1 .q1 .rotate{
+  transform: rotate(90deg);
+
+}
+
+
+

@@ -1,0 +1,254 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0EBF8;
+    position: relative;
+}
+
+input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+hr {
+    width: 90%;
+    height: 3px;
+    opacity: 0.2;
+}   
+
+
+input:active {
+    border: none;
+}
+
+.main {
+    width: 65%;
+    margin: 40px auto;
+    padding: 0px 50px;
+}
+
+.heading-box {
+    border-top: 10px solid #673AB7;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(66, 66, 66);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sideAnimation {
+    border-left: #4285F4 solid 10px;
+}
+
+/* problem here not working */
+/* .container:active{
+    border-left: 10px solid #4285F4;
+} */
+
+.container {
+    margin: 15px 0px;
+}
+
+.input-edit-tile {
+    /* display: none; */
+    min-height: fit-content;
+}
+
+.heading-options {
+    border-top: #673AB7 2px solid;
+    display: flex;
+    gap: 18px;
+    padding: 10px
+}
+
+.input-side-tile {
+    width: 49%;
+}
+
+/* for only top heading */
+#heading-title-input {
+    font-size: 2.5rem;
+    font-weight: lighter;
+}
+
+i {
+    color: #202020;
+}
+
+.question-first-container {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100px;
+    width: 40px;
+    background-color: #FFFFFF;
+    position: absolute;
+    right: -54px;
+    top: -2px;
+    box-shadow: 0px 0px 4px rgb(66, 66, 66);
+    border-radius: 10px;
+    align-items: center;
+}
+
+i {
+    color: #5e6267;
+}
+
+
+
+
+
+/* Qusiotn box styling */
+
+.question-box {
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(66, 66, 66);
+    position: relative;
+}
+
+.question-input {
+    width: 49%;
+}
+
+.question-box>div {
+    text-align: center;
+}
+
+.input-box {
+    font-size: 1.5rem;
+    display: flex;
+}
+
+.text-container {
+    font-size: 1.2rem;
+}
+
+.optionBox {
+    display: flex;
+    padding: 9px 10px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+
+.optionBox>input {
+    border-bottom: #5e6267 1px solid;
+    margin: 0px 10px;
+}
+
+.fa-grip {
+    cursor: all-scroll;
+}
+
+.lastOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 36%;
+    cursor: pointer;
+
+}
+
+.lastOption>.otherBtn {
+    width: fit-content;
+}
+
+.lastOption>input {
+    width: 80px;
+    font-size: 1rem;
+    border: none;
+}
+
+.option-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.option-footer>hr {
+    rotate: 90deg;
+    width: 26px;
+    background: black;
+    height: 3px;
+}
+
+.rotate{
+    rotate: 90deg;
+}
+.hidden {
+    display: none;
+}
+
+.text-box {
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(66, 66, 66);
+    position: relative;
+}
+
+.text-box>div {
+    text-align: center;
+}
+
+.img-upload {
+    position: relative;
+}
+
+.img-input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+}
+
+#result {
+    width: 65%;
+    margin: 40px auto;
+    padding: 0px 50px;
+}
+
+.dynamic-checkbox {
+    width: 10%;
+}
+
+.dynamic-optionBox {
+    justify-content: start;
+}
+
+.dynamic-in {
+    background-color: #d1d0d0;
+    padding: 5px;
+}
+
+.dynamic-headers {
+    padding: 10px 20px;
+}
+
+.genPage {
+    position: fixed;
+    left: 10px;
+    bottom: 20px;
+    background-color: #673AB7;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 9px;
+}

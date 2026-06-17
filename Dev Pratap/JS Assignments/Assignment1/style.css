@@ -1,0 +1,31 @@
+.faqContiner {
+    padding: 10px 20px;
+    background: rgb(240, 242, 247);
+    margin: 10px;
+    font-size: 1.5rem;
+}
+
+.questions {
+    padding: 10px;
+}
+
+.answers {
+    padding: 10px 30px;
+    display: none;
+}
+
+span {
+    font-size: 20px;
+    padding: 5px;
+    margin: 0px 10px;
+    color: white;
+    background-color: rgb(232, 121, 23);
+    position: absolute;
+    left: 0;
+    transition: transform 0.50s ease-in-out;
+
+}
+
+.rotated {
+    transform: rotate(90deg);
+}

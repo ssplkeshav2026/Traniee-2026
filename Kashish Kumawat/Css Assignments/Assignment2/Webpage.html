@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage</title>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Source Sans 3', sans-serif;
+        scroll-behavior:smooth;
+    }
+    body{
+        background: linear-gradient(180deg,#5f4bb6,#e37682);
+    }
+    .header{
+        text-align:center;
+        padding:160px 20px 140px;
+        color:white;
+    }
+    .logo img {
+        margin-top: 35px;
+    }
+    .header h1{
+        font-size:55px;
+        font-weight:300;
+        letter-spacing:2px;
+        margin: 22px;
+        font-family: Berlin Sans FB;
+    }        
+    .header p{
+        font-size:18px;
+        opacity:0.8;
+        margin-top: 20px;
+        color: #f3f3f3;
+    }
+    .main{
+        width:1200px;
+        padding-top:5px;
+        margin:auto;
+        background:#fff;
+        border-radius:10px;
+        overflow:hidden;
+    }
+    .navbar{
+        background:#eee;
+        padding:15px 0;
+        background-position: fixed;
+    }
+    .navbar ul{
+        display:flex;
+        justify-content:center;
+        gap:40px;
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+    .navbar li{
+        font-size:14px;
+        color:#777;
+        padding:8px 16px;
+        border-radius:6px;
+    }
+    .navbar .active{
+        background:#fff;
+        color:#333;
+    }
+    .navbar li:hover{
+        background-color: white;
+        border-radius: 5px;
+    }
+    .section{
+        padding:70px 60px;
+        text-align:center;
+        border-top:1px solid #eee;
+    }
+    .rainbow {
+      border: none;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        red, orange, yellow, green, blue, indigo, violet
+      );
+    }
+    .intro-content{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:50px;
+        text-align:left;
+    }
+    .intro .text{
+        width:50%;
+    }
+    .intro .image{
+        width:40%;
+    }
+    .intro img{
+        width:280px;
+        height:280px;
+        border-radius:50%;
+        border:10px solid #f4f4f4;
+    }
+    h2{
+        font-weight:300;
+        font-size:26px;
+        margin-bottom:15px;
+        color: #bbb;
+    }
+    p{
+        color:#888;
+        font-size:17px;
+        line-height:1.8;
+    }
+    .button{
+        display:inline-block;
+        margin-top:20px;
+        padding:10px 25px;
+        border:1px solid #ddd;
+        border-radius:6px;
+        color:#555;
+        text-decoration:none;
+    }
+    .primary{
+        background:#6fa8dc;
+        color:#fff;
+        border:none;
+    }
+    .features{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:center;
+        margin:40px 0;
+    }
+    .feature{
+        width:30%;
+    }
+    .icon{
+        width:150px;
+        height:150px;
+        border-radius:50%;
+        border:2px solid #eee;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:0 auto 20px;
+        font-size:28px;
+    }
+    .red{color:#e37682;}
+    .purple{color:#a89cc8;}
+    .blue{color:#6fa8dc;}
+    .stats{
+        display:flex;
+        margin:40px 0;
+    }
+    .stat{
+        flex:1;
+        padding:25px 0;
+        color:#fff;
+    }
+    .stat strong{
+        display:block;
+        font-size:20px;
+    }
+    .pink{background:#e37682;}
+    .purple{background:#b08dbd;}
+    .violet{background:#8d8dbf;}
+    .blue{background:#7fa3c9;}
+    .sky{background:#7db6cf;}
+    .text-block{
+        display:flex;
+        gap:40px;
+    }
+    .text-block p{
+        width:50%;
+    }
+    .cta-buttons{
+        margin-top:20px;
+    }
+    @media(max-width:768px){
+        .intro-content{
+            flex-direction:column;
+            text-align:center;
+        }
+        .intro .text,
+        .intro .image{
+            width:100%;
+        }
+        .features{
+            flex-direction:column;
+        }
+        .feature{
+            width:100%;
+        }
+        .text-block{
+            flex-direction:column;
+        }
+    }
+    .footer {
+       color: #fff;
+       padding: 80px 20px;
+       font-family: Corbel Light;
+     font-weight: lighter;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      gap: 60px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-left,
+    .footer-right {
+      flex: 1;
+      min-width: 300px;
+    }
+    .footer h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .footer p {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer a:hover{
+        text-decoration: underline;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      height: 50px;
+      width: 160px;
+      font-size: 16px;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .social-icons {
+      margin-top: 20px;
+    }
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+    }
+    .social-icons a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+</style>  
+</head>
+<body>
+    <section class="header">
+        <div class="logo">
+            <img src="logo.svg">
+        </div>
+        <h1>Stellar</h1>
+        <p>Just another free, fully responsive site template</p>
+    </section>
+    <div class="main">
+        <nav class="navbar">
+            <ul>
+               <li class="active">Introduction</li>
+               <li>First Section</li>
+               <li>Second Section</li>
+               <li>Get Started</li>
+            </ul>
+        </nav>
+        <section class="section intro">
+        <div class="intro-content">
+            <div class="text">
+                <h2>Ipsum sed adipiscing</h2><br>
+                <hr class="rainbow" width="120px">
+                <br><br>
+                <p>
+                    Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros.
+                    Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.
+                </p>
+                <a href="#" class="button">Learn More</a>
+            </div>
+            <div class="image">
+                <img src="pic01.jpg">
+            </div>
+        </div>
+        </section>
+        <section class="section">
+            <h2>Magna veroeros</h2>
+            <br><br>
+            <hr class="rainbow" width="160px" style="margin: 0 auto;">
+            <br><br>
+            <div class="features">
+                <div class="feature">
+                    <div class="icon red"><img src="html.svg"></div>
+                    <h3>Ipsum consequat</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon purple"><img src="copy.svg"></div>
+                    <h3>Amed sed feugiat</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="icon blue"><img src="gem.svg"></div>
+                    <h3>Dolor nullam</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat.</p>
+                </div>
+            </div>
+            <a href="#" class="button">Learn More</a>
+        </section>
+        <section class="section">
+            <h2>Ipsum consequat</h2>
+            <p class="desc">
+                Donec imperdiet consequat consequat. Suspendisse feugiat congue posuere.
+            </p>
+            <div class="stats">
+                <div class="stat pink"><i class="fa-solid fa-code-merge"></i><br><strong>5,120</strong>Etiam</div>
+                <div class="stat purple"><i class="fa-regular fa-folder-open"></i></i><strong>8,192</strong>Magna</div>
+                <div class="stat violet"><i class="fa-solid fa-computer"></i><strong>2,048</strong>Tempus</div>
+                <div class="stat blue"><i class="fa-brands fa-waze"></i><strong>4,096</strong>Aliquam</div>
+                <div class="stat sky"><i class="fa-regular fa-gem"></i><strong>1,024</strong>Nullam</div>
+            </div>
+
+        <div class="text-block">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius praesentium, corrupti error quis inventore quasi aperiam at atque, ut, modi eum. Odit enim nobis iure quidem. Corporis numquam velit architecto sequi iste recusandae.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perspiciatis beatae at officiis sit molestiae quidem nostrum consequatur rerum. Quas quae vel, necessitatibus corporis numquam velit architecto sequi iste recusandae.</p>
+        </div><br><br><br>
+        <a href="#" class="button">Learn More</a>
+    </section>
+    <section class="section">
+        <h2>Congue imperdiet</h2>
+        <br>
+        <p class="desc">
+            Donec imperdiet consequat consequat. Suspendisse feugiat congue posuere.
+        </p>
+        <br><br>
+        <div class="cta-buttons">
+            <a href="#" class="button primary">Get Started</a>
+            <a href="#" class="button">Learn More</a>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-left">
+      <h2>Aliquam sed mauris</h2>
+      <p>
+        Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna
+        adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet,
+        nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.
+      </p>
+      <button class="btn-outline">Learn More</button>
+    </div>
+
+    <div class="footer-right">
+      <h2>Etiam feugiat</h2>
+      <p><strong>Address</strong>
+        1234 Somewhere Road • Nashville, TN 00000 • USA
+      </p>
+      <p><strong>Phone</strong>  (000) 000-0000 x 0000
+      </p>
+      <p><strong>Email</strong>
+        <a href="#">information@untitled.tld</a>
+      </p>
+      <div class="social-icons">
+        <a href="#"> <img src="twitter.svg"></a>
+        <a href="#"><img src="insta.svg"></a>
+        <a href="#"><img src="facebook.svg"></a>
+        <a href="#"><img src="cat.svg"></a>
+        <a href="#"><img src="dribble.svg"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

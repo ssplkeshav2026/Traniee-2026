@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SchoolManagement.Models.Classroom>
+
+@{
+    ViewData["Title"] = "Classrooms";
+}
+
+<div class="container-fluid mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2 class="text-primary">Classroom Management</h2>
+
+        <a asp-action="Create" class="btn btn-success">
+            + Create New Classroom
+        </a>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover table-striped align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Year</th>
+                    <th>Section</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                    <th>Grade</th>
+                    <th>Teacher</th>
+                    <th width="220">Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Year
+                        </td>
+
+                        <td>
+                            @item.Section
+                        </td>
+
+                        <td>
+                            @item.Status
+                        </td>
+
+                        <td>
+                            @item.Remarks
+                        </td>
+
+                        <td>
+                            @item.Grade?.Name
+                        </td>
+
+                        <td>
+                            @item.Teacher?.Fname
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Create"
+                                   asp-route-id="@item.ClassroomId"
+                                   class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Details"
+                                   asp-route-id="@item.ClassroomId"
+                                   class="btn btn-info btn-sm text-white">
+                                Details
+                            </a>
+
+                            <a asp-action="Delete"
+                                   asp-route-id="@item.ClassroomId"
+                                   class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

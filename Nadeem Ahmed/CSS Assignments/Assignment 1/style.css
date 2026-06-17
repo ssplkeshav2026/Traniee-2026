@@ -1,0 +1,44 @@
+.outerdiv{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    gap:30px;
+    padding:20px;
+    flex-wrap: wrap;
+    background-color:#ffffff;
+}
+.box {
+    height:400px;
+    width: 330px;               
+    border: 1px solid grey;               
+    text-align: center;         
+    border-radius: 5px;        
+    overflow:hidden;  
+    background-color:#fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.30)
+}
+
+.box img {
+    height:200px;
+    width: 100%;                                      
+    text-align: left;
+    border: 1px solid #eeeeee;
+    object-fit:cover;
+    display:block;
+}
+
+.below-text {
+    padding:20px 15px 10px 15px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin: 0;                  
+}
+p{
+    margin: 2px 8px 12px 17px;
+    padding:0;
+    font-family: Arial, sans-serif;
+    line-height:1.5;
+    text-align:left;
+    color:grey;
+}
+

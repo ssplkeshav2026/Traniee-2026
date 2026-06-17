@@ -1,0 +1,49 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+.main {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.item {
+    background: #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.que {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.que h5 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    background: orange;
+    color: white;
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.ans {
+    display: none;
+    padding: 15px;
+    background: #ccc;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+

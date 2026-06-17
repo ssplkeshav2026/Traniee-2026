@@ -1,0 +1,284 @@
+body {
+    font-family: Arial;
+    background: #c7bcd6;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    width: 600px;
+    margin: auto;
+    position: relative;
+    
+}
+.form-header {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-top: 5px solid blue;
+    margin-bottom: 20px;
+}
+.title{
+    width: 100%;
+    font-size: 35px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+}
+.description{
+     border: none;
+    outline: none;
+}
+.option-line{
+    display: none;
+}
+.header-icons{
+    display: none;
+}
+
+.question-box{
+     background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid blue;
+}
+.img-icon {
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+   
+}
+.question-box i:hover{
+    background-color: rgb(227, 231, 235);
+}
+.question{
+      border: none;
+    outline: none;
+    width: auto;
+    font-size: 18px;
+    background-color: rgb(227, 231, 235);
+    padding: 8px 25px;
+}
+.header-icons{
+    cursor: pointer;
+    gap:10px;
+}
+
+.header-icons i{
+    opacity: 0.8;
+}
+.header-icons i:hover{
+    background-color: rgb(227, 231, 235);
+    padding: 2px;
+}
+
+
+.textIcons{
+    display: none;
+}
+.textIcons{
+    cursor: pointer;
+    gap:10px;
+    
+}
+.textIcons i{
+    opacity: 0.8;
+    
+}
+.textIcons i:hover{
+    background-color: rgb(227, 231, 235);
+    padding: 4px;
+}
+
+
+
+
+.options{
+    display: flex;
+    align-items: center;
+     margin-bottom: 5px;
+     
+    
+}
+.options input{
+    border: none;
+    outline: none;
+    margin-left: 7px;
+    margin-top: 10px;
+    
+}
+.option{
+    width:70%
+}
+.drop-down-icons{
+    padding: 10px 32px;
+}
+ .add-option{
+    border: none;
+    outline: none;
+    margin-left: 7px;
+    margin-top: 10px;
+    width: 70px;
+   
+}
+.btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(227, 231, 235);
+}
+
+.title-line{
+    display: none;
+}
+.footer-options{
+    display: flex;
+    margin-left: 60%;
+    gap:6px;
+    
+}
+.footer-options i{
+    margin-top: 7%;
+}
+.footer-options i:hover {
+    background: transparent;
+}
+.footer-options p{
+        margin-right: 32%;
+
+}
+.vertical-line{
+    margin-left: 6%;
+    margin-bottom: 5%;
+}
+.form-header-icons{
+     position: absolute;
+    right: -60px;   
+    top: 20px;     
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+  
+}
+.form-header-icons i{
+    padding: 18px 15px;
+    cursor: pointer;
+
+}
+.form-header-icons i:hover{
+    background-color: rgb(227, 231, 235);
+    border-radius: 50%;
+        
+
+}
+.title-box{
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid blue;
+  
+}
+.title-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleIcons{
+     cursor: pointer;
+  margin-right: 35%;
+}
+.titleIcons i{
+    padding: 5px;
+    border-radius: 50%;
+    font-size: large;
+}
+.titleIcons i:hover{
+    background-color: rgb(227, 231, 235);
+}
+.section-title{
+     border: none;
+    outline: none;
+    width: auto;
+    font-size: 18px;
+    background-color: rgb(227, 231, 235);
+    padding: 8px 25px;
+    display: block;
+}
+.sectionDesc{
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.textIcons2{
+    display: none;
+    margin-top: 8px;
+    cursor: pointer;
+    gap:10px;
+    
+}
+.textIcons2.active{
+    display: flex;
+}
+.textIcons2 i{
+    opacity: 0.8;
+     padding: 4px;
+    border-radius: 4px;
+    
+}
+.textIcons2 i:hover{
+    background-color: rgb(227, 231, 235);
+    padding: 8px;
+}
+.titleLine {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    margin-top: 10px;
+}
+.shortAns-input{
+    margin:4%;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    outline: none;
+}
+.paraAns-input{
+    margin:4%;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    outline: none;
+}
+.date-input{
+    margin:4%;
+    padding: 10px;
+    width: 90%;
+    border: none;
+    outline: none;
+}
+#generateHtmlForm{
+    padding: 20px;
+    font-size: larger;
+    background-color: rgb(107, 88, 88);
+    color: white;
+
+}
+.shortAns{
+    margin:4%;
+    padding: 10px;
+    width: 90%;
+    
+}
+.paraAns{
+    margin:4%;
+    padding: 10px;
+    width: 90%;
+    height: 80px;
+}

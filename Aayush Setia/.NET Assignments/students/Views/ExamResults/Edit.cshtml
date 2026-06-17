@@ -1,0 +1,82 @@
+﻿@model students.ViewModels.ExamResults.ExamResultEditViewModel
+
+@{
+    ViewData["Title"] = Model.StudentId > 0 ? "Edit Result" : "Create Result";
+}
+
+<h1>
+    @(Model.StudentId > 0 ? "Edit Result" : "Create Result")
+</h1>
+
+<h4>Exam Result</h4>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="@(Model.StudentId > 0 ? "Edit" : "Create")">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="ExamId" />
+
+            <div class="form-group mb-3">
+
+                <label asp-for="StudentId" class="control-label"></label>
+
+                <select asp-for="StudentId"
+                        class="form-control"
+                        asp-items="ViewBag.StudentId">
+                </select>
+
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group mb-3">
+
+                <label asp-for="CourseId" class="control-label"></label>
+
+                <select asp-for="CourseId"
+                        class="form-control"
+                        asp-items="ViewBag.CourseId">
+                </select>
+
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group mb-3">
+
+                <label asp-for="Marks" class="control-label"></label>
+
+                <input asp-for="Marks" class="form-control" />
+
+                <span asp-validation-for="Marks" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit"
+                       value="@(Model.StudentId > 0 ? "Update" : "Create")"
+                       class="btn btn-primary" />
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

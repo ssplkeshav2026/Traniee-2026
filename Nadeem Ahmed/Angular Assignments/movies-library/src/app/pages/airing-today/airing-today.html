@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Airing Today</h1>
+  <div class="row">
+    @for (AiringToday of airingToday().slice(0, 12); track AiringToday.id) {
+      <div class="col-lg-2 col-md-3 col-sm-4 mb-1">
+        <div class="card h-100 shadow-sm">
+          <img
+            [src]="'https://image.tmdb.org/t/p/w300' + AiringToday.poster_path"
+            class="card-img"
+            alt="movie"
+          />
+
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ AiringToday.name }}</h5>
+            <p class="card-text">{{ AiringToday.vote_average }}</p>
+            <p class="card-text text-muted">{{ AiringToday.first_air_date }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+    
+     <button class="btn btn-primary" (click)="goToFirstPage()">First</button>
+    <button class="btn btn-primary" (click)="prevPage()">Previous</button>
+
+    <span>Page {{ currentPage() }} / {{ totalPages() }}</span>
+
+    <button class="btn btn-primary" (click)="nextPage()">Next</button>
+
+     <button class="btn btn-primary" (click)="goToLastPage()">Last</button>
+  </div>
+</div>

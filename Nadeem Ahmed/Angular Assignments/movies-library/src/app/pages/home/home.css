@@ -1,0 +1,55 @@
+.toggle-btn {
+  display: flex;
+  border: 1px solid #0d253f;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.toggle-btn button {
+  padding: 5px 15px;
+  border: none;
+  background: white;
+  cursor: pointer;
+}
+
+.toggle-btn button.active {
+  background: #0d253f;
+  color: white;
+}
+
+.scroll-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+
+.card-item {
+  min-width: 150px;
+  flex: 0 0 auto;
+}
+
+.card-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card-item h6 {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.card-item p {
+  font-size: 12px;
+  color: gray;
+}

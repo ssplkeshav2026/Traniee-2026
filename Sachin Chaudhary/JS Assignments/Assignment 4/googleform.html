@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="googleform.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="para">
+      <div id="uf" contenteditable="true" class="desc title">
+        Untitled form
+        <br>
+        <div class="toolbar">
+          <button type="button" id="boldbtn"><b>B</b></button>
+          <button type="button" id="ibtn"><i>I</i></button>
+          <button type="button" id="ubtn"><u>U</u></button>
+        </div>
+
+      </div>
+      <br>
+      <div id="fd" contenteditable="true" class="desc">
+        Form description
+
+        <br><br>
+        <div class="toolbar1">
+          <button type="button" id="boldbtn"><b>B</b></button>
+          <button type="button" id="ibtn"><i>I</i></button>
+          <button type="button" id="ubtn"><u>U</u></button>
+        </div>
+      </div>
+
+    </div>
+    <div class="para1">
+      <input type="text" placeholder="Untitled title">
+      <div contenteditable="true" class="desc">
+        Description optional
+      </div>
+      <i class="fa-solid fa-delete-left"></i>
+    </div>
+
+    <div class="question">
+      <div class="question-title"><input class="ques" type="text" placeholder="Question"><span
+          class="material-icons icon-btn" onclick="addImageInput(this)">image</span>
+
+        <select onchange="changeType(this)">
+          <option value="radio">Multiple Choice</option>
+          <option value="checkbox">Checkbox</option>
+          <option value="dropdown">Drop-down</option>
+          <option value="Short answer">Short answer</option>
+          <option value="Paragraph">Paragraph</option>
+          <option value="Date">Date</option>
+        </select>
+
+      </div>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q1"> <input type="text" name="q1" class="fd">
+          <span class="material-icons icon-btn" onclick="addImageInput(this)">image</span>
+          <span class="material-icons remove-btn" onclick="removeOption(this)">close</span>
+        </div>
+        <div class="option">
+          <input type="radio" name="q1"> <input type="text" name="q1" class="fd">
+          <span class="material-icons icon-btn" onclick="addImageInput(this)">image</span>
+          <span class="material-icons remove-btn" onclick="removeOption(this)">close</span>
+        </div>
+        <div class="option">
+          <input type="radio" name="q1"> <input type="text" name="q1" class="fd">
+          <span class="material-icons icon-btn" onclick="addImageInput(this)">image</span>
+          <span class="material-icons remove-btn" onclick="removeOption(this)">close</span>
+        </div>
+      </div>
+      <div class="add-option">+ Add option</div>
+      <div class="required"> <i class="fa-solid fa-toggle-off"></i></div>
+      <i class="fa-solid fa-delete-left"></i><i class="fa-regular fa-clone clone-btn"></i>
+
+    </div>
+    <br><br><br>
+
+
+  <div id="preview"></div>
+ 
+  
+  </div>
+
+  <div class="add-btn">
+    <button class="dupq">+</button>
+    <button id="addText">T</button>
+    <button>Img</button>
+    <button id="showForm">Show Form</button>
+
+  </div>
+  <script src="googleform.js"></script>
+</body>
+
+</html>

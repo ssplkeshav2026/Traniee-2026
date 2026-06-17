@@ -1,0 +1,35 @@
+﻿@model students.ViewModels.Dashboard.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>School Dashboard</h1>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-6">
+        <partial name="_StudentStatistics" model="Model.StudentStatistics" />
+    </div>
+
+    <div class="col-md-6">
+        <partial name="_AttendanceOverview" model="Model.AttendanceOverview" />
+    </div>
+
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-6">
+        <partial name="_ExamOverview" model="Model.ExamOverview" />
+    </div>
+
+    <div class="col-md-6">
+        <partial name="_QuickMetrics" model="Model.QuickMetrics" />
+    </div>
+
+</div>

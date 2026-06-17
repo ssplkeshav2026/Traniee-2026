@@ -1,0 +1,80 @@
+body{
+    background-color: #f4f4;
+}
+.first{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.second{
+   
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+#desc{
+    height: 100px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+
+#title{
+    height:30px;
+    width:30%;
+    border-radius: 10px;
+}
+
+#my-btn{
+    display:block;
+    margin: 20px auto;
+    justify-content: center;
+    align-items:center;
+    text-align:center;
+    background-color: aqua;
+    border-radius: 5px;
+}
+
+
+/* Container center */
+.container {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+/* UL styling */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#taskList li {
+    background-color: white;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+}
+
+
+#taskList li  {
+    font-size: 16px;
+    color: #333;
+    background-color: lightgreen;
+}
+
+
+.delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

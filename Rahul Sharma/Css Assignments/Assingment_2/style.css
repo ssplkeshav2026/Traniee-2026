@@ -1,0 +1,427 @@
+
+
+
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to right, #8e6ccf, #6c63ff);
+    /* position: relative; */
+}
+
+
+.main {
+    padding: 90px 0 60px;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+
+.main {
+    justify-content: center;
+    text-align: center;
+    padding: 120px 0;
+    color: white;
+}
+
+
+
+.logo img {
+    width: 80px;
+}
+
+.logo h1 {
+    font-size: 48px;
+}
+
+.logo p {
+    opacity: 0.9;
+}
+
+
+.nav-wrapper {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-top: -45px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 9px;
+    position: sticky;
+
+}
+
+.nav a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.nav a:hover,
+.nav a.active {
+    background: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+
+.section {
+    max-width: 1200px;
+    width: 90%;            
+    margin:  auto;
+    background: #f2f2f2;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    
+}
+.section:last-child {
+    border-bottom: none;
+}
+
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.text {
+    width: 50%;
+    text-align: left;
+}
+.text{
+    padding-left: 50px;
+}
+.text h2 {
+    font-size: 40px;
+    color: #555;
+}
+
+.text p {
+    color: #777;
+    line-height: 1.8;
+}
+
+.image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    width: 260px;
+    border-radius: 50%;
+    border: 10px solid #e6e6e6;
+}
+
+
+.line {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(to right, red, blue);
+    margin: 15px 0 25px;
+}
+
+.center {
+    margin: 15px auto 40px;
+}
+
+
+.btn {
+    padding: 12px 25px;
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #666;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #eaeaea;
+}
+
+.primary {
+    background: #3aa0c9;
+    color: white;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.cards .btn {
+    display: block;
+    margin: 30px auto 0;
+}
+
+
+#second .cards {
+    justify-content: center;
+}
+
+.card {
+    width: 30%;
+}
+
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    margin: auto;
+    margin-bottom: 20px;
+
+    color: #e88c95;
+}
+
+.card:nth-child(2) .circle {
+    color: #9b8cc2;
+}
+
+.card:nth-child(3) .circle {
+    color: #7bb6d9;
+}
+
+.card h3 {
+    color: #666;
+}
+
+.card p {
+    color: #777;
+}
+
+.center-text {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #777;
+    line-height: 1.8;
+}
+
+
+.stats {
+    display: flex;
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.box {
+    flex: 1;
+    padding: 30px;
+    color: white;
+    text-align: center;
+}
+
+.box1 { background: #e5989b; }
+.box2 { background: #b48ead; }
+.box3 { background: #9a8c98; }
+.box4 { background: #8faadc; }
+.box5 { background: #7fb3d5; }
+
+
+
+.footer {
+    margin-top: 80px;
+    padding: 80px 0;
+    color: white;
+}
+
+.footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.footer-left {
+    width: 50%;
+}
+
+.footer-left h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.footer-left p {
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+
+.footer-btn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+.footer-right {
+    width: 50%;
+}
+
+.footer-right h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.footer-right p {
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+
+.social {
+    margin-top: 20px;
+}
+
+.social i {
+    margin-right: 15px;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social i:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+
+
+@media (max-width: 1440px) {
+    .section,
+    .footer-container {
+        max-width: 90%;
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text, .image {
+        width: 100%;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        width: 100%;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px){
+    .container{width: 50%;}
+}
+
+
+
+/* 1440px */
+@media (max-width: 1440px) {
+    .section,
+    .nav-wrapper,
+    .footer-container {
+        width: 90%;
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+
+    .section,
+    .nav-wrapper,
+    .footer-container {
+        width: 92%;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text, .image {
+        width: 100%;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        width: 100%;
+    }
+}

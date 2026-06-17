@@ -1,0 +1,95 @@
+﻿@model TaskManagement.MVC.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard Workspace";
+}
+
+<div class="mb-4">
+    <h2 class="fw-bold text-dark"><i class="bi bi-grid-1x2-fill text-primary"></i> Analytics Dashboard</h2>
+    <p class="text-muted">Welcome back! Here is your core structural project summary metrics.</p>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-primary p-3" style="border-radius: 12px;">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-uppercase small mb-1 opacity-75">Total Workspace Tasks</h6>
+                    <h2 class="fw-bold m-0">@Model.TotalTasks</h2>
+                </div>
+                <i class="bi bi-folder2-open fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-success p-3" style="border-radius: 12px;">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-uppercase small mb-1 opacity-75">Completed Matrix</h6>
+                    <h2 class="fw-bold m-0">@Model.CompletedTasks</h2>
+                </div>
+                <i class="bi bi-check-all fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-warning text-dark p-3" style="border-radius: 12px;">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-uppercase small mb-1 opacity-75">Pending Backlogs</h6>
+                    <h2 class="fw-bold m-0">@Model.PendingTasks</h2>
+                </div>
+                <i class="bi bi-clock-history fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-dark p-3" style="border-radius: 12px;">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-uppercase small mb-1 opacity-75">Assigned to Me</h6>
+                    <h2 class="fw-bold m-0">@Model.MyTasksCount</h2>
+                </div>
+                <i class="bi bi-person-badge fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-box">
+    <h5 class="fw-bold mb-3 text-secondary"><i class="bi bi-lightning-charge"></i> Recent Activity Log</h5>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Task ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.RecentTasks == null || !Model.RecentTasks.Any())
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-3">No activity modifications tracked.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var task in Model.RecentTasks)
+                    {
+                        <tr>
+                            <td><strong>#@task.Id</strong></td>
+                            <td class="text-dark fw-semibold">@task.Title</td>
+                            <td>
+                                <span class="badge @(task.Status == "Completed" ? "bg-success" : task.Status == "In Progress" ? "bg-info text-dark" : "bg-warning text-dark")">
+                                    @task.Status
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

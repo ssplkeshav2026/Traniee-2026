@@ -1,0 +1,98 @@
+﻿@model SchoolManagementSystem.ViewModels.DashboardViewModel
+
+<style>
+    .exam-section {
+        background-color: #f4f6f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .exam-heading {
+        background-color: dimgrey;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .sub-heading {
+        background-color: #343a40;
+        color: white;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .exam-table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .exam-table th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+
+        .exam-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .exam-table tr:hover {
+            background-color: #f1f1f1;
+        }
+</style>
+
+<div class="exam-section">
+
+    <h3 class="mt-4 exam-heading">
+        Exam Overview
+    </h3>
+
+    <h5 class="sub-heading">
+        Upcoming Exams
+    </h5>
+
+    <table class="table table-bordered exam-table">
+
+        <tr>
+            <th>Exam Id</th>
+            <th>Exam Date</th>
+        </tr>
+
+        @foreach (var exam in Model.UpcomingExams)
+        {
+            <tr>
+                <td>@exam.ExamId</td>
+                <td>@exam.StartDate</td>
+            </tr>
+        }
+
+    </table>
+
+    <h5 class="sub-heading">
+        Recently Conducted Exams
+    </h5>
+
+    <table class="table table-bordered exam-table">
+
+        <tr>
+            <th>Exam Id</th>
+            <th>Exam Date</th>
+        </tr>
+
+        @foreach (var exam in Model.RecentExams)
+        {
+            <tr>
+                <td>@exam.ExamId</td>
+                <td>@exam.StartDate</td>
+            </tr>
+        }
+
+    </table>
+
+</div>

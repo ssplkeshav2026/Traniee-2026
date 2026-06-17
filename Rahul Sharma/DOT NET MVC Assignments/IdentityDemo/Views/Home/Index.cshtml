@@ -1,0 +1,207 @@
+﻿
+
+
+@model IdentityDemo.ViewModel.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<style>
+    body {
+        background: #f4f7fb;
+    }
+
+    .dashboard-hero {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white;
+        border-radius: 25px;
+        padding: 50px;
+        box-shadow: 0 15px 35px rgba(79,70,229,.3);
+    }
+
+    .dash-card {
+        border: none;
+        border-radius: 22px;
+        box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        transition: .3s;
+    }
+
+        .dash-card:hover {
+            transform: translateY(-8px);
+        }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: #eef2ff;
+    }
+
+    .quick-btn {
+        border-radius: 15px;
+        padding: 12px 20px;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="dashboard-hero mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold">User Identity Dashboard</h1>
+                <p class="fs-5 mt-3">
+                    Manage users, roles, login security, password updates and profile details from one place.
+                </p>
+
+                <a asp-controller="Home" asp-action="UsersList" class="btn btn-light btn-lg quick-btn mt-3">
+                    👥 Manage Users
+                </a>
+
+                <a asp-controller="Home" asp-action="UsersDetails" class="btn btn-warning btn-lg quick-btn mt-3 ms-2">
+                    📋 Users Details
+                </a>
+
+                <a asp-controller="Login" asp-action="ChangePassword" class="btn btn-outline-light btn-lg quick-btn mt-3 ms-2">
+                    🔐 Change Password
+                </a>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <div style="font-size:120px;">🛡️</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card dash-card p-4">
+                <div class="icon-box mb-3">👤</div>
+                <h5>Total Users</h5>
+                <h2 class="fw-bold">@Model.TotalUsers</h2>
+                <p class="text-muted mb-0">Registered users</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card dash-card p-4">
+                <div class="icon-box mb-3">✅</div>
+                <h5>Active Users</h5>
+                <h2 class="fw-bold">@Model.ActiveUsers</h2>
+                <p class="text-muted mb-0">Currently active</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card dash-card p-4">
+                <div class="icon-box mb-3">🔐</div>
+                <h5>Roles</h5>
+                <h2 class="fw-bold">@Model.TotalRoles</h2>
+                <p class="text-muted mb-0">Admin, User, Manager, Employee</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card dash-card p-4">
+                <div class="icon-box mb-3">📚</div>
+                <h5>Modules</h5>
+                <h2 class="fw-bold">@Model.TotalModules</h2>
+                <p class="text-muted mb-0">App features</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-md-4">
+            <div class="card dash-card p-4 h-100">
+                <div class="icon-box mb-3">👥</div>
+                <h4>User Management</h4>
+                <p class="text-muted">
+                    View all users with name, email, phone number and account status.
+                </p>
+                <a asp-controller="Home" asp-action="UsersList" class="btn btn-primary">
+                    Open Users
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dash-card p-4 h-100">
+                <div class="icon-box mb-3">📋</div>
+                <h4>User Details</h4>
+                <p class="text-muted">
+                    Check complete user profile information including roles and identity data.
+                </p>
+                <a asp-controller="Home" asp-action="UsersDetails" class="btn btn-success">
+                    View Details
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dash-card p-4 h-100">
+                <div class="icon-box mb-3">🔐</div>
+                <h4>Password Security</h4>
+                <p class="text-muted">
+                    Allow users to securely update their account password.
+                </p>
+                <a asp-controller="Login" asp-action="ChangePassword" class="btn btn-danger">
+                    Change Password
+                </a>
+            </div>
+        </div>
+        <div class="row g-4 mt-3 mb-5">
+
+            <div class="col-md-6">
+                <div class="card dash-card p-4 h-100">
+                    <h4 class="fw-bold mb-3">Application Features</h4>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">✅ User Registration</li>
+                        <li class="list-group-item">✅ Secure Login / Logout</li>
+                        <li class="list-group-item">✅ Password Change</li>
+                        <li class="list-group-item">✅ Users List</li>
+                        <li class="list-group-item">✅ Users Details With Roles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card dash-card p-4 h-100">
+                    <h4 class="fw-bold mb-3">Quick Actions</h4>
+
+                    <div class="d-grid gap-3">
+                        <a asp-controller="Home" asp-action="UsersList" class="btn btn-outline-primary quick-btn">
+                            👥 Manage Users
+                        </a>
+
+                        <a asp-controller="Home" asp-action="UsersDetails" class="btn btn-outline-success quick-btn">
+                            📋 View User Details
+                        </a>
+
+                        <a asp-controller="Login" asp-action="ChangePassword" class="btn btn-outline-danger quick-btn">
+                            🔐 Update Password
+                        </a>
+
+                        <a asp-controller="Login" asp-action="Logout" class="btn btn-outline-dark quick-btn">
+                            🚪 Logout
+                        </a>
+                    </div>
+    </div>
+
+</div>

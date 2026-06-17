@@ -1,0 +1,77 @@
+
+h1{
+    text-align: center;
+}
+.steps-name{
+    display: flex;
+    gap:18px;
+    margin-left: 42%;
+    font-size: 20px;
+}
+
+.step-no{
+    display: flex;
+    gap:34px;
+    margin-left: 43%;
+    
+}
+.step-no p{
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 10px;
+}
+.step.active{
+    background-color: palevioletred;
+    color: white;
+}
+
+.form-info{
+    padding-left: 8%;
+}
+.form-info h1{
+padding-right: 12%;
+}
+.form{
+    padding-left: 39%;
+    font-size: 20px;
+}
+.btn{
+    padding: 10px 73px;
+    background-color: palevioletred;
+    color: white;
+    margin-top: 10px;
+}
+.prev{
+    padding: 10px 15px;
+    background-color: palevioletred;
+    color: white;
+}
+.next{
+    padding: 10px 25px;
+    background-color: palevioletred;
+    color: white;
+}
+.form-info-2,.form-info-3,.form-info-4 {
+    display: none;
+}
+.form-info-2{
+     padding-left: 45%;
+     font-size: 20px;
+}
+.form-info-3{
+    padding-left: 45%;
+     font-size: 20px;
+}
+#options{
+    padding: 10px 20px;
+}
+.form-info-4{
+    padding-left: 45%;
+     font-size: 20px;
+}
+#msg{
+    padding-right: 80%;
+    color: green; 
+    text-align:center;
+     display:none;
+}

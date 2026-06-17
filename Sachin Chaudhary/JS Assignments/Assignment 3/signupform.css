@@ -1,0 +1,102 @@
+body {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   font-family: Arial;
+  background: #e7aeae;
+}
+
+.container {
+  width: 350px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  
+}
+
+h2 {
+  text-align: center;
+}
+
+.para1 {
+  display: none;
+}
+
+.para1 .nev {
+  display:flex;
+}
+
+ select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px ;
+}
+input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px ;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  background: #e91e63;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background: white;
+}
+
+.para {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.para div {
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+}
+
+.para::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #b69c9c; 
+   z-index: -1;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.para div::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border-radius: 50%;
+  background: #ccc;
+}
+.para div.nev::after {
+  background: #e91e63;
+}
+
+.para .nev::after {
+  background: #e91e63;
+}

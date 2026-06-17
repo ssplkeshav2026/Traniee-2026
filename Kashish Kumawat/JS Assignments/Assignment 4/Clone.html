@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Goggle forms Clone</title>
+</head>
+<body>
+    <div class="header">
+      <div class="div-container1">
+        <i class="material-icons" style="font-size: 50px; color:#673ab7">description</i>
+          <input class="title-input" placeholder="Untitled form" id="ipt">
+            <i class="material-icons" id="i-cont1">star_border</i>
+            <i class="material-icons" id="i-cont1">folder_open</i>
+          <div class="text"> All changes saved in Drive</div>
+      </div>
+
+      <div class="div-container2">
+        <i class="fa-solid fa-palette" id="i-cont2"></i>
+        <i class="fa-solid fa-eye" id="i-cont2"></i>
+        <i class="fa-solid fa-rotate-left" id="i-cont2"></i>
+        <i class="fa-solid fa-rotate-right" id="i-cont2"></i>
+        <i class="fa-solid fa-link" id="i-cont2"></i>
+        <i class="fa-solid fa-user-plus" id="i-cont2"></i>
+        <i class="fa-solid fa-gear" id="i-cont2"></i>
+        <button class="btn" onclick="submitForm()"> Publish</button>
+        <i class="fa-solid fa-ellipsis-vertical" id="i-cont2"></i>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="active">Questions</div>
+      <div>Responses</div>
+      <div>Settings</div>
+    </div>
+
+    <div class="container">
+      <div class="card active">
+        <div class="input" contenteditable="true" onfocus="showToolbar(this)">
+             Untitled form
+        </div>
+          <div class="toolbar" onmousedown="event.preventDefault()">
+          <i class="material-icons" onclick="format('bold')">format_bold</i>
+      <i class="material-icons" onclick="format('italic')">format_italic</i>
+      <i class="material-icons" onclick="format('underline')">format_underlined</i>
+    </div>
+
+        <input class="input" placeholder="Form description">
+      </div>
+      <div id="questions"></div>
+    </div>
+    
+    <div class="side">
+      <button onclick="addQuestion()"><i class="material-icons">add</i></button>
+      <button onclick="addTitleDesc()"><i class="material-icons">text_fields</i></button>
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>

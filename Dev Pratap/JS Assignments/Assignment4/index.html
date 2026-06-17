@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+<body>
+    
+
+    <div class="main">
+
+        <div class="container heading-box">
+            <div class="input-container">
+                <input type="text" id="heading-title-input" class="inputs" value="Untitled form">
+                <div class="input-edit-tile" style="display:none;">
+
+                    <div class="heading-options ">
+                        <i class="fa-solid fa-bold" title=""></i>
+                        <i class="fa-solid fa-italic" title=""></i>
+                        <i class="fa-solid fa-underline" title=""></i>
+                        <i class="fa-solid fa-text-slash" title=""></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" class="inputs" placeholder="From description">
+                <div class="input-edit-tile " style="display:none;">
+                    <hr>
+                    <div class="heading-options">
+                        <i class="fa-solid fa-bold" title=""></i>
+                        <i class="fa-solid fa-italic" title=""></i>
+                        <i class="fa-solid fa-underline" title=""></i>
+                        <i class="fa-solid fa-text-slash" title=""></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebarDiv">
+                <div class="sidebar">
+                    <i class="fa-solid fa-circle-plus add-question" title="Add question"></i>
+                    <i class="fa-solid fa-t add-text" title="Add title" id="add-heading"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sort">
+            <div class="container question-box">
+                <div>
+                    <i class="fa-solid fa-grip"></i>
+                </div>
+
+                <div class="question-first-container">
+                    <div class="input-container question-input">
+                        <input type="text" class="inputs" value="Untitled form">
+                        <div class="input-edit-tile " style="display:none;">
+                            <hr>
+                            <div class="heading-options">
+                                <i class="fa-solid fa-bold" title=""></i>
+                                <i class="fa-solid fa-italic" title=""></i>
+                                <i class="fa-solid fa-underline" title=""></i>
+                                <i class="fa-solid fa-text-slash" title=""></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-side-tile">
+                        <i class="fa-regular fa-image img-upload">
+                            <input type="file" class="img-input">
+                        </i>
+
+                        <select class="option-box">
+                            <option value="short">Short answer</option>
+                            <option value="paragraph">Paragraph</option>
+                            <option value="mcq" selected>Multiple choice</option>
+                            <option value="checkbox">Checkbox</option>
+                            <option value="dropdown">Dropdown</option>
+                            <option value="date">Date</option>
+                        </select>
+                        <hr>
+                    </div>
+                </div>
+
+
+                <img class="preview" style="display:none; width:200px;"></img>
+
+                <div class="ans-box">
+                    <div class="optionBox">
+                        <i class="fa-solid fa-grip"></i>
+                        <input type="text" class="option-input-box" placeholder="Option 1">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
+                </div>
+                <div class=" lastOption">
+                    <p class="addOption">Add option</p>
+                </div>
+                <div class=" toHide option-footer ">
+                    <i class="fa-regular fa-copy"></i>
+                    <i class="fa-solid fa-trash-can delete"></i>
+
+                </div>
+            </div>
+            <!-- dynemic element here -->
+        </div>   
+    </div>      
+    <button class="genPage">Genrate</button>  
+    <div id="result">
+        
+    </div>
+
+
+        <script src="script.js"></script>
+</body>
+
+</html>

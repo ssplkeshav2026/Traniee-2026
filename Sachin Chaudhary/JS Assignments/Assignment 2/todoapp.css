@@ -1,0 +1,41 @@
+body{
+text-align: center;
+background-color:rgb(103, 162, 82);
+margin-top: 20%;
+}
+h1{
+    color: red;
+}
+#input1{
+height: 20px;
+padding: 10px;
+
+}
+#btn{
+padding: 10px;
+
+}
+.frm{
+   border: 2px solid blueviolet; 
+   padding-bottom: 10%;
+   padding-left: 3px;
+   margin-left: 120px;
+   width: 70%;
+   background-color: rgb(44, 35, 35);
+   opacity: 80%;
+   
+}
+#input2{
+height: 20px;
+padding: 10px;
+
+}
+#btn2{
+padding: 10px;
+
+}
+#show1{
+    background-color: azure;
+    color: black;
+    margin: 20%;
+}

@@ -1,0 +1,388 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height:100%;
+    margin: 0;
+    background-image: linear-gradient(to right, blue,purple);
+    background-repeat: no-repeat;
+
+}
+#main{
+    text-align: center;
+    margin-top: 90px;
+    line-height: 2;
+    font-size: large;
+    
+}
+#main h1,h3{
+   color:white;
+}
+.card{
+   width:80%;
+   margin: 40px auto;
+   min-height:fit-content;
+   background-color: white;
+   border-radius: 2px;
+   padding-bottom: 30px;
+}
+.nav{
+    position: sticky;
+  top: 0;
+}
+.nav ul {
+     list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: gainsboro;
+    display:flex;
+    justify-content: space-around;
+    border-radius: 3px;
+ }
+ ul li{
+     float:left;   
+ }
+ ul li a{
+    text-decoration: none;
+      color: gray;
+      font-size: 20px;
+ }
+
+ li a:hover{
+    background-color: rgba(212, 204, 204, 0.877);
+ }
+ li a.active{
+    background-color: white;
+    border-radius: 5px;
+    padding:5px 10px;;
+ }
+ .p{
+    display: flex;
+    justify-content: space-around;
+    margin:60px 0 80px 0;
+    
+ }
+ 
+
+ .b a{
+   display: inline-block;
+   text-decoration: none;
+   padding: 12px 25px;  
+   font-size: 15px;
+ }
+ .logo2 img{
+    border-radius: 50%;
+    padding:10px;
+    border:1px solid gray;
+ }
+ section h1{
+    padding-bottom: 50px;
+    padding-top: 60px;
+ }
+ section button{
+    margin:50px;
+    padding: 15px 55px;
+
+    border-radius: 9px;
+ }
+ 
+ .text{
+   text-align: center;
+ }
+ .line{
+   width: 90px;
+   height: 4px;
+   margin: 20px auto;
+   background-image: linear-gradient(to right, blue,purple);
+   border: none;
+ }
+ .icons{
+   display: flex;
+    align-items: center;
+ justify-content: space-around;
+ }
+ .icons i{
+   width:150px;
+  height: 150px;
+  font-size: 90px;
+  border: 1px solid black;
+  border-radius: 50%;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ margin:20px;
+ }
+ .item h3 {
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(117, 117, 117);
+  text-align: center;
+}
+.item p {
+  font-size: 16px;
+  color: rgb(117, 117, 117);
+  margin-top: 25px;
+  line-height: 1.2;
+  padding: 0 10px; 
+}
+
+.btn{
+    display: flex;
+    justify-content: space-around;
+     margin:60px 0 80px 0;
+     
+}
+.btn a{
+    padding: 12px 25px;  
+     display: inline-block;
+     text-decoration: none; 
+     font-size: 15px;
+}
+.content h2{
+   text-align:center;
+   margin: 30px;
+   font-weight: lighter;
+   
+}
+.content p{
+   text-align: center;
+   margin: 30px;
+   font-weight: lighter;
+}
+.icons-div{
+   display: flex;
+   justify-content: center;
+}
+.icons-div h1{
+   color: white;
+}
+.icons-div p{
+   color: white;
+   padding-left: 15px;
+}
+.icon1{
+   background-color: palevioletred;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 34px;
+   width: 15vw;
+   
+}
+.icon1 i{
+   
+   color: white;
+   width:35px;
+  height: 35px;
+  font-size: 35px;
+
+}
+.icon2{
+   background-color: blue;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 34px;
+   width: 15vw;
+   
+}
+.icon2 i{
+   
+   color: white;
+   width:35px;
+  height: 35px;
+  font-size: 35px;
+
+}
+.icon3{
+   background-color: blueviolet;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 34px;
+   width: 15vw;
+   
+}
+.icon3 i{
+  
+   color: white;
+   width:35px;
+  height: 35px;
+  font-size: 35px;
+
+}
+.icon4{
+   background-color: rgb(17, 133, 179);
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 34px;
+   width: 15vw;
+   
+}
+.icon4 i{
+  
+   color: white;
+   width:35px;
+  height: 35px;
+  font-size: 35px;
+
+}
+.icon5{
+   background-color: rgb(124, 175, 223);
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 34px;
+   width: 15vw;
+   
+}
+.icon5 i{
+   color: white;
+   width:35px;
+  height: 35px;
+  font-size: 35px;
+
+}
+.details{
+   display: flex;
+   gap:20px;
+   margin:35px;
+   
+   text-align: center;
+}
+.detail1{
+   width: 50%;
+}
+.detail2{
+   width:50%;
+}
+.content2 h2{
+   text-align:center;
+   margin: 30px;
+   font-weight: lighter;
+}
+.content2 p{
+   text-align: center;
+   margin: 30px;
+   font-weight: lighter;
+}
+.btns{
+    display: flex;
+    justify-content: center;
+     gap: 20px;
+     margin-bottom:50px;
+}
+.btn1 a{
+   text-decoration: none;
+    padding: 12px 25px;  
+     display: inline-block;
+    
+}
+.btn1 button{
+   border: 1px solid gray;
+   border-radius: 10px;
+    background-color: lightskyblue;
+}
+.btn2 a{
+   text-decoration: none;
+    padding: 12px 25px;  
+     display: inline-block;
+}
+.btn2 button{
+   border: 1px solid gray;
+   border-radius: 10px;
+}
+.btn2 button:hover{
+   background-color: rgb(233, 217, 217);
+}
+.footer{
+    display:flex;
+    gap:50px;
+    width:80%;
+    margin: auto;
+    justify-content: center;
+}
+
+.a h1{
+   color:white;
+   font-weight: lighter;
+   margin-bottom: 45px;
+}
+.a p{
+   color: gainsboro;
+}
+.c{
+   line-height: 1.5;
+}
+.c h1{
+     padding-left: 35px;
+    color:white;
+    font-weight: lighter;
+     margin-bottom:30px;
+}
+
+.info{
+    display: flex;
+    gap:35px;
+   
+}
+.info p b{
+   color: white;
+}
+.info p{
+   color: rgb(236, 225, 225);
+}
+.info p a{
+    color: white;
+}
+.d{
+   margin-bottom: 80px;
+}
+.footer-icons{
+   display: flex;
+   gap:8px;
+   
+  
+}
+.f-icon{
+   
+   justify-content: center;
+}
+.footer-icons a i{
+   color: white;
+    border:1px solid white;
+    border-radius: 50%;
+    padding: 15px 25px;
+
+}
+.a a{
+   display: inline-block;
+   text-decoration: none;
+   padding: 12px 25px;  
+}
+
+@media screen and (max-width:768px) {
+   .p{
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+   }
+   .p h1{
+      text-align: center;
+   }
+   .b{
+      display: flex;
+      justify-content: center;
+   }
+}
+

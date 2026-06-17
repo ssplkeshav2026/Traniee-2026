@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Table and form</title>
+</head>
+<body>
+    <table border="2" cellspacing="3" cellpadding="2">
+        <tr>
+            <th rowspan="3">Date</th>
+            <th colspan="3">Seminar</th>
+        </tr>
+        <tr>
+            <th colspan="2"> Schedule</th>
+            <th rowspan="2"> Topic</th>
+        </tr>
+        <tr>
+            <th>Begin</th>
+            <th>End</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Monday</td>
+            <td rowspan="2" bgcolor="#ffffaa">8:00 A.M</td>
+            <td rowspan="2" bgcolor="cornflowerblue">5:00 P.M</td>
+            <td>Introduction to XML</td>
+        </tr>
+        <tr>
+            <td colspan="2">Validity: DTD and Relax NG</td>
+        </tr>
+        <tr>
+            <td rowspan="3"> Tuesday</td>
+            <td bgcolor="#ffffaa">8:00 A.M</td>
+            <td bgcolor="#ffffaa">11:00 A.M</td>
+            <td rowspan="2" align="center">X Path</td>
+        </tr>
+        <tr>
+            <td bgcolor="#ffffaa">11:00 A.M</td>
+            <td bgcolor="#aaffaa">2:00 P.M</td>
+        </tr>
+        <tr>
+            <td>2:00 P.M</td>
+            <td bgcolor="cornflowerblue">5:00 P.M</td>
+            <td align="center"> XSL Transformations</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td bgcolor="#ffffaa">8:00 P.M</td>
+            <td bgcolor="#aaffaa">12:00 P.M</td>
+            <td>XSL Formatting Objects</td>
+        </tr>
+    </table>
+    <br>
+    <h1 align="center">Contact Details</h1>
+    <p>Please enter your personal details:</p>
+    <form>
+        <table>
+            <tr>
+                <th><label for="fname">First Name :*</label></th>
+                <td><input type="text" value="Fred"></td>
+            </tr>
+            <tr>
+                <th><label for="lname">Last Name :*</label></th>
+                <td><input type="text" value="Bloggs"></td>
+            </tr>
+            <tr>
+                <th><label for="saddress">Street Address:</label></th>
+                <td><input type="text" size="40" value="Station road"></td>
+            </tr>
+            <tr>
+                <th><label for="toty">Town/City:</label></th>
+                <td><input type="text" value="Dorkwell"></td>
+            </tr>
+            <tr>
+                <th><label for="pass_zip">Passcode/Zip:</label></th>
+                <td><input type="text" size="6" value="DW1 56A"></td>
+            </tr>    
+            <tr>
+                <th><label for="telephone">Telephone:</label></th>
+                <td><input type="number" size="10" value="0123456789"></td>
+            </tr>
+            <tr>
+                <th><label for="mobile">Mobile:</label></th>
+                <td><input type="number" size="10" value="1564812455"></td>
+            </tr>
+            <tr>
+                <th><label for="email">Email Address:*</label></th>
+                <td><input type="text" size="40" value="fbloggs@coldmail.net">   </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"> Feild marked * are required</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <input type="submit" align="center" value="Submit" name="Submit">
+                    </center>
+                </td>
+            </tr> 
+    </table>
+    </form>
+</body>
+</html>

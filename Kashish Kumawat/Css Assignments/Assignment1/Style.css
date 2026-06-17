@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f4f4f4;
+}
+.news
+{
+    padding: 70px 20px;
+    text-align: center;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+.news h2{
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+.subtitle {
+    color: #888;
+    margin-bottom: 50px;
+    font-size: 14px;
+}
+.images{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.card {
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+.img-box {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-content {
+    padding: 18px;
+}
+
+.img-content h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.para {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.para span {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.img-content p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+@media (max-width: 992px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .news-section {
+        padding: 50px 15px;
+    }
+
+    .news-section h2 {
+        font-size: 22px;
+    }
+}

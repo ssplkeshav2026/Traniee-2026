@@ -1,0 +1,129 @@
+@import url('https://googleapis.com');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to bottom left, #605094, #e07985);
+    width: 100%;
+}
+.contaner{
+    background-color: white;
+    margin: auto;
+    width: 90vw;
+}
+
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: transparent;
+    height: 40vh;
+    
+}
+header>h1{
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
+header>p{
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+.img-container{
+    width: 85vw;
+    margin: auto;
+}
+.img-container>img{
+    object-fit: cover;
+    width: 100%;
+}
+
+
+
+article{
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 60px;
+    color: #726863;
+}
+
+.paraText{
+    padding: 20px 0px;
+}
+
+
+footer{
+    display: flex;
+    gap: 60px;
+    width: 80%;
+    margin: auto;
+    margin-top: 70px;
+    padding: 10px 0px;
+    color: white;
+    padding-bottom:100px ;
+}
+
+.fist-footer-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.fist-footer-container>a{
+    text-align: center;
+    padding-top:5px ;
+    color: white;
+    border: 1px solid white;
+    font-style: none;
+    text-decoration: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.secont-footer-container{
+    width:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.contact-details{
+    display: flex; 
+}
+.contact-details a{
+    font-size: none;
+    color: white;
+    text-decoration: none;
+}
+
+
+.contact-logos{
+    font-size: 25px;
+    color: white;
+    border: 1px solid white;
+    margin: 10px;
+    size: 70px;
+    border-radius: 50%;
+}
+
+.key-value{
+    padding: 15px 0px;
+    display: flex;
+    gap: 20px;
+}
+
+.contact-logos:hover{
+    background: transparent;
+    opacity: 800;
+}
